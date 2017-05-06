@@ -1,0 +1,353 @@
+<html>
+<head>
+
+		<script type="text/javascript" >
+		window.onload=init;
+		
+		window.requestAnimFrame = (function(){
+								return  window.requestAnimationFrame			|| 
+									window.webkitRequestAnimationFrame || 
+									window.mozRequestAnimationFrame		|| 
+									window.oRequestAnimationFrame		  || 
+									window.msRequestAnimationFrame		 || 
+									function(/* function */ callback, /* DOMElement */ element){
+										window.setTimeout(callback, 1000 / 1000);
+									};
+		})();
+		
+		var four="1|1|1|1,2,3,4|4|4|4";
+		var zero="1,2,3,4|1,4|1,4|1,4|1,4|1,4|1,2,3,4";
+
+		var world;
+		
+		var keyStates= new Array(0,0);
+
+		function vector(x,y)
+		{
+			this.x=x;
+			this.y=y;
+		}
+		
+		function Ball(position,velocity,d)
+		{
+			this.position=position;
+			this.velocity=velocity;
+			this.d= d;
+			var obj;
+			
+			obj=document.createElement("div");
+			obj.className="ball";
+			obj.style.marginLeft = this.position.x + "px";
+			obj.style.marginTop = this.position.y + "px";
+			obj.style.height = this.d + "px";
+			obj.style.width = this.d + "px";
+			
+			this.obj=obj;
+			
+			$("game").appendChild(obj);
+			
+			this.move= function() {
+				this.position.x+=this.velocity.x;
+				this.position.y+=this.velocity.y;
+			
+				this.obj.style.marginLeft = this.position.x + "px";
+				this.obj.style.marginTop = this.position.y + "px";
+			
+				this.left=this.position.x;
+				this.top=this.position.y;
+				this.right=this.position.x+this.d;
+				this.bottom=this.position.y+this.d;	
+				
+			}
+			
+			this.left=this.position.x;
+			this.top=this.position.y;
+			this.right=this.position.x+this.d;
+			this.bottom=this.position.y+this.d;	
+			
+		}
+		
+		function Square(position,edge)
+		{
+			this.position=position;
+			this.edge=edge;
+
+			
+			this.left=position.x;
+			this.top=position.y;
+			this.right=position.x+edge;
+			this.bottom=position.y+edge;
+			
+			var obj=document.createElement("div");
+			obj.style.marginLeft = this.position.x + "px";
+			obj.style.marginTop = this.position.y + "px";
+			obj.style.height = this.edge + "px";
+			obj.style.width = this.edge + "px";
+			
+			this.obj=obj;
+			
+			this.collision=function(myworld) {
+				myworld.objects.splice(myworld.objects.indexOf(this), 1);
+				$("game").removeChild(this.obj);
+			}
+			
+			
+			
+			$("game").appendChild(obj);
+		}
+		
+		function Slider(position,velocity,width,height)
+		{
+			this.position=position;
+			this.velocity=velocity;
+			this.height=height;
+			this.width=width;
+			this.obj=obj;
+			
+			this.left=position.x;
+			this.top=position.y;
+			this.right=position.x+width;
+			this.bottom=position.y+height;
+			
+			var obj=document.createElement("div");
+			obj.style.marginLeft = this.position.x + "px";
+			obj.style.marginTop = this.position.y + "px";
+			obj.style.height = this.height + "px";
+			obj.style.width = this.width + "px";
+			
+			this.obj=obj;
+			
+			this.collision=function(myworld) {
+			}
+			
+			$("game").appendChild(obj);
+	
+			this.move= function() {
+				if((this.left>0 && this.right<document.body.clientWidth) || (this.left <=0 && this.velocity.x > 0) || (this.right >=document.body.clientWidth && this.velocity.x < 0))
+				{
+					this.position.x+=this.velocity.x;
+			
+					this.obj.style.marginLeft = this.position.x + "px";
+			
+					this.left=this.position.x;
+					this.right=this.position.x+this.width;
+				}
+			}
+		}
+		
+		function rectangleIntersect(r1,r2)
+		{
+			return !(r1.left>r2.right ||
+						r1.right < r2.left ||
+						r1.top > r2.bottom ||
+						r1.bottom < r2.top );
+						
+		}
+		
+		function GameWorld(objects)
+		{
+			this.objects=objects;
+			this.ball=this.objects[0];
+			this.slider=this.objects[1];
+			
+			this.update= function()
+			{
+				this.ball.move();
+				this.slider.move();
+			}
+			
+			this.ballCollisions = function()
+			{
+				//wall
+				if(this.ball.left<=0 || this.ball.right>=document.body.clientWidth)
+					this.ball.velocity.x= 0-this.ball.velocity.x;
+				if(this.ball.top<=0 || this.ball.bottom>=document.body.clientHeight)
+					this.ball.velocity.y= 0-this.ball.velocity.y;
+			
+				//Slider
+				var ycollide=0;
+				var xcollide=0;
+				
+				for(i=1;i<this.objects.length;i++)
+				{
+					if (rectangleIntersect(this.ball,this.objects[i]))
+					{
+					
+						if(this.ball.left+this.ball.d/2 > this.objects[i].left && this.ball.left+this.ball.d/2 < this.objects[i].right)
+						{
+							//this.ball.velocity.y= 0-this.ball.velocity.y;
+							if (xcollide==1 && ycollide==1)
+								xcollide=0;
+							ycollide=1;
+
+						}
+						else if(this.ball.top+this.ball.d/2 > this.objects[i].top && this.ball.top+this.ball.d/2 < this.objects[i].bottom)
+						{
+							if (xcollide==1 && ycollide==1)
+								ycollide=0;
+							xcollide=1;
+							
+						}
+						else
+						{
+							ycollide=1;
+							xcollide=1;
+							
+						}
+						
+						this.objects[i].collision(this);
+						break;
+					}
+				}
+				
+				if (xcollide==1)
+					this.ball.velocity.x= 0-this.ball.velocity.x;
+				if (ycollide==1)
+					this.ball.velocity.y= 0-this.ball.velocity.y;
+			}
+			
+		}
+
+		function keyDown(e) {
+    		var event = window.event ? window.event : e;
+
+       		if(event.keyCode == 37)
+       		{
+       			world.slider.velocity.x=-10;
+       			keyStates[0]=1;
+       		}
+       		else if (event.keyCode == 39)
+       		{
+       			world.slider.velocity.x=10;
+				keyStates[1]=1;
+			}
+		}
+
+		function keyUp(e) {
+    		var event = window.event ? window.event : e;
+
+       		if(event.keyCode == 37)
+       		{
+       			keyStates[0]=0;
+       			if(keyStates[1]==1)
+       				world.slider.velocity.x=10;
+       			else
+       				world.slider.velocity.x=0;
+			}
+			else if(event.keyCode == 39)
+       		{
+       			keyStates[1]=0;
+				if(keyStates[0]==1)
+       				world.slider.velocity.x=-10;
+       			else
+       				world.slider.velocity.x=0;
+			}
+		}
+		
+		function init()
+		{
+			var objs= new Array();
+			
+			objs.push(new Ball(new vector(100,100),new vector(7,-7),20));
+			
+			
+			objs.push(new Slider(new vector(document.body.clientWidth/2 - 65,document.body.clientHeight - 115),new vector(0,0),130,15));
+			
+			var edge = 25;
+			var offset = new vector(document.body.clientWidth/2 - edge*7-14,100);
+			
+			var number = four.split("|");
+			
+			for(i=0;i<number.length;i++)
+			{
+				var x = number[i].split(",");
+				for(j=0;j<x.length;j++)
+					objs.push(new Square(new vector(offset.x + x[j]*(edge+2),offset.y + i*(edge+2)),edge)); 
+			}
+			
+			offset.x +=10*(edge+2);
+			
+			for(i=0;i<number.length;i++)
+			{
+				var x = number[i].split(",");
+				for(j=0;j<x.length;j++)
+					objs.push(new Square(new vector(offset.x + x[j]*(edge+2),offset.y + i*(edge+2)),edge));
+			}
+			
+			offset.x -=5*(edge+2);
+			
+			
+			number = zero.split("|");
+			
+			for(i=0;i<number.length;i++)
+			{
+				var x = number[i].split(",");
+				for(j=0;j<x.length;j++)
+					objs.push(new Square(new vector(offset.x + x[j]*(edge+2),offset.y + i*(edge+2)),edge));
+			}
+			
+			window.onkeydown=keyDown;
+			window.onkeyup=keyUp;
+			
+			
+			world = new GameWorld(objs);
+			
+			
+			
+			update();
+			
+		}
+		
+		function update()
+		{
+			world.update();
+			
+			world.ballCollisions();
+			
+			requestAnimationFrame(update);
+		}
+		
+		
+		function $(obj)
+		{
+			return document.getElementById(obj);
+		}
+
+
+	</script>
+	
+	<style>
+		body
+		{
+			margin:0px;
+			padding:0px;
+			overflow:hidden;
+		}
+		#game
+		{
+			position:absolute;
+			width:100%;
+			height:100%;
+		}
+		
+		#game div
+		{
+			background:#000;
+			position:absolute;
+		}
+		
+		div.ball
+		{
+			border-radius:100px;
+			background:#000;
+			border:0px;
+		}
+	</style>
+	<script type="text/javascript" src="/resources/script/kjsanalytics.js"></script>
+</head>
+<body>
+<div id="game">
+
+</div>
+</body>
+</html>

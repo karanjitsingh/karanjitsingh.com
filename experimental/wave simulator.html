@@ -1,0 +1,125 @@
+<!doctype html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2014 by karan1866 (http://jsbin.com/kecopi/23/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+ <head>
+<style id="jsbin-css">
+body {
+	padding:0px;
+	margin:0px;
+	height:100%;
+}
+</style>
+</head>
+
+<body>
+ <input type=button value="add wave" onclick="var add=prompt('Enter amplitude wavelength and lag separated by a space').split(' ');a.push(add[0]);l.push(add[1]);t.push(add[2]/36);"/>
+  <input type=button value="clear" onclick="t=[];a=[];l=[];"/>
+<canvas height="100%" width="100%" style="position:absolute;left:0px;top:0px;z-index:-1;" id=canvas></canvas>
+
+<script id="jsbin-javascript">
+var canvas = document.getElementById("canvas");
+	var W=window.innerWidth;
+	var H=window.innerHeight;
+	var total=1000;
+	var t;
+	canvas.width=W;
+	canvas.height=H;
+	var ctx = canvas.getContext("2d");
+	var t=[];
+	var a=[];
+    var l=[];
+
+	function create_particle(i,lag) {
+		this.i=i;
+		this.name="";
+		this.x=i/total*W;
+		this.y=H/2 ;
+		this.lag=lag;
+		this.a=1;
+		this.w=2*Math.PI/10;
+		this.k=2*Math.PI;
+		this.meany=this.y;
+		this.radius=2;
+		this.draw= function(){
+			
+			ctx.beginPath();
+			ctx.fillStyle="#aaa";
+		
+			var fixed=true;
+			var y=0;
+			for(var i=0;i<t.length;i++)
+			{
+				
+				//if((t[i]-5)/5<=(this.x/125) && t[i]/5>=this.x/125)
+				//{
+					y-=this.a*a[i]*Math.sin(this.w*t[i]-this.k/l[i]*this.x + this.lag);
+					fixed=false;
+				//}
+				
+			}
+			this.y=this.meany+y;
+			if (fixed===true)
+			{
+				this.y=this.meany;
+			}
+
+			ctx.arc(this.x,this.y,this.radius,Math.PI*2,false);
+			ctx.fill();
+            ctx.closePath();
+		};
+	}
+	
+	var particles=[];
+	
+	for(var i=0;i<total;i++)
+	{
+		//particles.push(new create_particle(i,400,0));
+	}
+	
+	for(var i=0;i<total;i++)
+	{
+		particles.push(new create_particle(i,0));
+	}
+	
+	particles[0].name="special";
+	
+	for(var x=0; x < W ; x+=200)
+	{
+		ctx.fillStyle="#000";
+		ctx.fillRect(x,422,1,100);
+	}
+		
+	
+	function draw()
+	{
+		ctx.fillStyle="#fff";
+		ctx.fillRect(0,0,W,H);
+	
+		for(var i=0;i<particles.length;i++)
+		{
+			var p=particles[i];
+			p.draw();
+		}
+		for(var i=0;i<t.length;i++)
+			t[i]=(t[i]+0.1)%(parseInt(W/250+ 1)*10);
+	}
+	
+	setInterval(draw,30);
+	
+</script>
+</body>
+
+
+<script>
+	
+</script>
+
+</html>

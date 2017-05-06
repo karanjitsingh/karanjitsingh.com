@@ -1,0 +1,168 @@
+@charset "UTF-8";
+/* CSS Document */
+
+			#popupClose {
+				float:right;
+				width:24;
+				height:24;
+			}
+			#popupClose a:hover
+			{
+			    text-decoration:none;
+			}
+			#popupClose img{
+				width:24px;
+				height:24px;
+			}
+			#imgHolder {
+				float:left;
+				width:256px;
+				height:256px;
+			}
+			#imgHolder  img{
+				width:230px;
+				height:230px;
+			}
+		    h1
+		    {
+		        font-family:"Trebuchet MS";
+		        font-weight:lighter;
+		    }
+            #menubar 
+            {
+                vertical-align:top;
+				height: 48px;
+				border-bottom:solid 1px #eee;
+				background:#000;
+				position:absolute ;
+				top:0px;
+				width:100%;
+				opacity:0;
+				-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+				filter:alpha(opacity=0);
+            }
+			body {
+				margin:0px;				
+				overflow:hidden;
+				font-size:15px;
+				font-family:"Trebuchet MS";
+				background:#000;
+			}
+			div.planet {
+			    width:50;
+			    height:50;
+			    position:absolute;
+			    color:#fff;
+			}
+			div.planet img {
+				position:absolute;
+				top:0px;
+				left:0px;	
+			}
+			div.sun {
+				height:64px; width:64px; position:absolute; top:50%; left:50%;	
+			}
+			div.sun img {
+			    position:absolute;
+                height:64px; width:64px;
+			    margin-left:-50%; margin-top:-50%;  
+			}
+			#menu {
+				width: auto;
+				height: 100%;
+				float:right;
+				margin-right:10px;
+				text-decoration:none;
+				border-spacing:0px;
+				padding:0px;
+			}
+			#menu a{
+				color:#ccc;
+				text-decoration:none;
+			}
+			#menu a:visited{
+				color:#ccc;
+			}
+			#menu a:hover{
+				color:#fff;
+			}
+			
+			#menu td{
+				padding-right:10px;
+				font-size:15px;
+				font-family:"Trebuchet MS";
+				color:#ccc;
+			}
+            td.link {padding-top:4px;}
+            
+            div.label {
+                border-radius:5px; position:absolute; left:50%; top:-70%; background:#222; color:#FFF; font-family:'Trebuchet MS'; padding-left:8px;padding-right:8px; padding-top:4px; padding-bottom:4px; font-size:14px; visibility:hidden;
+            }
+            
+			#speedcontainer {
+				position:absolute;
+				right:10px;
+				bottom:10px;	
+				height:198px;
+				width:48px;
+				background:url('../images/speed2.png');
+			}
+            #speedometer {
+				position:absolute;
+				left:9px;
+				top:9px;
+				height:180px;
+				width:30px;
+				background-image:url('../images/speed.png');
+            }
+			
+			#speedometer div{
+				height:30px;
+				width:30px;
+				position:absolute;
+				background:#ffffff;
+				opacity:1;
+				-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+				filter:alpha(opacity=100);
+				left:0px;
+			}
+            
+            #speedometer div.top{
+            	border-radius:5px 5px 0px 0px;
+            }
+            
+            #speedometer div.bottom{
+            	border-radius:0px 0px 5px 5px;
+            }
+            
+			#speedometer div.meter-end{
+				height:30px;
+				width:30px;
+				position:absolute;
+				background:#ffffff;
+				opacity:1;
+				-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+				filter:alpha(opacity=100);
+				left:0px;
+			}
+			#speedometer div.shadow{
+				height:4px;
+				width:30px;
+				position:absolute;
+				background:#ffffff;
+				opacity:1;
+				-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+				filter:alpha(opacity=0);
+				left:0px;
+				background:url('../images/shadow.png');
+			}
+			
+			#speedometer div.meter-end div{
+				background:#fff;
+				height:15px; width:30px;
+				position:absolute;
+				left:0px;
+				opacity:1;
+				-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+				filter:alpha(opacity=100);
+			}

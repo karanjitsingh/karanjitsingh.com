@@ -1,0 +1,123 @@
+.download{
+	outline:none;
+	display:block;
+	position: fixed;
+	left: 20px;
+	bottom:10px;
+	height:25px;
+	width:126px;
+	background:url(images/download.gif) no-repeat;
+}
+
+body
+{
+	margin:0px;
+	padding:0px;
+	background:#eee;
+}
+table,td,tr
+{
+	border:0px solid;
+	border-spacing:0px;
+	padding:0px;
+	text-align:center;
+	vertical-align:middle;
+}
+table
+{
+	table-layout:fixed;
+	border-spacing:0px;
+	
+}
+
+input.solved
+{
+	color:#ddd;
+}
+
+table.mini input
+{
+	height:40px;
+	width:40px;
+	background:#4e82cb;
+	border:0px;
+	padding:0px
+	margin:0px;
+	outline:none;
+	font-family:'Open Sans', sans-serif;
+	font-size:22;
+	text-align:center;
+	
+	color:#fff;
+}
+
+.button
+{
+	height:45px;
+	width:190px;
+	background:#4B7DC3;
+	border:0px;
+	vertical-align:middle;
+	padding:0px;
+	line-height:45px;
+	margin:0px;
+	outline:none;
+	font-family:'Open Sans', sans-serif;
+	font-size:22;
+	text-align:center;
+	color:#fff;
+	font-weight:300;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+input.button:active
+{
+	background:#3d669f !important;
+}
+
+.button:hover
+{
+	background:#5791e2;
+}
+
+table.mini input:hover, table.mini input:focus
+{
+	color:#333;
+	background:#eee !important;
+	height:44px;
+	width:44px;
+	border:1px solid #999 !important;
+}
+
+table.mini
+{
+	margin:2px;
+}
+
+table.mini td
+{
+	/*border-spacing:5px;*/
+	height:44px;
+	width:44px;
+}
+
+input.error
+{
+	background:#cb4e4e !important;
+}
+
+td.heading
+{
+	font-family:'Open Sans', sans-serif;
+	font-weight:300;
+	font-size:68px;
+	color:#666;
+	padding-top:60px;
+	padding-bottom:30px;
+}
+
+#invalid
+{
+	padding-top:5px;font-family:'Open Sans', sans-serif; text-align:center; font-size:18px; font-weight:400; color:#cb4e4e; display:none;
+}
