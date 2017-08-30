@@ -6,4 +6,15 @@ body, html {
 
 body {
     background: #2F5168;
+    overflow: hidden;
+}
+
+#main-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
 }
