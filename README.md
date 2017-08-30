@@ -1,2 +1,2 @@
 # karanjitsingh.com
-My website
+[karanjitsingh.com](http://karanjitsingh.com)
