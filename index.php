@@ -9,5 +9,5 @@
         <canvas id="canvas"></canvas>
     </div>
 </body>
-<script type="text/javascript" src="/scripts/preload.js"></script>
+<script type="text/javascript" src="/scripts/page.js"></script>
 </html>
