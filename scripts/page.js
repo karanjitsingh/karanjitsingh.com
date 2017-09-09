@@ -68,7 +68,7 @@ function loadingComplete(callback) {
     new Animation(function (t) {
         wave.waves[1].amplitude = 40*(1-t);
         wave.options.top = 2*H/3 - t*(H/6);
-    }, EasingFunctions.easeOutCubic, 1000, hideWave);
+    }, EasingFunctions.easeOutCubic, 1000, callback);
 }
 
 var canvas = $id("canvas");
@@ -112,8 +112,6 @@ window.addEventListener('load', function() {
 
 function initPage() {
 
-	pjs.removeDrawObject(wave);
-
 	var name = "M 0 0 L 0 105 M 0 61.5 L 61.5 0 M 17 44 L 61.5 105 M 81.38697428310476 34.7150396039779 A 32 32 0 0 1 128.0184936160645 42.85354256067211 M 97.0767174181432 63.31228973972378 A 365 365 0 0 1 128.00000000000003 62 M 97 102 A 19 19 0 0 1 97 64 M 127.61833855844927 75.84946841624716 A 31 31 0 0 1 97 102 M 128 42 L 128 105 M 160.5 27 L 160.5 105 M 161.6318519781126 47.291267499687024 A 32 32 0 0 1 196.9962020667432 28.566807976681964 M 263 42 L 263 105 M 216.38697428310476 34.7150396039779 A 32 32 0 0 1 263.01849361606446 42.85354256067211 M 232.0767174181432 63.31228973972378 A 365 365 0 0 1 263 62 M 232 102 A 19 19 0 0 1 232 64 M 262.6183385584493 75.84946841624716 A 31 31 0 0 1 232 102 M 294 27 L 294 105 M 295.1911894296917 50.63026681882313 A 30 30 0 0 1 348.8124172282369 42.13749866443608 M 349 42 L 349 105 ";
 	var icons = {
 		code: "M24 10.935v2.131l-8 3.947v-2.23l5.64-2.783-5.64-2.79v-2.223l8 3.948zm-16 3.848l-5.64-2.783 5.64-2.79v-2.223l-8 3.948v2.131l8 3.947v-2.23zm7.047-10.783h-2.078l-4.011 16h2.073l4.016-16z",
@@ -147,10 +145,20 @@ function initPage() {
 		frictionFactor: 0.9
 	};
 
-	var svg = new ParticleJSAnimations.SVGAnimation(name,svgOptions);
+
+	var total = pjs.removeDrawObject(wave);
+
+	console.log(total);
+
+	var svg = new ParticleJSAnimations.SVGAnimation(name,svgOptions,total);
+	var random = new ParticleJSAnimations.FadeExplode(null, total);
+
+	console.log(total);
+
 	svg.offset = {x: W/2 - 175, y: H/2-253};
-	svg.alpha = 0;
+	svg.alpha = 1;
 	pjs.addDrawObject(svg);
+	pjs.addDrawObject(random);
 
 
 	svgOptions.mouseRepel = true;
@@ -185,12 +193,9 @@ function initPage() {
 
 	pjs.addDrawObject(userSVG);
 
-	x = codeSVG;
+		new Animation(function (t) {
+			codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
+		}, EasingFunctions.easeOutCubic, 2000);
 
-	new Animation(function (t) {
-		svg.alpha = t;
-		codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
-	}, EasingFunctions.easeOutCubic, 300);
+	
 }
-
-var x;
