@@ -44,7 +44,14 @@
     </div>
     <div id="pages-container">
         <div id="code-page"></div>
-        <div id="about-page"></div>
+        <div id="about-page">
+            <div>
+                <div>
+                    <div></div>
+                    <p>Hi!<br/><br/>I am Karan Jit Singh. I live in <a class="location" target="_blank" href="https://www.google.co.in/search?q=Chandigarh+India">Chandigarh, India</a>, currently pursuing my bachelor's degree in Computer Science and Engineering at Manipal Institute of Technology, Manipal.<br/><br/>My technical interests are Machine Learning, mainly reinforcement leanirng, Math, simulations and fun javascript canvas projects! Apart from enjoying technical stuff, I also enjoy watching Formula 1&#127937;, playing the guitar and frustrating n00bs at counter-strike.</p>
+                </div>
+            </div>
+        </div>
         <div id="contact-page">
             <div>
                 <div>

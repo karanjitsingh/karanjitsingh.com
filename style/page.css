@@ -2,6 +2,7 @@ body, html {
     margin: 0px;
     padding: 0px;
     height: 100%;
+    font-family: Roboto;
 }
 
 body {
@@ -38,7 +39,6 @@ body {
     text-decoration: none;
     display: block;
     width: 94px;
-    font-family: 'Open Sans';
     padding-top: 101px;
     padding-bottom: 4px;
     box-sizing: unset;
@@ -75,7 +75,6 @@ body {
 }
 
 .github-banner-link {
-    font-family: Roboto;
     font-weight: 300;
     color: white;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -189,7 +188,6 @@ body {
 
 #contact-page span {
     color: white;
-    font-family: Roboto;
     font-size: 24px;
     padding-bottom: 40px;
     cursor: default;
@@ -202,9 +200,69 @@ body {
     padding-bottom: 68px;
 }
 
-#contact-page > div, #contact-page > div > div {
+#about-page > div {
+    height: 100%;
+}
+
+#contact-page > div, #contact-page > div > div, #about-page > div, #about-page > div > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+#about-page > div > div > div {
+    display:inline-block;
+    height:300px;
+    width:305px;
+    border-radius:1000px;
+    background:url('../images/me.jpg');
+    background-size:300px 300px;
+    border: 3px solid white;
+}
+
+#about-page p {
+    width:520px;
+    display:inline-block;
+    font-weight:300;
+    font-size:16px;
+    color:#fff;
+    text-align:justify;
+    margin-top:30px;
+}
+
+.location {
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    text-decoration: none;
+    position: relative;
+}
+
+.location::after {
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAh0lEQVQoz4WQsQnAIBBFb4IMYpEiM2SALGftBClSp3SWlBYpUlio+QcXkHDqhwdy/x4cElXJORtwgEfgtyEtKGZwl194xp0mnLKQgBOSzE5NiFK6auZkFjUhdISgCXvnpF0T1tIId62f8sqyp1ZQLt8Z1XkL9YIFWwmWRsHSBC5hGgoibYzWvZnyDhbnpZXlAAAAAElFTkSuQmCC');
+    margin-left:4px;
+}
+
+.location::before {
+    content: "It's a beautiful city.";
+    text-shadow: none;
+    padding: 3px;
+    border-radius: 4px;
+    position: absolute;
+    top: -25px;
+    left: 12px;
+    background: white;
+    width: 105px;
+    color: #222;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(+10px);
+    transition: opacity 0.1s linear, transform 0.3s cubic-bezier(0,1.49,.82,1.32);
+    transition-delay: 0.3s;
+}
+
+.location:hover::before {
+    transform: translateY(0);
+    opacity: 1;
 }
