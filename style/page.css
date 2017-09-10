@@ -51,38 +51,6 @@ body {
     cursor: pointer;
 }
 
-/* #menu-container a::before {
-    display: block;
-    position: absolute;
-    left: -30px;
-    top: -9px;
-    content: " ";
-    height: 154px;
-    width: 154px;
-    border-radius: 1000px;
-    opacity: 0;
-    transform-origin: center center;
-    transform: scale(0.8);
-    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-} */
-
-/* #menu-container a:nth-child(1)::before {
-    background: #E04836;
-}
-
-#menu-container a:nth-child(2)::before {
-    background: #F39D41;
-}
-
-#menu-container a:nth-child(3)::before {
-    background: #5696BC;
-} */
-
-/* #menu-container a:hover::before {
-    transform: scale(1);
-    opacity: 0.4;
-} */
-
 #menu-container a:nth-child(1):hover {
     color: rgba(224, 72, 54,0.8)
 }
@@ -99,6 +67,11 @@ body {
     position: absolute;
     right: 20px;
     top: 20px;
+    display: none;
+    opacity: 0;
+}
+
+.github-banner-link {
     font-family: Roboto;
     font-weight: 300;
     color: white;
@@ -113,26 +86,28 @@ body {
     transition: opacity 0.2s ease-out;    
 }
 
-#github-banner::before {
+.github-banner-link::before {
     display: block;
     position: absolute;
     right: 40px;
-    content: "Like what you see?\A Fork it on Github";
+    content: "Like what you see?\A Fork it on GitHub";
     width:150px;
     transform: translateX(0px);
     opacity: 0;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    pointer-events: none;
 }
 
-#github-banner svg{
+.github-banner-link svg{
     fill: white;
 }
 
-#github-banner:hover {
+.github-banner-link:hover {
     opacity: 1;
 }
 
-#github-banner:hover::before {
+.github-banner-link:hover::before {
     transform: translateX(+10px);
     opacity: 0.8;
 }
+

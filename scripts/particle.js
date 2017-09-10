@@ -73,6 +73,10 @@ var ParticleJS = (function () {
         });
         this.particles = [];
     }
+    ParticleJS.prototype.didResize = function (canvas) {
+        this.W = canvas.width;
+        this.H = canvas.height;
+    };
     ParticleJS.prototype.addDrawObject = function (drawObject) {
         this.DrawObjectCollection.push(drawObject);
     };
@@ -190,15 +194,12 @@ var ParticleJSAnimations;
     }());
     ParticleJSAnimations.FadeExplode = FadeExplode;
 })(ParticleJSAnimations || (ParticleJSAnimations = {}));
-/* TODO
-* readjustable atoms
-*/
 var ParticleJSAnimations;
 (function (ParticleJSAnimations) {
     var SVGAnimation = (function () {
         function SVGAnimation(path2d, options, atomSet) {
-            this.offset = { x: 0, y: 0 };
             this.alpha = 1;
+            this.offset = { x: 0, y: 0 };
             this.atomSet = [];
             this.firstDraw = true;
             this.options = generateOptions(options, SVGAnimation.default);
@@ -278,6 +279,13 @@ var ParticleJSAnimations;
                     itemCount++;
                 }
             }
+        };
+        SVGAnimation.prototype.move = function (offset) {
+            this.offset.x = offset.x;
+            this.offset.y = offset.y;
+            if (!this.firstDraw)
+                for (var i = 0; i < this.atomSet.length; i++)
+                    this.atomSet[i].animationDone = false;
         };
         SVGAnimation.prototype.draw = function (context) {
             if (this.firstDraw || !this.options.mouseRepel) {
@@ -525,9 +533,6 @@ var ParticleJSAnimations;
     }());
     ParticleJSAnimations.SVGAnimation = SVGAnimation;
 })(ParticleJSAnimations || (ParticleJSAnimations = {}));
-/* TODO
- * test wave animation for changing properties
- */
 var ParticleJSAnimations;
 (function (ParticleJSAnimations) {
     var WaveAnimation = (function () {

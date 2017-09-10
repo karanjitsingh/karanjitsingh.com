@@ -156,7 +156,7 @@ function initPage() {
 
 	console.log(total);
 
-	svg.offset = {x: W/2 - 175, y: H/2-253};
+	svg.move({x: W/2 - 175, y: H/2-253})
 	svg.alpha = 1;
 	pjs.addDrawObject(svg);
 	pjs.addDrawObject(random);
@@ -170,6 +170,7 @@ function initPage() {
 	svgOptions.atomOptions.radius = 1;
 	svgOptions.connectingLines = true;
 	svgOptions.connectingLineMaxLength = 30;
+	svgOptions.blur = false;
 
 
 	svgOptions.maxRepelDistance = 20
@@ -177,34 +178,40 @@ function initPage() {
 	svgOptions  .frictionFactor = 0.6
 
 	var codeSVG = new ParticleJSAnimations.SVGAnimation(icons.code, svgOptions);
-	codeSVG.offset = {x: W/2 - 36 - 200, y: H/2+200};
+	codeSVG.move({x: W/2 - 36 - 200, y: H/2+200})
 	codeSVG.alpha = 0;
 	pjs.addDrawObject(codeSVG);
 
 	var userSVG = new ParticleJSAnimations.SVGAnimation(icons.user, svgOptions);
-	userSVG.offset = {x: W/2 - 36, y: H/2+200};
+	userSVG.move({x: W/2 - 36, y: H/2+200})
 	userSVG.alpha = 0;
 	pjs.addDrawObject(userSVG);
 
 	var emailSVG = new ParticleJSAnimations.SVGAnimation(icons.email, svgOptions);
-	emailSVG.offset = {x: W/2 - 36 + 200, y: H/2+200};
+	emailSVG.move({x: W/2 - 36 + 200, y: H/2+200})
 	emailSVG.alpha = 0;
 	pjs.addDrawObject(emailSVG);
 
-	// svgOptions.scale = 1;
-	// svgOptions.lineDensity = 0.5;
-	// var forkSVG = new ParticleJSAnimations.SVGAnimation(icons.fork, svgOptions);
-	// forkSVG.alpha = 0;
-	// forkSVG.offset = {x: W - 59, y: 35};
-	// pjs.addDrawObject(forkSVG);
-
 	var menu = $id("menu-container");
+	var banner = $id("github-banner")
 	menu.style.display = "block";
+	banner.style.display = "block";
 
 	new Animation(function (t) {
 		codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
-		menu.style.opacity = t;
+		menu.style.opacity = banner.style.opacity = t;
 	}, EasingFunctions.easeOutCubic, 2000);
 
-	
+	window.addEventListener("resize", function() {
+		W = document.body.clientWidth;
+		H = document.body.clientHeight;
+		canvas.width = W;
+		canvas.height = H;
+		svg.move({x: W/2 - 175, y: H/2-253});
+		codeSVG.move({x: W/2 - 36 - 200, y: H/2+200});
+		userSVG.move({x: W/2 - 36, y: H/2+200});
+		emailSVG.move({x: W/2 - 36 + 200, y: H/2+200});
+		pjs.didResize(canvas);
+	})
 }
+
