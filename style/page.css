@@ -92,7 +92,7 @@ body {
     display: block;
     position: absolute;
     right: 40px;
-    content: "Like what you see?\A Fork it on GitHub";
+    content: "Like what you see?\A Fork me on GitHub";
     width:150px;
     transform: translateX(0px);
     opacity: 0;
@@ -127,15 +127,18 @@ body {
     width: 100%;
     top: 0px;
     transform: translateY(0);
-    transition: transform 0.4s ease-in-out ;
+    transition: transform 0.3s ease-in-out ;
+    user-select: none;
 }
 
 #pages-container > div.visible {
     transform: translateY(-100%);
+    user-select: initial;
 }
 
 #code-page {
-    background: #E04836;
+    /* background: #E04836; */
+    background: #222;
 }
 
 #about-page {
@@ -200,11 +203,11 @@ body {
     padding-bottom: 68px;
 }
 
-#about-page > div {
+#about-page > div, #code-page > div {
     height: 100%;
 }
 
-#contact-page > div, #contact-page > div > div, #about-page > div, #about-page > div > div {
+#contact-page > div, #contact-page > div > div, #code-page > div, #code-page > div > div, #about-page > div, #about-page > div > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -229,6 +232,13 @@ body {
     color:#fff;
     text-align:justify;
     margin-top:30px;
+}
+
+#about-page span {
+    font-weight: 400;
+    font-size: 18px;
+    padding-bottom: 6px;
+    display: block;
 }
 
 .location {
@@ -265,4 +275,48 @@ body {
 .location:hover::before {
     transform: translateY(0);
     opacity: 1;
+}
+
+#code-page > div > div {
+    flex-direction: initial;
+}
+
+#code-page > div > div > div:nth-child(1) {
+    height: 670px;
+    width: 250px;
+    color: white;
+    font-weight: 300;
+    flex-grow: 1;
+}
+
+#code-page > div > div > div:nth-child(2) {
+    height: 670px;
+    width: 740px;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    flex-grow: 1;
+}
+
+#code-page ul {
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    display: block;
+}
+
+#code-page li {
+    padding: 12px;
+    color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0);
+    transition: background 0.3s linear;
+    cursor: pointer;
+    text-align: right;
+}
+
+#code-page li:hover {
+    background: rgba(255,255,255,0.1);    
+}
+
+#code-page li.selected {
+    font-weight: 400;
+    color:white;
 }

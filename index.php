@@ -43,12 +43,34 @@
         </a>
     </div>
     <div id="pages-container">
-        <div id="code-page"></div>
+        <div id="code-page">
+            <div>
+                <div>
+                    <div>
+                        <ul>
+                            <li>Particle.js</li>
+                            <li>SVG Path Parser</li>
+                            <li>Neural Network to play 2048</li>
+                            <li>Hospital Management System</li>
+                            <li>IE CSE Website 2014-2015</li>
+                            <li>Snakes in Classic C</li>
+                            <li>Solar System 2D Simulation</li>
+                            <li>Sudoku Solver</li>
+                            <li>Experimental Projects</li>
+                        </ul>
+
+                    </div>
+                    <div>
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="about-page">
             <div>
                 <div>
                     <div></div>
-                    <p>Hi!<br/><br/>I am Karan Jit Singh. I live in <a class="location" target="_blank" href="https://www.google.co.in/search?q=Chandigarh+India">Chandigarh, India</a>, currently pursuing my bachelor's degree in Computer Science and Engineering at Manipal Institute of Technology, Manipal.<br/><br/>My technical interests are Machine Learning, mainly reinforcement leanirng, Math, simulations and fun javascript canvas projects! Apart from enjoying technical stuff, I also enjoy watching Formula 1&#127937;, playing the guitar and frustrating n00bs at counter-strike.</p>
+                    <p><span>Hi!</span>I am Karan Jit Singh. I live in <a class="location" target="_blank" href="https://www.google.co.in/search?q=Chandigarh+India">Chandigarh, India</a>, currently pursuing my bachelor's degree in Computer Science and Engineering at Manipal Institute of Technology, Manipal.<br/><br/>My technical interests are Machine Learning, mainly reinforcement leanirng, Math, simulations and fun javascript canvas projects! Apart from enjoying technical stuff, I also enjoy watching Formula 1&#127937;, playing the guitar and frustrating n00bs at counter-strike.<br/><br/><span>Work</span>I spent my last summer interning at Microsoft, working on code coverage reporting and prototyping a hybrid code coverage reporting engine for Visual Studio Team Services. Prior to that, I had interned at Headout migrating their website to ReactJS.</p>
                 </div>
             </div>
         </div>
