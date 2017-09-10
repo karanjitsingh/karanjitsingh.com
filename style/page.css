@@ -46,21 +46,24 @@ body {
     font-size: 22px;
     color: rgba(255,255,255,0.1);
     position: relative;
-    z-index: 10;
     transition: color 0.3s ease-out;
     cursor: pointer;
 }
 
 #menu-container a:nth-child(1):hover {
-    color: rgba(224, 72, 54,0.8)
+    color: rgba(224, 72, 54,0.9);
+    text-shadow: 0px 0px 2px rgba(224, 72, 54,0.5);
 }
 
 #menu-container a:nth-child(2):hover {
-    color: rgba(243, 157, 65,0.8)
+    color: rgba(86, 150, 188,0.9);
+    text-shadow: 0px 0px 2px rgba(86, 150, 188,0.5);
+    
 }
 
 #menu-container a:nth-child(3):hover {
-    color: rgba(86, 150, 188,0.8)
+    color: rgba(243, 157, 65,0.9);
+    text-shadow: 0px 0px 2px rgba(243, 157, 65,0.5);
 }
 
 #github-banner {
@@ -111,3 +114,97 @@ body {
     opacity: 0.8;
 }
 
+#pages-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:100%;
+    left: 0px;
+}
+
+#pages-container > div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    transform: translateY(0);
+    transition: transform 0.4s ease-in-out ;
+}
+
+#pages-container > div.visible {
+    transform: translateY(-100%);
+}
+
+#code-page {
+    background: #E04836;
+}
+
+#about-page {
+    background: #5696BC;
+}
+
+#contact-page {
+    background: #F39D41;
+}
+
+#page-close {
+    position: absolute;
+    right: 50px;
+    height: 32px;
+    width: 32px;
+    text-decoration: none;
+    opacity: 0;
+    display: block;
+    transition: opacity 0.3s ease-out;
+    cursor: pointer;
+}
+
+#page-close.visible {
+    opacity:0.6;
+    top: calc(50px - 100%);
+}
+
+#page-close:hover {
+    opacity: 1;
+}
+
+#page-close svg {
+    fill:white;
+}
+
+#contact-page a {
+    text-decoration: none;
+    display: inline-block;
+    margin:5px;
+    transform:scale(0.8,0.8);
+    opacity: 0.8;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+}
+
+#contact-page a:hover {
+    opacity: 1;
+    transform: scale(1,1);
+}
+
+#contact-page span {
+    color: white;
+    font-family: Roboto;
+    font-size: 24px;
+    padding-bottom: 40px;
+    cursor: default;
+    user-select: none;
+}
+
+#contact-page > div {
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 68px;
+}
+
+#contact-page > div, #contact-page > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
