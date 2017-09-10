@@ -9,7 +9,7 @@ body {
     overflow: hidden;
 }
 
-#main-container {
+#canvas-container {
     height: 100%;
     width: 100%;
     display: flex;
@@ -17,4 +17,122 @@ body {
     left: 0px;
     top: 0px;
     overflow: hidden;
+}
+
+#menu-container {
+    position: absolute;
+    width: 494px;
+    top: calc(50% + 190px);
+    left: calc(50% - 247px);
+    opacity: 0;
+    display: none;
+}
+
+.menu {
+    justify-content: space-between;
+    display: flex;
+    width:100%;
+}
+
+#menu-container a{
+    text-decoration: none;
+    display: block;
+    width: 94px;
+    font-family: 'Open Sans';
+    padding-top: 101px;
+    padding-bottom: 4px;
+    box-sizing: unset;
+    text-align: center;
+    font-size: 22px;
+    color: rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 10;
+    transition: color 0.3s ease-out;
+    cursor: pointer;
+}
+
+/* #menu-container a::before {
+    display: block;
+    position: absolute;
+    left: -30px;
+    top: -9px;
+    content: " ";
+    height: 154px;
+    width: 154px;
+    border-radius: 1000px;
+    opacity: 0;
+    transform-origin: center center;
+    transform: scale(0.8);
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+} */
+
+/* #menu-container a:nth-child(1)::before {
+    background: #E04836;
+}
+
+#menu-container a:nth-child(2)::before {
+    background: #F39D41;
+}
+
+#menu-container a:nth-child(3)::before {
+    background: #5696BC;
+} */
+
+/* #menu-container a:hover::before {
+    transform: scale(1);
+    opacity: 0.4;
+} */
+
+#menu-container a:nth-child(1):hover {
+    color: rgba(224, 72, 54,0.8)
+}
+
+#menu-container a:nth-child(2):hover {
+    color: rgba(243, 157, 65,0.8)
+}
+
+#menu-container a:nth-child(3):hover {
+    color: rgba(86, 150, 188,0.8)
+}
+
+#github-banner {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-family: Roboto;
+    font-weight: 300;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.3;
+    transition: opacity 0.2s ease-out;    
+}
+
+#github-banner::before {
+    display: block;
+    position: absolute;
+    right: 40px;
+    content: "Like what you see?\A Fork it on Github";
+    width:150px;
+    transform: translateX(0px);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+#github-banner svg{
+    fill: white;
+}
+
+#github-banner:hover {
+    opacity: 1;
+}
+
+#github-banner:hover::before {
+    transform: translateX(+10px);
+    opacity: 0.8;
 }
