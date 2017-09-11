@@ -282,18 +282,22 @@ body {
 }
 
 #code-page > div > div > div:nth-child(1) {
-    height: 670px;
     width: 250px;
     color: white;
     font-weight: 300;
-    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 #code-page > div > div > div:nth-child(2) {
-    height: 670px;
+    height: 630px;
     width: 740px;
     border-left: 1px solid rgba(255,255,255,0.2);
-    flex-grow: 1;
+    color:white;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
 #code-page ul {
@@ -313,10 +317,45 @@ body {
 }
 
 #code-page li:hover {
-    background: rgba(255,255,255,0.1);    
+    background: rgba(255,255,255,0.05);    
 }
 
 #code-page li.selected {
     font-weight: 400;
     color:white;
+    background: rgba(255,255,255,0.05);
+}
+
+#code-page .heading {
+    font-size: 24px;
+}
+
+#code-page a {
+    color:white;
+}
+
+#code-page p {
+    font-weight: 300;
+}
+
+#code-page a.github {
+    text-decoration: none;
+    float: right;
+}
+
+#code-page a svg {
+    transition: transform 0.3s ease-out;
+    height:35px;
+    width:35px;
+    transform: scale(0.75);
+    fill: white;
+    cursor: pointer;
+}
+
+#code-page a.github:hover svg {
+    transform: scale(1);
+}
+
+#code-page img {
+    width:100%;
 }

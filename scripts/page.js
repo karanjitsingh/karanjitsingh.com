@@ -14,7 +14,7 @@ function initPage() {
 		atomOptions: {
 			pop: true,
 			popRadius: 4,
-			popProbability: 0.001,
+			popProbability: 0.002,
 			radius: 2,
 			colorSet: ["#E04836", "#F39D41", "#DDDDDD"],
 			particleRadius: 2,
@@ -57,6 +57,8 @@ function initPage() {
 	svgOptions.lineDensity = 0.28;
 	svgOptions.atomOptions.colorSet= ["#FFFFFF"];
 	svgOptions.atomOptions.radius = 1;
+	svgOptions.atomOptions.popRadius = 3;
+	svgOptions.atomOptions.popProbability = 0.001;
 	svgOptions.connectingLines = true;
 	svgOptions.connectingLineMaxLength = 30;
 	svgOptions.blur = false;

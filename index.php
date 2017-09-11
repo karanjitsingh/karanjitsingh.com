@@ -37,8 +37,8 @@
     </div>
     <div id="github-banner">
         <a class="github-banner-link" href="https://github.com/karanjitsingh/particle.js" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M21 3c0-1.657-1.343-3-3-3s-3 1.343-3 3c0 1.323.861 2.433 2.05 2.832.168 4.295-2.021 4.764-4.998 5.391-1.709.36-3.642.775-5.052 2.085v-7.492c1.163-.413 2-1.511 2-2.816 0-1.657-1.343-3-3-3s-3 1.343-3 3c0 1.305.837 2.403 2 2.816v12.367c-1.163.414-2 1.512-2 2.817 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.295-.824-2.388-1.973-2.808.27-3.922 2.57-4.408 5.437-5.012 3.038-.64 6.774-1.442 6.579-7.377 1.141-.425 1.957-1.514 1.957-2.803zm-16.8 0c0-.993.807-1.8 1.8-1.8s1.8.807 1.8 1.8-.807 1.8-1.8 1.8-1.8-.807-1.8-1.8zm3.6 18c0 .993-.807 1.8-1.8 1.8s-1.8-.807-1.8-1.8.807-1.8 1.8-1.8 1.8.807 1.8 1.8zm10.2-16.2c-.993 0-1.8-.807-1.8-1.8s.807-1.8 1.8-1.8 1.8.807 1.8 1.8-.807 1.8-1.8 1.8z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                <use xlink:href="./images/icons.svg#fork" />
             </svg>
         </a>
     </div>
@@ -48,7 +48,7 @@
                 <div>
                     <div>
                         <ul>
-                            <li>Particle.js</li>
+                            <li class="selected">Particle.js</li>
                             <li>SVG Path Parser</li>
                             <li>Neural Network to play 2048</li>
                             <li>Hospital Management System</li>
@@ -61,7 +61,17 @@
 
                     </div>
                     <div>
-                        &nbsp;
+                        <div>
+                            <span class="heading">Particle.js</span>
+                            <a class="github" href="https://github.com/karanjitsingh/particle.js" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg">
+                                    <use xlink:href="./images/icons.svg#github" />
+                                </svg>
+                            </a>
+                            <p>Particle.js is a JavaScript canvas library for fancy particle animations. The fun animations you see on the main page of this website use Particle.js at its core. You can checkout another implementation of particle.js at <a target="_blank" href="https://www.headout.com/careers">Headout's careers page</a>.</p>
+                            <img src="./images/particlejs.png"/>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>
