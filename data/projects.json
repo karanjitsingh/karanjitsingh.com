@@ -1,0 +1,67 @@
+{
+    "d": [
+        {
+            "title": "Particle.js",
+            "github": "https://github.com/karanjitsingh/particle.js",
+            "desc": "Particle.js is a JavaScript canvas library for fancy particle animations. The fun animations you see on the main page of this website use Particle.js at its core. You can checkout another implementation of particle.js at <a target=\"_blank\" href=\"https://www.headout.com/careers\">Headout's careers page</a>.",
+            "img": "./images/particlejs.png",
+            "link": ""
+        },
+        {
+            "title": "SVG Path Parser",
+            "github": "https://github.com/karanjitsingh/svg-path-parser",
+            "desc": "SVG path parser is a custom path 2D parser written specifically for Particle.JS to support animation for any specific path. Particle.JS requires path length and nth point for each path element that is created in a path 2D, for this very reason I had to write a custom parser that convers those path elements into custom path functions which provide its length and a method to get the nth point on the path.",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "Neural Network to Play 2048",
+            "github": "https://github.com/karanjitsingh/dqn-2048",
+            "desc": "A bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "Hospital Management System",
+            "github": "",
+            "desc": "",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "IE CSE Website 2014-2015",
+            "github": "",
+            "desc": "",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "Snakes in Classic C",
+            "github": "",
+            "desc": "",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "Solar System 2D Simulation",
+            "github": "",
+            "desc": "",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "Sudoku Solver",
+            "github": "",
+            "desc": "",
+            "img": "",
+            "link": ""
+        },
+        {
+            "title": "Experimental Projects",
+            "github": "",
+            "desc": "",
+            "img": "",
+            "link": "/experimental"
+        }
+    ]
+}

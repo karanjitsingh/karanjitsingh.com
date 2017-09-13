@@ -106,16 +106,23 @@ function initPage() {
 	})
 }
 
-function headerClick(e) {
-	e.preventDefault();
-	var page = e.target.href.match(/.*\/(.*)\//);
-	
+function openPage(page) {
 	if(!page || currentPage.toLowerCase() === page[1].toLowerCase())
 		return;
 
 	page = page[1];
 	switch(page) {
 		case "code":
+			var codePage = $id("code-page");
+			codePage.querySelector(".heading").innerHTML = "";
+			codePage.querySelector(".github").className = "github big";
+			codePage.querySelector(".github").href = "https://github.com/karanjitsingh/";
+			codePage.querySelector(".desc").innerHTML = "";
+			codePage.querySelector(".image").src = "";
+			if(ListItem.selectedIndex != -1)
+				ListItem.list[ListItem.selectedIndex].element.className = "";
+			ListItem.selectedIndex = -1;
+			break;
 		case "about":
 		case "contact":
 			break;
@@ -133,6 +140,13 @@ function headerClick(e) {
 	window.history.pushState(null, "", "/" + page + "/");
 }
 
+function headerClick(e) {
+	e.preventDefault();
+	var page = e.target.href.match(/.*\/(.*)\//);
+	
+	openPage(page);
+}
+
 var links = document.querySelectorAll(".menu a");
 for(var i=0;i<links.length;i++) {
 	links[i].onclick = headerClick;
@@ -146,13 +160,79 @@ var timeout;
 
 function onPopState(e) {
 	var page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
+	clearTimeout(timeout);
+
 	if(!page) {
 		$id(currentPage + "-page").className = "";
 		$id("page-close").className = "";
 		currentPage = "";
+		pjs.start();
 	}
-	clearTimeout(timeout);
-	pjs.start();
+	else if(currentPage != page) {
+		openPage(page);
+	}
 }
 
 window.onpopstate = onPopState;
+
+var ListItem = function(elem) {
+	this.element = elem;
+	this.element.onclick = function(e) {
+
+		var codePage = $id("code-page");
+		var heading = codePage.querySelector(".heading");
+		var github = codePage.querySelector(".github");
+		var desc = codePage.querySelector(".desc");
+		var image = codePage.querySelector(".image");
+		
+		if(codePageData[this.index].link != "") {
+			var win = window.open(codePageData[this.index].link, '_blank');
+			win.focus();
+		}
+		else {
+
+			if(ListItem.selectedIndex!=-1)
+				ListItem.list[ListItem.selectedIndex].element.className = "";
+			this.element.className = "selected";
+			ListItem.selectedIndex = this.index;
+
+			if(codePageData[this.index].github != "") {
+				github.className = "github";
+				github.href = codePageData[this.index].github;
+			}
+			else {
+				github.href = "";
+				github.className = "github hidden";
+			}
+
+			heading.innerHTML = codePageData[this.index].title;
+			desc.innerHTML = codePageData[this.index].desc;
+
+			if(codePageData[this.index].img != "") {
+				image.className = "image";
+				image.src = codePageData[this.index].img;
+			}
+			else {
+				image.className = "image hidden";
+				image.src = "";
+			}
+		}
+	}.bind(this);
+	this.index = ListItem.list.length;
+	ListItem.list.push(this);
+}
+
+ListItem.selectedIndex = -1;
+ListItem.list = [];
+
+function loadCodePage() {
+    var codePage = $id("code-page");
+    var list = codePage.querySelector("ul");
+    
+    for(var i=0;i<codePageData.length;i++) {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = codePageData[i].title;
+		list.appendChild(listItem);
+		new ListItem(listItem);
+    }
+}

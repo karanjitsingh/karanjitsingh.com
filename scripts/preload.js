@@ -58,6 +58,7 @@ function Animation(step, easing, duration, callback) {
 
 function loadingComplete(callback) {
 
+    
     function hideWave() {
         new Animation(function (t) {
             wave.alpha = 1-t
@@ -67,7 +68,10 @@ function loadingComplete(callback) {
     new Animation(function (t) {
         wave.waves[1].amplitude = 40*(1-t);
         wave.options.top = 2*H/3 - t*(H/6);
-    }, EasingFunctions.easeOutCubic, 1000, callback);
+    }, EasingFunctions.easeOutCubic, 1000, function() {
+        openPage(document.location.href.match(/http:\/\/.*\/([^/]+)\/?/));
+        callback()
+    });
 }
 
 var canvas = $id("canvas");
@@ -104,6 +108,47 @@ pjs.addDrawObject(wave);
 pjs.start();
 
 window.addEventListener('load', function() {
-	setTimeout(function() {loadingComplete(initPage);}, 100);
+	responseComplete();
 });
 
+function responseComplete() {
+    if(!this.replyCount) {
+        this.replyCount = 1;
+        return;
+    }
+    else {
+        this.replyCount++;
+    }
+    if(this.replyCount >= 3) {
+        loadCodePage();        
+        setTimeout(function() {
+            loadingComplete(initPage);
+        }, 100);
+    }
+}
+
+var script = document.createElement("script");
+script.onload = function() {
+    responseComplete();   
+};
+script.src = "./scripts/page.js";
+document.body.appendChild(script);
+
+var xhttp;
+if (window.XMLHttpRequest) {
+    xhttp = new XMLHttpRequest();
+ } else {
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        codePageData = JSON.parse(this.responseText)["d"];
+        responseComplete();
+   }
+};
+
+xhttp.open("GET", "./data/projects.json", true);
+xhttp.send();
+
+var codePageData;
