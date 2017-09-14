@@ -10,21 +10,21 @@
         {
             "title": "SVG Path Parser",
             "github": "https://github.com/karanjitsingh/svg-path-parser",
-            "desc": "SVG path parser is a custom path 2D parser written specifically for Particle.JS to support animation for any specific path. Particle.JS requires path length and nth point for each path element that is created in a path 2D, for this very reason I had to write a custom parser that convers those path elements into custom path functions which provide its length and a method to get the nth point on the path.",
-            "img": "",
+            "desc": "SVG path parser is a custom path 2D parser written specifically for Particle.JS to support animation for any specific path. Particle.JS requires path length and nth point for each path element that is created in a path 2D, for this very reason I had to write a custom parser that converts those path elements into custom path functions which provide its length and a method to get the nth point on the path.",
+            "img": "./images/svgpathparser.png",
             "link": ""
         },
         {
             "title": "Neural Network to Play 2048",
             "github": "https://github.com/karanjitsingh/dqn-2048",
-            "desc": "A bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
-            "img": "",
+            "desc": "A reinforcement learning bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
+            "img": "./images/2048.png",
             "link": ""
         },
         {
             "title": "Hospital Management System",
             "github": "",
-            "desc": "",
+            "desc": "A hospital management system written in .NET Framework for a charitable hospital based in Haridwar, India.",
             "img": "",
             "link": ""
         },
@@ -40,21 +40,21 @@
             "github": "",
             "desc": "",
             "img": "",
-            "link": ""
+            "link": "/snakes"
         },
         {
             "title": "Solar System 2D Simulation",
             "github": "",
             "desc": "",
             "img": "",
-            "link": ""
+            "link": "/solarsystem"
         },
         {
             "title": "Sudoku Solver",
             "github": "",
             "desc": "",
             "img": "",
-            "link": ""
+            "link": "/sudokusolver"
         },
         {
             "title": "Experimental Projects",

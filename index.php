@@ -24,6 +24,7 @@
     <script type="text/javascript" src="./scripts/particle.js"></script>
 </head>
 <body>
+    <?php include_once("./data/analyticstracking.php"); ?>
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
     </div>
