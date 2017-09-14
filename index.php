@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="./style/page.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="./scripts/particle.js"></script>
+    <title>karanjitsingh.com</title>
 </head>
 <body>
     <?php include_once("./data/analyticstracking.php"); ?>
