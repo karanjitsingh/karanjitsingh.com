@@ -3,9 +3,10 @@
 
     Hello there fellow coder!
 
-    It seems to me this particle animation thingy has peaked your
-    interest. Won't it be more fun to read the uncompressed and
-    uncompiled TypeScript it was written in?
+    It seems to me this particle animation thingy
+    has peaked your interest. Won't it be more fun
+    to read the uncompressed and uncompiled
+    TypeScript it was written in?
     
     Let me know if I've earned your star on GitHub.
     https://github.com/karanjitsingh.com/particle.js
@@ -15,7 +16,8 @@
 <head>
 <!--
 
-    Ahh! I guess you still insist on doing it your way ;)
+    Ahh! I guess you still insist on doing it your
+    way ;)
     I already like you.
 
 -->
@@ -70,7 +72,7 @@
             <div>
                 <div>
                     <div></div>
-                    <p><span>Hi!</span>I am Karan Jit Singh. I live in <a class="location" target="_blank" href="https://www.google.co.in/search?q=Chandigarh+India">Chandigarh, India</a>, currently pursuing my bachelor's degree in Computer Science and Engineering at Manipal Institute of Technology, Manipal.<br/><br/>My technical interests are Machine Learning, mainly reinforcement leanirng, Math, simulations and fun javascript canvas projects! Apart from enjoying technical stuff, I also enjoy watching Formula 1&#127937;, playing the guitar and frustrating n00bs at counter-strike.<br/><br/><span>Work</span>I spent my last summer interning at Microsoft, working on code coverage reporting and prototyping a hybrid code coverage reporting engine for Visual Studio Team Services. Prior to that, I had interned at Headout migrating their website to ReactJS.</p>
+                    <p></p>
                 </div>
             </div>
         </div>

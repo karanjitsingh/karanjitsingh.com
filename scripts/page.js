@@ -225,14 +225,19 @@ var ListItem = function(elem) {
 ListItem.selectedIndex = -1;
 ListItem.list = [];
 
-function loadCodePage() {
-    var codePage = $id("code-page");
+function loadPages() {
+	// Code Page
+	var codePage = $id("code-page");
     var list = codePage.querySelector("ul");
-    
     for(var i=0;i<codePageData.length;i++) {
         var listItem = document.createElement("li");
         listItem.innerHTML = codePageData[i].title;
 		list.appendChild(listItem);
 		new ListItem(listItem);
-    }
+	}
+
+	// About Page
+	var aboutPage = $id("about-page");
+	aboutPage.querySelector("p").innerHTML = aboutPageData;
+	aboutPageData  = null;
 }

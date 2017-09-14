@@ -1,17 +1,17 @@
 
 Options +FollowSymLinks -MultiViews
 
-DirectoryIndex index.php
+DirectoryIndex index.php index.html
 
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^.*/scripts/(.*)$ scripts/$1 [L]
-RewriteRule ^.*/style/(.*)$ style/$1 [L]
-RewriteRule ^.*/images/(.*)$ images/$1 [L]
-RewriteRule ^.*/data/(.*)$ data/$1 [L]
-RewriteRule ^(code|about|contact)/$ / [L]
+RewriteRule ^[^/]+/scripts/(.*)$ scripts/$1 [L]
+RewriteRule ^[^/]+/style/(.*)$ style/$1 [L]
+RewriteRule ^[^/]+/images/(.*)$ images/$1 [L]
+RewriteRule ^[^/]+/data/(.*)$ data/$1 [L]
+RewriteRule ^(code|about|contact)/?$ / [L]
 
 # RewriteCond %{REQUEST_FILENAME} !-d
 # RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteRule ^([^/]+)/?$ index.php?page=$1 [L,QSA]
+# RewriteRule ^([^/]+)[/.*]?$ index.php?page=$1 [L,QSA]

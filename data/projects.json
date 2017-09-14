@@ -1,5 +1,5 @@
 {
-    "d": [
+    "code": [
         {
             "title": "Particle.js",
             "github": "https://github.com/karanjitsingh/particle.js",
@@ -24,44 +24,45 @@
         {
             "title": "Hospital Management System",
             "github": "",
-            "desc": "A hospital management system written in .NET Framework for a charitable hospital based in Haridwar, India.",
-            "img": "",
+            "desc": "A hospital management system for a charitable hospital based in Haridwar, India. Over the span of two years 2012-2013, I developed various modules including registration, inventory management, appointment scheduling, patient data maintainance etc, delivering a complete and integrated hospital management system written in .NET Framework and Microsoft SQL Server.",
+            "img": "./images/hms.png",
             "link": ""
         },
         {
             "title": "IE CSE Website 2014-2015",
-            "github": "",
-            "desc": "",
-            "img": "",
+            "github": "https://github.com/karanjitsingh/iecse",
+            "desc": "IE CSE is the official computer science club of manipal. Every year IE CSE hosts a website winter project for its new members to rebuild their website. This is the 2014-2015 version of the website. <br />Checkout the <a href=\"http://iecse.karanjitsingh.com\">live version</a>!",
+            "img": "./images/iecse.png",
             "link": ""
         },
         {
             "title": "Snakes in Classic C",
-            "github": "",
-            "desc": "",
-            "img": "",
-            "link": "/snakes"
+            "github": "https://github.com/karanjitsingh/buoyancy/tree/master/Snakes",
+            "desc": "My 12th grade final project for Computer Programming in C class. Checkout the <a href=\"/web/snakes\">showcase website</a>.",
+            "img": "./images/snakes.png",
+            "link": ""
         },
         {
             "title": "Solar System 2D Simulation",
             "github": "",
             "desc": "",
             "img": "",
-            "link": "/solarsystem"
+            "link": "/web/solarsystem"
         },
         {
             "title": "Sudoku Solver",
             "github": "",
             "desc": "",
             "img": "",
-            "link": "/sudokusolver"
+            "link": "/web/sudoku"
         },
         {
             "title": "Experimental Projects",
             "github": "",
             "desc": "",
             "img": "",
-            "link": "/experimental"
+            "link": "/web/experimental"
         }
-    ]
+    ],
+    "about": "<span>Hi!</span>I am Karan Jit Singh. I live in <a class=\"location\" target=\"_blank\" href=\"https://www.google.co.in/search?q=Chandigarh+India\">Chandigarh, India</a>, currently pursuing my bachelor's degree in Computer Science and Engineering at Manipal Institute of Technology, Manipal.<br/><br/>My technical interests are Machine Learning, mainly reinforcement leanirng, Math, simulations and fun javascript canvas projects! Apart from enjoying technical stuff, I also enjoy watching Formula 1&#127937;, playing the guitar and frustrating n00bs at counter-strike.<br/><br/><span>Work</span>I spent my last summer interning at Microsoft, working on code coverage reporting and prototyping a hybrid code coverage reporting engine for Visual Studio Team Services. Prior to that, I had interned at Headout migrating their mobile website to ReactJS."
 }

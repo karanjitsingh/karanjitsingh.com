@@ -120,7 +120,7 @@ function responseComplete() {
         this.replyCount++;
     }
     if(this.replyCount >= 3) {
-        loadCodePage();        
+        loadPages();        
         setTimeout(function() {
             loadingComplete(initPage);
         }, 100);
@@ -143,7 +143,9 @@ if (window.XMLHttpRequest) {
 
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        codePageData = JSON.parse(this.responseText)["d"];
+        var json = JSON.parse(this.responseText);
+        codePageData = json["code"];
+        aboutPageData = json["about"];
         responseComplete();
    }
 };
@@ -152,3 +154,4 @@ xhttp.open("GET", "./data/projects.json", true);
 xhttp.send();
 
 var codePageData;
+var aboutPageData;
