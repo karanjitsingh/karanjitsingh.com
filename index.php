@@ -63,7 +63,6 @@
                             </a>
                             <p class="desc"></p>
                             <img class="image" src=""/>
-                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -102,8 +101,8 @@
             </div>
         </div>
         <a id="page-close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" style="transform:rotate(90deg)" fill="#fff">
-                <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" style="transform:rotate(90deg)" fill="#fff">
+                <use xlink:href="./images/icons.svg#close" />
             </svg>
         </a>
     </div>

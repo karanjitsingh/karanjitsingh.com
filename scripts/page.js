@@ -233,6 +233,9 @@ function loadPages() {
         var listItem = document.createElement("li");
         listItem.innerHTML = codePageData[i].title;
 		list.appendChild(listItem);
+		var label = document.createElement("label");
+		label.innerHTML = codePageData[i].year;
+		listItem.appendChild(label);
 		new ListItem(listItem);
 	}
 

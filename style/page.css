@@ -232,6 +232,12 @@ body {
     color:#fff;
     text-align:justify;
     margin-top:30px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+#about-page a {
+    text-decoration: underline;
+    color: white;
 }
 
 #about-page span {
@@ -290,14 +296,23 @@ body {
 }
 
 #code-page > div > div > div:nth-child(2) {
+    border-left: 1px solid rgba(255,255,255,0.2);
     height: 630px;
     width: 740px;
-    border-left: 1px solid rgba(255,255,255,0.2);
     color:white;
     padding: 30px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+}
+
+#code-page > div > div > div:nth-child(2) > div {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
+#code-page > div > div > div:nth-child(1):hover + div > div {
+    opacity: 0.2;
 }
 
 #code-page > div > div > div:nth-child(2) > div {
@@ -319,6 +334,7 @@ body {
     transition: background 0.2s ease-out;
     cursor: pointer;
     text-align: right;
+    position: relative;
 }
 
 #code-page li:hover {
@@ -329,6 +345,33 @@ body {
     font-weight: 400;
     color:white;
     background: rgba(255,255,255,0.05);
+}
+
+#code-page li > label::before {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    background: white;
+    border-radius: 100px;
+    left: -9px;
+    top: 4px;
+    content: " ";
+}
+
+#code-page li > label {
+    display: block;
+    position: absolute;
+    right: -34px;
+    font-size: 12px;
+    pointer-events: none;
+    top: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+#code-page li:hover label{
+    opacity: 1;
 }
 
 #code-page .heading {
