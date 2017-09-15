@@ -235,11 +235,6 @@ body {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
-#about-page a {
-    text-decoration: underline;
-    color: white;
-}
-
 #about-page span {
     font-weight: 400;
     font-size: 18px;
@@ -247,26 +242,42 @@ body {
     display: block;
 }
 
-.location {
+#about-page a {
     color: white;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    text-decoration: none;
+    text-decoration: underline;
     position: relative;
 }
 
-.location::after {
+#about-page .location::after {
     content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAh0lEQVQoz4WQsQnAIBBFb4IMYpEiM2SALGftBClSp3SWlBYpUlio+QcXkHDqhwdy/x4cElXJORtwgEfgtyEtKGZwl194xp0mnLKQgBOSzE5NiFK6auZkFjUhdISgCXvnpF0T1tIId62f8sqyp1ZQLt8Z1XkL9YIFWwmWRsHSBC5hGgoibYzWvZnyDhbnpZXlAAAAAElFTkSuQmCC');
     margin-left:4px;
 }
 
-.location::before {
-    content: "It's a beautiful city.";
+#about-page .location > label {    
+    top: -25px;
+    left: 12px;
+}
+
+#about-page .resume > label {
+    background: no-repeat #fff;
+    background-size: 50px 65px;
+    height: 26px;
+    width: 24px;
+    left: 1px;
+    top: -38px;
+    padding-top: 5px;
+}
+
+#about-page .resume svg {
+    fill: #333;    
+}
+
+#about-page a > label {
     text-shadow: none;
     padding: 3px;
     border-radius: 4px;
     position: absolute;
-    top: -25px;
-    left: 12px;
     background: white;
     width: 105px;
     color: #222;
@@ -278,9 +289,22 @@ body {
     transition-delay: 0.3s;
 }
 
-.location:hover::before {
+#about-page a:hover > label, #about-page a:active > label  {
     transform: translateY(0);
     opacity: 1;
+}
+
+#about-page a > label::after {
+    content: " ";
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff;
+    position: absolute;
+    bottom: -4px;
+    left: calc(50% - 4px);
+
 }
 
 #code-page > div > div {
