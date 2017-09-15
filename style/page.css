@@ -104,11 +104,11 @@ body {
     fill: white;
 }
 
-.github-banner-link:hover {
+.github-banner-link:hover, #github-banner.visible .github-banner-link {
     opacity: 1;
 }
 
-.github-banner-link:hover::before {
+.github-banner-link:hover::before, #github-banner.visible .github-banner-link::before {
     transform: translateX(+10px);
     opacity: 0.8;
 }

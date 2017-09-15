@@ -1,4 +1,5 @@
 var currentPage = "";
+var gitHubLinkTimer;
 
 function initPage() {
 
@@ -103,7 +104,21 @@ function initPage() {
 		userSVG.move({x: W/2 - 36, y: H/2+200});
 		emailSVG.move({x: W/2 - 36 + 200, y: H/2+200});
 		pjs.didResize(canvas);
-	})
+	});
+
+	var githubLink = $id("github-banner");
+	githubLink.onmouseout = function() {
+		clearTimeout(gitHubLinkTimer);
+		$id("github-banner").className = ""
+	};
+
+	setGithubLinkTimer();
+}
+
+function setGithubLinkTimer() {
+	gitHubLinkTimer = setTimeout(function() {
+		$id("github-banner").className = "visible";
+	}, 3000);
 }
 
 function openPage(page) {
@@ -151,6 +166,7 @@ var links = document.querySelectorAll(".menu a");
 for(var i=0;i<links.length;i++) {
 	links[i].onclick = headerClick;
 }
+
 $id("page-close").onclick = function() {
 	window.history.pushState(null, "", "/");
 	onPopState();
@@ -166,6 +182,7 @@ function onPopState(e) {
 		$id(currentPage + "-page").className = "";
 		$id("page-close").className = "";
 		currentPage = "";
+		setGithubLinkTimer();
 		pjs.start();
 	}
 	else if(currentPage != page) {
