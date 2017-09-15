@@ -107,12 +107,14 @@ function initPage() {
 	});
 
 	var githubLink = $id("github-banner");
-	githubLink.onmouseout = function() {
-		clearTimeout(gitHubLinkTimer);
-		$id("github-banner").className = ""
-	};
+	githubLink.onmouseout = blurGithubBanner;
 
 	setGithubLinkTimer();
+}
+
+function blurGithubBanner() {
+	clearTimeout(gitHubLinkTimer);
+	$id("github-banner").className = ""
 }
 
 function setGithubLinkTimer() {
@@ -144,6 +146,8 @@ function openPage(page) {
 		default:
 		return;
 	}
+
+	blurGithubBanner();
 
 	timeout = setTimeout(pjs.stop, 400);
 	
