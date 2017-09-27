@@ -307,6 +307,42 @@ body {
 
 }
 
+#code-page .image{
+    height: 382px;
+    width: 679px;
+    position: relative;
+}
+
+#code-page .image.loading svg {
+    animation: rotate 1s linear 0s infinite;    
+}
+
+#code-page .image.loading img {
+    display:none;
+}
+
+#code-page .image img {
+    height:100%;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+#code-page .image svg {
+    fill: rgba(255,255,255,0.2);
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: calc(50% - 15px);
+    top: calc(50% - 15px);
+}
+
 #code-page > div > div {
     flex-direction: initial;
 }
@@ -418,13 +454,21 @@ body {
     transition: right 0.3s ease-out, top 0.3s ease-out;
 }
 
-#code-page a.github.big {
+#code-page .right-pane.no-content .content {
+    display:none;
+}
+
+#code-page .right-pane.no-content a.github {
     right: calc(50% - 17px);
     top: calc(50% - 17px);
 }
 
-#code-page a.github.big svg {
+#code-page .right-pane.no-content a.github svg {
     transform: scale(4);    
+}
+
+#code-page .right-pane.no-content a.github:hover svg {
+    transform: scale(4.5);    
 }
 
 #code-page a svg {
@@ -441,14 +485,6 @@ body {
 #code-page a.github:hover svg {
     transform: scale(1);
     opacity: 1;
-}
-
-#code-page a.github.big:hover svg {
-    transform: scale(4.5);    
-}
-
-#code-page img {
-    width:100%;
 }
 
 #code-page .hidden {

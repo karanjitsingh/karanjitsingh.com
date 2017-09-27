@@ -132,7 +132,7 @@ function openPage(page) {
 		case "code":
 			var codePage = $id("code-page");
 			codePage.querySelector(".heading").innerHTML = "";
-			codePage.querySelector(".github").className = "github big";
+			codePage.querySelector(".right-pane").className = "right-pane no-content";
 			codePage.querySelector(".github").href = "https://github.com/karanjitsingh/";
 			codePage.querySelector(".desc").innerHTML = "";
 			codePage.querySelector(".image").src = "";
@@ -202,9 +202,11 @@ var ListItem = function(elem) {
 
 		var codePage = $id("code-page");
 		var heading = codePage.querySelector(".heading");
+		var rightPane = codePage.querySelector(".right-pane");
 		var github = codePage.querySelector(".github");
 		var desc = codePage.querySelector(".desc");
-		var image = codePage.querySelector(".image");
+		var image = codePage.querySelector(".image img");
+		var imgContainer = codePage.querySelector(".image");
 		
 		if(codePageData[this.index].link != "") {
 			var win = window.open(codePageData[this.index].link, '_blank');
@@ -216,6 +218,8 @@ var ListItem = function(elem) {
 				ListItem.list[ListItem.selectedIndex].element.className = "";
 			this.element.className = "selected";
 			ListItem.selectedIndex = this.index;
+
+			rightPane.className = "right-pane";
 
 			if(codePageData[this.index].github != "") {
 				github.className = "github";
@@ -230,11 +234,11 @@ var ListItem = function(elem) {
 			desc.innerHTML = codePageData[this.index].desc;
 
 			if(codePageData[this.index].img != "") {
-				image.className = "image";
+				imgContainer.className = "image loading";
 				image.src = codePageData[this.index].img;
 			}
 			else {
-				image.className = "image hidden";
+				imgContainer.className = "image hidden";
 				image.src = "";
 			}
 		}
@@ -258,6 +262,10 @@ function loadPages() {
 		label.innerHTML = codePageData[i].year;
 		listItem.appendChild(label);
 		new ListItem(listItem);
+	}
+	codePage.querySelector(".image img").onload = function() {
+		document.querySelector("#code-page .image").className = "image";
+		console.log("load complete");
 	}
 
 	// About Page

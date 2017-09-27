@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="./style/page.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="./scripts/particle.js"></script>
-    <title>karanjitsingh.com</title>
+    <title>karanjitsingh</title>
 </head>
 <body>
     <?php include_once("./data/analyticstracking.php"); ?>
@@ -49,20 +49,27 @@
         <div id="code-page">
             <div>
                 <div>
-                    <div>
+                    <div id="left-pane">
                         <ul>
                         </ul>
                     </div>
                     <div>
-                        <div>
-                            <span class="heading"></span>
-                            <a class="github big" href="https://github.com/karanjitsingh/" target="_blank">
+                        <div class="right-pane no-content">
+                            <a class="github" href="https://github.com/karanjitsingh/" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg">
                                     <use xlink:href="./images/icons.svg#github" />
                                 </svg>
                             </a>
-                            <p class="desc"></p>
-                            <img class="image" src=""/>
+                            <div class="content">
+                                <span class="heading"></span>
+                                <p class="desc"></p>
+                                <div class="image">
+                                    <svg xmlns="http://www.w3.org/2000/svg">
+                                        <use xlink:href="./images/icons.svg#loading" />
+                                    </svg>
+                                    <img class="image" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
