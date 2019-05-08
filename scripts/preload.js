@@ -57,7 +57,6 @@ function Animation(step, easing, duration, callback) {
 }
 
 function loadingComplete(callback) {
-
     
     function hideWave() {
         new Animation(function (t) {
