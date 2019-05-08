@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "outFile": "./out/scripts/preload.js",
+        "target": "es5",
+        "paths": {
+            "*": [
+                "./src/scripts/Page/Page.ts",
+                "./src/scripts/particle.js/*"
+            ]
+        },
+        "baseUrl": "."
+    },
+    "include": [
+        "src/scripts/Preload/**/*",
+        "src/particle.js/particle.d.ts"
+    ],
+    "exclude": [
+        "./out/**/*"
+    ]
+}

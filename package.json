@@ -4,7 +4,10 @@
   "description": "[karanjitsingh.com](http://karanjitsingh.com)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "copy": "node ./tasks/copy.js",
+    "build:page": "./node_modules/.bin/tsc -p tsconfig-page.json",
+    "build:preload": "./node_modules/.bin/tsc -p tsconfig-preload.json",
+    "build": "npm num build:preload && npm run build:page"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,7 @@
   },
   "homepage": "https://github.com/karanjitsingh/karanjitsingh.com#readme",
   "dependencies": {
+    "@types/node": "^12.0.0",
     "typescript": "^3.4.5"
   }
 }
