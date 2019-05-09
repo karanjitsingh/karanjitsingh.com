@@ -7,7 +7,7 @@
     "copy": "node ./tasks/copy.js",
     "build:page": "./node_modules/.bin/tsc -p tsconfig-page.json",
     "build:preload": "./node_modules/.bin/tsc -p tsconfig-preload.json",
-    "build": "npm num build:preload && npm run build:page"
+    "build": "npm run build:preload && npm run build:page"
   },
   "repository": {
     "type": "git",

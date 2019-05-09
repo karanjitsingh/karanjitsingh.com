@@ -1,11 +1,13 @@
+/// <reference path="Utils/Animate.ts" />
+/// <reference path="Utils/Easing.ts" />
+/// <reference path="Components/Canvas.ts" />
+/// <reference path="PageData.ts" />
+/// <reference path="../Models/Models.d.ts" />
+
 const Globals: Globals = {
     PageHeight: document.body.clientHeight,
     PageWidth: document.body.clientWidth,
     ParticleJS: null
-}
-
-function $id(src) {
-    return document.getElementById(src);
 }
 
 module Preload {

@@ -17,11 +17,11 @@ declare class Atom implements DrawObject {
     draw(context: ParticleJSContext): void;
 }
 interface AtomDrawOptions {
-    pop: boolean;
-    blur: boolean;
-    popRadius: number;
-    popProbability: number;
-    radius: number;
+    pop?: boolean;
+    blur?: boolean;
+    popRadius?: number;
+    popProbability?: number;
+    radius?: number;
     colorSet: Array<string>;
 }
 interface ParticleJSOptions {
@@ -132,8 +132,8 @@ declare module ParticleJSAnimations {
     }
     interface WaveDrawOptions {
         readonly atomOptions: AtomDrawOptions;
-        scale: number;
-        waveCollection: Array<Wave>;
+        scale?: number;
+        waveCollection?: Array<Wave>;
         top: number;
         width: number;
     }
