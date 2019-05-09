@@ -1,6 +1,7 @@
-namespace Page {
+module Page {
 	var currentPage = "";
-	var gitHubLinkTimer;
+	let {PageHeight, PageWidth, ParticleJS} = Globals;
+	const canvasElement = Components.Canvas.Element;
 
 	export function initPage() {
 
@@ -28,19 +29,19 @@ namespace Page {
 		};
 
 
-		var total = pjs.removeDrawObject(wave);
+		var total = ParticleJS.removeDrawObject(Preload.LoadingWave);
 
 		console.log(total);
 
-		var svg = new ParticleJSAnimations.SVGAnimation(Page.VectorPaths.NameText,svgOptions,total);
+		var svg = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.NameText,svgOptions,total);
 		var random = new ParticleJSAnimations.FadeExplode(null, total);
 
 		console.log(total);
 
-		svg.move({x: W/2 - 175, y: H/2-253})
+		svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253})
 		svg.alpha = 1;
-		pjs.addDrawObject(svg);
-		pjs.addDrawObject(random);
+		ParticleJS.addDrawObject(svg);
+		ParticleJS.addDrawObject(random);
 
 
 		svgOptions.mouseRepel = true;
@@ -60,58 +61,46 @@ namespace Page {
 		svgOptions.forceFactor = 10
 		svgOptions  .frictionFactor = 0.6
 
-		var codeSVG = new ParticleJSAnimations.SVGAnimation(icons.code, svgOptions);
-		codeSVG.move({x: W/2 - 36 - 200, y: H/2+200})
+		var codeSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.CodeIcon, svgOptions);
+		codeSVG.move({x: PageWidth/2 - 36 - 200, y: PageHeight/2+200})
 		codeSVG.alpha = 0;
-		pjs.addDrawObject(codeSVG);
+		ParticleJS.addDrawObject(codeSVG);
 
-		var userSVG = new ParticleJSAnimations.SVGAnimation(icons.user, svgOptions);
-		userSVG.move({x: W/2 - 36, y: H/2+200})
+		var userSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.UserIcon, svgOptions);
+		userSVG.move({x: PageWidth/2 - 36, y: PageHeight/2+200})
 		userSVG.alpha = 0;
-		pjs.addDrawObject(userSVG);
+		ParticleJS.addDrawObject(userSVG);
 
-		var emailSVG = new ParticleJSAnimations.SVGAnimation(icons.email, svgOptions);
-		emailSVG.move({x: W/2 - 36 + 200, y: H/2+200})
+		var emailSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.EmailIcon, svgOptions);
+		emailSVG.move({x: PageWidth/2 - 36 + 200, y: PageHeight/2+200})
 		emailSVG.alpha = 0;
-		pjs.addDrawObject(emailSVG);
+		ParticleJS.addDrawObject(emailSVG);
 
 		var menu = $id("menu-container");
 		var banner = $id("github-banner")
 		menu.style.display = "block";
 		banner.style.display = "block";
 
-		new Animation(function (t) {
+		Utils.Animate(function (t) {
 			codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
 			menu.style.opacity = banner.style.opacity = t;
-		}, EasingFunctions.easeOutCubic, 2000);
+		}, Utils.EasingFunctions.easeOutCubic, 2000);
 
 		window.addEventListener("resize", function() {
-			W = document.body.clientWidth;
-			H = document.body.clientHeight;
+			PageWidth = Globals.PageWidth = document.body.clientWidth;
+			PageHeight = Globals.PageHeight = document.body.clientHeight;
+
+
 			canvas.width = W;
 			canvas.height = H;
-			svg.move({x: W/2 - 175, y: H/2-253});
-			codeSVG.move({x: W/2 - 36 - 200, y: H/2+200});
-			userSVG.move({x: W/2 - 36, y: H/2+200});
-			emailSVG.move({x: W/2 - 36 + 200, y: H/2+200});
-			pjs.didResize(canvas);
+			svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253});
+			codeSVG.move({x: PageWidth/2 - 36 - 200, y: PageHeight/2+200});
+			userSVG.move({x: PageWidth/2 - 36, y: PageHeight/2+200});
+			emailSVG.move({x: PageWidth/2 - 36 + 200, y: PageHeight/2+200});
+			ParticleJS.didResize(canvas);
 		});
 
-		var githubLink = $id("github-banner");
-		githubLink.onmouseout = blurGithubBanner;
-
-		setGithubLinkTimer();
-	}
-
-	function blurGithubBanner() {
-		clearTimeout(gitHubLinkTimer);
-		$id("github-banner").className = ""
-	}
-
-	function setGithubLinkTimer() {
-		gitHubLinkTimer = setTimeout(function() {
-			$id("github-banner").className = "visible";
-		}, 3000);
+		Components.GithubBanner.init();
 	}
 
 	export function openPage(page) {
@@ -124,9 +113,9 @@ namespace Page {
 				var codePage = $id("code-page");
 				codePage.querySelector(".heading").innerHTML = "";
 				codePage.querySelector(".right-pane").className = "right-pane no-content";
-				codePage.querySelector(".github").href = "https://github.com/karanjitsingh/";
+				(codePage.querySelector(".github") as HTMLAnchorElement).href = "https://github.com/karanjitsingh/";
 				codePage.querySelector(".desc").innerHTML = "";
-				codePage.querySelector(".image").src = "";
+				(codePage.querySelector(".image") as HTMLImageElement).src = "";
 				if(ListItem.selectedIndex != -1)
 					ListItem.list[ListItem.selectedIndex].element.className = "";
 				ListItem.selectedIndex = -1;
@@ -140,7 +129,7 @@ namespace Page {
 
 		blurGithubBanner();
 
-		timeout = setTimeout(pjs.stop, 400);
+		timeout = setTimeout(ParticleJS.stop, 400);
 		
 		currentPage = page;
 		
@@ -178,7 +167,7 @@ namespace Page {
 			$id("page-close").className = "";
 			currentPage = "";
 			setGithubLinkTimer();
-			pjs.start();
+			ParticleJS.start();
 		}
 		else if(currentPage != page) {
 			openPage(page);
@@ -199,8 +188,8 @@ namespace Page {
 			var image = codePage.querySelector(".image img");
 			var imgContainer = codePage.querySelector(".image");
 			
-			if(codePageData[this.index].link != "") {
-				var win = window.open(codePageData[this.index].link, '_blank');
+			if(PageData.CodePageData[this.index].link != "") {
+				var win = window.open(PageData.CodePageData[this.index].link, '_blank');
 				win.focus();
 			}
 			else {
@@ -212,21 +201,21 @@ namespace Page {
 
 				rightPane.className = "right-pane";
 
-				if(codePageData[this.index].github != "") {
+				if(PageData.CodePageData[this.index].github != "") {
 					github.className = "github";
-					github.href = codePageData[this.index].github;
+					github.href = PageData.CodePageData[this.index].github;
 				}
 				else {
 					github.href = "";
 					github.className = "github hidden";
 				}
 
-				heading.innerHTML = codePageData[this.index].title;
-				desc.innerHTML = codePageData[this.index].desc;
+				heading.innerHTML = PageData.CodePageData[this.index].title;
+				desc.innerHTML = PageData.CodePageData[this.index].desc;
 
-				if(codePageData[this.index].img != "") {
+				if(PageData.CodePageData[this.index].img != "") {
 					imgContainer.className = "image loading";
-					image.src = codePageData[this.index].img;
+					image.src = PageData.CodePageData[this.index].img;
 				}
 				else {
 					imgContainer.className = "image hidden";
@@ -245,23 +234,23 @@ namespace Page {
 		// Code Page
 		var codePage = $id("code-page");
 		var list = codePage.querySelector("ul");
-		for(var i=0;i<codePageData.length;i++) {
+		for(var i=0;i<PageData.CodePageData.length;i++) {
 			var listItem = document.createElement("li");
-			listItem.innerHTML = codePageData[i].title;
+			listItem.innerHTML = PageData.CodePageData[i].title;
 			list.appendChild(listItem);
 			var label = document.createElement("label");
-			label.innerHTML = codePageData[i].year;
+			label.innerHTML = PageData.CodePageData[i].year;
 			listItem.appendChild(label);
 			new ListItem(listItem);
 		}
-		codePage.querySelector(".image img").onload = function() {
+		(codePage.querySelector(".image img") as HTMLImageElement).onload = function() {
 			document.querySelector("#code-page .image").className = "image";
 			console.log("load complete");
 		}
 
 		// About Page
 		var aboutPage = $id("about-page");
-		aboutPage.querySelector("p").innerHTML = aboutPageData;
-		aboutPageData  = null;
+		aboutPage.querySelector("p").innerHTML = PageData.AboutPageData;
+		PageData.AboutPageData  = null;
 	}
 }

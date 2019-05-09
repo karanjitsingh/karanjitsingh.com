@@ -5,16 +5,15 @@
         "paths": {
             "*": [
                 "./src/scripts/Page/Page.ts",
-                "./src/scripts/particle.js/*"
             ]
         },
         "baseUrl": "."
     },
     "include": [
-        "src/scripts/Preload/**/*",
-        "src/particle.js/particle.d.ts"
+        "./src/scripts/Preload/**/*",
+        "./src/scripts/Model/*",
     ],
     "exclude": [
-        "./out/**/*"
+        "./out/scripts/*"
     ]
 }

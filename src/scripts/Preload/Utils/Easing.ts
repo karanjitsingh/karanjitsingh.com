@@ -1,4 +1,4 @@
-namespace Utils {
+module Utils {
     export const EasingFunctions = {
         // no easing, no acceleration
         linear: function (t) { return t },
