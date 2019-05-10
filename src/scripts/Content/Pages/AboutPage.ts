@@ -9,6 +9,10 @@ module Pages {
 
         showPage: () => {
             AboutPage.Container.className = "visible";
+        },
+        
+        hidePage: () => {
+            AboutPage.Container.className = "";
         }
     }
 }

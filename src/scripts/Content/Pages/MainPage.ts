@@ -14,6 +14,7 @@ module Pages {
 
     interface IMainPage extends IContentPage {
         openPage: (page) => void;
+        getPage: (page) => IContentPage;
         windowStateChange: () => void;
     }
 
@@ -113,16 +114,8 @@ module Pages {
                 return;
     
             page = page[1];
-            switch(page) {
-                case "code":
-                    Pages.CodePage.showPage();
-                    break;
-                case "about":
-                case "contact":
-                    break;
-                default:
-                return;
-            }
+
+            MainPage.getPage(page).showPage();
     
             Components.GithubBanner.blurGithubBanner();
     
@@ -156,18 +149,30 @@ module Pages {
             window.onpopstate = MainPage.windowStateChange;
         },
 
+        getPage:(page) => {
+            switch(page) {
+                case "code":
+                    return Pages.CodePage;
+                case "about":
+                    return Pages.AboutPage;
+                case "contact":
+                    return Pages.ContactPage;
+            }
+        },
+
         windowStateChange: () =>{
             var page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/)[1];
             clearTimeout(particleJSTimeout);
     
-            if(!page) {
-                $id(currentPage + "-page").className = "";
+            if (!page) {
+                MainPage.getPage(currentPage).hidePage();
                 PageCloseButton.className = "";
                 currentPage = "";
                 Components.GithubBanner.setGithubLinkTimer();
                 ParticleJS.start();
             }
-            else if(currentPage != page) {
+            
+            else if (currentPage != page) {
                 MainPage.openPage(page);
             }
         }

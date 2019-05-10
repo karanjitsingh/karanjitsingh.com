@@ -10,6 +10,10 @@ module Pages {
 
         showPage: () => {
             ContactPage.Container.className = "visible";
+        },
+        
+        hidePage: () => {
+            ContactPage.Container.className = "";
         }
     }
 }

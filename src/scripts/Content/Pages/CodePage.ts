@@ -41,6 +41,10 @@ module Pages {
             CodePage.Container.className = "visible";
 
             ProjectItem.unSelectAny();
+        },
+        
+        hidePage: () => {
+            CodePage.Container.className = "";
         }
     }
 
