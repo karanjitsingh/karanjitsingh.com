@@ -1,9 +1,9 @@
 /// <reference path="../Models/Models.d.ts" />
 
-module Page {
+module MainPage {
 	var currentPage = "";
 	let {PageHeight, PageWidth, ParticleJS} = Globals;
-	const canvasElement = Components.Canvas.Element;
+	const canvasElement = Components.Canvas.Element as HTMLCanvasElement;
 
 	export function initPage() {
 
@@ -111,15 +111,7 @@ module Page {
 		page = page[1];
 		switch(page) {
 			case "code":
-				var codePage = $id("code-page");
-				codePage.querySelector(".heading").innerHTML = "";
-				codePage.querySelector(".right-pane").className = "right-pane no-content";
-				(codePage.querySelector(".github") as HTMLAnchorElement).href = "https://github.com/karanjitsingh/";
-				codePage.querySelector(".desc").innerHTML = "";
-				(codePage.querySelector(".image") as HTMLImageElement).src = "";
-				if(ListItem.selectedIndex != -1)
-					ListItem.list[ListItem.selectedIndex].element.className = "";
-				ListItem.selectedIndex = -1;
+				Pages.CodePage.showPage();
 				break;
 			case "about":
 			case "contact":
@@ -177,81 +169,8 @@ module Page {
 
 	window.onpopstate = onPopState;
 
-	var ListItem = function(elem) {
-		this.element = elem;
-		this.element.onclick = function(e) {
-
-			var codePage = $id("code-page");
-			var heading = codePage.querySelector(".heading");
-			var rightPane = codePage.querySelector(".right-pane");
-			var github = codePage.querySelector(".github") as HTMLAnchorElement;
-			var desc = codePage.querySelector(".desc");
-			var image = codePage.querySelector(".image img") as HTMLImageElement;
-			var imgContainer = codePage.querySelector(".image") as HTMLImageElement;
-			
-			if(PageData.CodePageData[this.index].link != "") {
-				var win = window.open(PageData.CodePageData[this.index].link, '_blank');
-				win.focus();
-			}
-			else {
-
-				if(ListItem.selectedIndex!=-1)
-					ListItem.list[ListItem.selectedIndex].element.className = "";
-				this.element.className = "selected";
-				ListItem.selectedIndex = this.index;
-
-				rightPane.className = "right-pane";
-
-				if(PageData.CodePageData[this.index].github != "") {
-					github.className = "github";
-					github.href = PageData.CodePageData[this.index].github;
-				}
-				else {
-					github.href = "";
-					github.className = "github hidden";
-				}
-
-				heading.innerHTML = PageData.CodePageData[this.index].title;
-				desc.innerHTML = PageData.CodePageData[this.index].desc;
-
-				if(PageData.CodePageData[this.index].img != "") {
-					imgContainer.className = "image loading";
-					image.src = PageData.CodePageData[this.index].img;
-				}
-				else {
-					imgContainer.className = "image hidden";
-					image.src = "";
-				}
-			}
-		}.bind(this);
-		this.index = ListItem.list.length;
-		ListItem.list.push(this);
-	}
-
-	ListItem.selectedIndex = -1;
-	ListItem.list = [];
-
 	export function loadPages() {
-		// Code Page
-		var codePage = $id("code-page");
-		var list = codePage.querySelector("ul");
-		for(var i=0;i<PageData.CodePageData.length;i++) {
-			var listItem = document.createElement("li");
-			listItem.innerHTML = PageData.CodePageData[i].title;
-			list.appendChild(listItem);
-			var label = document.createElement("label");
-			label.innerHTML = PageData.CodePageData[i].year;
-			listItem.appendChild(label);
-			new ListItem(listItem);
-		}
-		(codePage.querySelector(".image img") as HTMLImageElement).onload = function() {
-			document.querySelector("#code-page .image").className = "image";
-			console.log("load complete");
-		}
-
-		// About Page
-		var aboutPage = $id("about-page");
-		aboutPage.querySelector("p").innerHTML = PageData.AboutPageData;
-		PageData.AboutPageData  = null;
+		Pages.CodePage.initPage(PageData.CodePageData);
+		Pages.CodePage.initPage(PageData.AboutPageData);
 	}
 }

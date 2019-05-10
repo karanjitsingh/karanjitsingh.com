@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "copy": "node ./tasks/copy.js",
-    "build:page": "./node_modules/.bin/tsc -p ./src/scripts/Page/tsconfig.json",
+    "build:page": "./node_modules/.bin/tsc -p ./src/scripts/Content/tsconfig.json",
     "build:preload": "./node_modules/.bin/tsc -p ./src/scripts/Preload/tsconfig.json",
     "build": "npm run build:preload && npm run build:page"
   },

@@ -20,12 +20,12 @@ module Preload {
             LoadingWave.waves[1].amplitude = 40*(1-t);
             LoadingWave.options.top = 2*PageHeight/3 - t*(PageHeight/6);
         }, Utils.EasingFunctions.easeOutCubic, 1000, function() {
-            Page.openPage(document.location.href.match(/http:\/\/.*\/([^/]+)\/?/));
+            MainPage.openPage(document.location.href.match(/http:\/\/.*\/([^/]+)\/?/));
             callback()
         });
     }
     
-    const pjs = Globals.ParticleJS = new ParticleJS(Components.Canvas.Element, null,{drawCanvasBackground: true, canvasBGColor: "#2F5168"});
+    const pjs = Globals.ParticleJS = new ParticleJS(Components.Canvas.Element as HTMLCanvasElement, null,{drawCanvasBackground: true, canvasBGColor: "#2F5168"});
     Components.Canvas.init();
 
     const particlesCount = (400 / 1400) * PageWidth;
@@ -66,9 +66,9 @@ module Preload {
             this.replyCount++;
         }
         if(this.replyCount >= 3) {
-            Page.loadPages();        
+            MainPage.loadPages();        
             setTimeout(function() {
-                loadingComplete(Page.initPage);
+                loadingComplete(MainPage.initPage);
             }, 100);
         }
     }

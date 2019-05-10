@@ -1,13 +1,12 @@
 /// <reference path="../../Models/Models.d.ts" />
 
 module Components {
-    export class Canvas extends IComponent {
-        public static readonly Element: HTMLCanvasElement = $id("canvas") as HTMLCanvasElement;
+    export const Canvas: IComponent = {
+        Element: $id("canvas"),
         
-        public static init() {
-            this.Element.width = Globals.PageWidth;
-            this.Element.height = Globals.PageHeight;
+        init: () => {
+            (Canvas.Element as HTMLCanvasElement).width = Globals.PageWidth;
+            (Canvas.Element as HTMLCanvasElement).height = Globals.PageHeight;
         }
-
     }
 }

@@ -96,13 +96,13 @@ declare module ParticleJSAnimations {
         marginBlurDistance: number;
         gravity: number;
         frictionFactor: number;
-        connectingLines: boolean;
-        connectingLineWidth: number;
-        connectingLineOpacity: number;
-        connectingLineColor: string;
-        connectingLineRelaxLength: number;
-        connectingLineMaxLength: number;
-        animationFactor: number;
+        connectingLines?: boolean;
+        connectingLineWidth?: number;
+        connectingLineOpacity?: number;
+        connectingLineColor?: string;
+        connectingLineRelaxLength?: number;
+        connectingLineMaxLength?: number;
+        animationFactor?: number;
     }
     class SVGAnimation implements DrawObject {
         static default: ParticleJSAnimations.SVGAnimationOptions;
