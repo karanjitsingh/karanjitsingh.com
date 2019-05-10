@@ -1,14 +1,15 @@
 module Pages {
-    export const AboutPage: IContentPage = {
+    export const ContactPage: IContentPage = {
         Container: null,
 
         initPage: () => {
-            var aboutPage = AboutPage.Container = $id("about-page");
+            var aboutPage = $id("contact-page");
             aboutPage.querySelector("p").innerHTML = PageData.AboutPageData;
+            PageData.AboutPageData  = null;
         },
 
         showPage: () => {
-            AboutPage.Container.className = "visible";
+            ContactPage.Container.className = "visible";
         }
     }
 }

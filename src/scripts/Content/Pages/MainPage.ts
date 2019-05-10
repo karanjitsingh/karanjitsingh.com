@@ -1,11 +1,16 @@
 /// <reference path="../../Models/Models.d.ts" />
 
+
 module Pages {
 
 	let currentPage = "";
 	let {PageHeight, PageWidth, ParticleJS} = Globals;
-    const canvasElement = Components.Canvas.Element as HTMLCanvasElement;
     let particleJSTimeout;
+    const canvasElement = Components.Canvas.Element as HTMLCanvasElement;
+    const PageCloseButton = $id("page-close");
+    const PageLinks = document.querySelectorAll(".menu a") as NodeListOf<HTMLAnchorElement>;
+    const MenuContainer = $id("menu-container");
+
 
     interface IMainPage extends IContentPage {
         openPage: (page) => void;
@@ -40,21 +45,16 @@ module Pages {
                 frictionFactor: 0.9
             };
     
-            var total = ParticleJS.removeDrawObject(Preload.LoadingWave);
-    
-            console.log(total);
-    
-            var svg = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.NameText,svgOptions,total);
-            var random = new ParticleJSAnimations.FadeExplode(null, total);
-    
-            console.log(total);
-    
+            const total = ParticleJS.removeDrawObject(Preload.LoadingWave);
+            
+            const random = new ParticleJSAnimations.FadeExplode(null, total);
+            ParticleJS.addDrawObject(random);
+            
+            const svg = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.NameText,svgOptions,total);
             svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253})
             svg.alpha = 1;
             ParticleJS.addDrawObject(svg);
-            ParticleJS.addDrawObject(random);
-    
-    
+
             svgOptions.mouseRepel = true;
             svgOptions.scale = 3;
             svgOptions.pathVariation = 0;
@@ -66,51 +66,46 @@ module Pages {
             svgOptions.connectingLines = true;
             svgOptions.connectingLineMaxLength = 30;
             svgOptions.blur = false;
-    
-    
             svgOptions.maxRepelDistance = 20
             svgOptions.forceFactor = 10
             svgOptions.frictionFactor = 0.6
     
-            var codeSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.CodeIcon, svgOptions);
+            const codeSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.CodeIcon, svgOptions);
             codeSVG.move({x: PageWidth/2 - 36 - 200, y: PageHeight/2+200})
             codeSVG.alpha = 0;
             ParticleJS.addDrawObject(codeSVG);
     
-            var userSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.UserIcon, svgOptions);
+            const userSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.UserIcon, svgOptions);
             userSVG.move({x: PageWidth/2 - 36, y: PageHeight/2+200})
             userSVG.alpha = 0;
             ParticleJS.addDrawObject(userSVG);
     
-            var emailSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.EmailIcon, svgOptions);
+            const emailSVG = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.EmailIcon, svgOptions);
             emailSVG.move({x: PageWidth/2 - 36 + 200, y: PageHeight/2+200})
             emailSVG.alpha = 0;
             ParticleJS.addDrawObject(emailSVG);
-    
-            var menu = $id("menu-container");
-            var banner = $id("github-banner")
-            menu.style.display = "block";
-            banner.style.display = "block";
-    
-            Utils.Animate(function (t) {
+
+            Components.GithubBanner.init();
+   
+            Utils.Animate((t) => {
                 codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
-                menu.style.opacity = banner.style.opacity = t.toString();
+                MenuContainer.style.opacity = Components.GithubBanner.Element.style.opacity = t.toString();
             }, Utils.EasingFunctions.easeOutCubic, 2000);
     
             window.addEventListener("resize", function() {
                 PageWidth = Globals.PageWidth = document.body.clientWidth;
                 PageHeight = Globals.PageHeight = document.body.clientHeight;
-    
                 canvasElement.width = PageWidth;
                 canvasElement.height = PageHeight;
+
                 svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253});
                 codeSVG.move({x: PageWidth/2 - 36 - 200, y: PageHeight/2+200});
                 userSVG.move({x: PageWidth/2 - 36, y: PageHeight/2+200});
                 emailSVG.move({x: PageWidth/2 - 36 + 200, y: PageHeight/2+200});
+
                 ParticleJS.didResize(canvasElement);
             });
     
-            Components.GithubBanner.init();
         },
 
         openPage: (page) => {
@@ -133,10 +128,9 @@ module Pages {
     
             particleJSTimeout = setTimeout(ParticleJS.stop, 400);
             
-            currentPage = page;
+            currentPage = page[1];
             
-            $id(page + "-page").className = "visible";
-            $id("page-close").className = "visible";
+            PageCloseButton.className = "visible";
             
             window.history.pushState(null, "", "/" + page + "/");
         },
@@ -144,47 +138,41 @@ module Pages {
         initPage: () => {
             Pages.CodePage.initPage(PageData.CodePageData);
             Pages.CodePage.initPage(PageData.AboutPageData);
+
+            for (var i=0;i<PageLinks.length;i++) {
+                PageLinks[i].onclick = (e) => {
+                    e.preventDefault();
+                    var page = (e.target as HTMLAnchorElement).href.match(/.*\/(.*)\//);
+                    
+                    MainPage.openPage(page);
+                };
+            }
+
+            PageCloseButton.onclick = function() {
+                window.history.pushState(null, "", "/");
+                MainPage.windowStateChange;
+            }
+            
+            window.onpopstate = MainPage.windowStateChange;
         },
 
         windowStateChange: () =>{
-            var page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
+            var page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/)[1];
             clearTimeout(particleJSTimeout);
     
             if(!page) {
                 $id(currentPage + "-page").className = "";
-                $id("page-close").className = "";
+                PageCloseButton.className = "";
                 currentPage = "";
                 Components.GithubBanner.setGithubLinkTimer();
                 ParticleJS.start();
             }
             else if(currentPage != page) {
-                openPage(page);
+                MainPage.openPage(page);
             }
         }
     }
-
-    function headerClick(e) {
-        e.preventDefault();
-        var page = e.target.href.match(/.*\/(.*)\//);
-        
-        openPage(page);
-    }
-
-    var links = document.querySelectorAll(".menu a");
-    for(var i=0;i<links.length;i++) {
-        links[i].onclick = headerClick;
-    }
-
-    $id("page-close").onclick = function() {
-        window.history.pushState(null, "", "/");
-        onPopState();
-    }
-
-    function onPopState() {
-
-    }
-
-    window.onpopstate = onPopState;
+    
 
 }
 

@@ -11,9 +11,9 @@ module Components {
         Element: null,
 
         init: () => {
-                
             var githubLink = GithubBanner.Element = $id("github-banner");
             githubLink.onmouseout = GithubBanner.blurGithubBanner;
+            githubLink.style.display = "block";
 
             GithubBanner.setGithubLinkTimer();
         },

@@ -12,10 +12,10 @@ module Pages {
         Container: null,
 
         initPage: () => {
-            var codePage = CodePage.Container = $id("code-page");
+            const codePage = CodePage.Container = $id("code-page");
 
-            for (var i = 0; i < PageData.CodePageData.length; i++) {
-                new ProjectItem(i);
+            for (let i = 0; i < PageData.CodePageData.length; i++) {
+                ProjectItem.add(i);
             }
 
             HeadingElement = codePage.querySelector(".heading");
@@ -32,13 +32,14 @@ module Pages {
         },
 
         showPage: () => {
-            var codePage = $id("code-page");
-            codePage.querySelector(".heading").innerHTML = "";
-            codePage.querySelector(".right-pane").className = "right-pane no-content";
-            (codePage.querySelector(".github") as HTMLAnchorElement).href = "https://github.com/karanjitsingh/";
-            codePage.querySelector(".desc").innerHTML = "";
-            (codePage.querySelector(".image") as HTMLImageElement).src = "";
-            
+            HeadingElement.innerHTML = "";
+            RightPane.className = "right-pane no-content";
+            GithubLink.href = "https://github.com/karanjitsingh/";
+            DescriptionTextElement.innerHTML = "";
+            ImageElement.src = "";
+
+            CodePage.Container.className = "visible";
+
             ProjectItem.unSelectAny();
         }
     }
@@ -51,7 +52,7 @@ module Pages {
 
         private element: HTMLElement;
 
-        constructor(public dataIndex: number) {
+        private constructor(public dataIndex: number) {
             const projectData = PageData.CodePageData[dataIndex];
             
             this.element = document.createElement("li");
@@ -63,10 +64,11 @@ module Pages {
             label.innerHTML = projectData.year;
             
             this.element.appendChild(label);
-
             this.element.onclick = this.Select.bind(this);
-
-            ProjectItem.List.push(this);
+        }
+        
+        public static add(dataIndex: number) {
+            ProjectItem.List.push(new ProjectItem(dataIndex));
         }
 
         public static unSelectAny() {

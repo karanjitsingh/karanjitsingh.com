@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "outFile": "../../../out/scripts/page.js",
-        "target": "es5"
+        "target": "es5",
+        "removeComments": true
     }
 }
