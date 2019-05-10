@@ -1,14 +1,8 @@
-/// <reference path="Utils/Animate.ts" />
-/// <reference path="Utils/Easing.ts" />
 /// <reference path="Components/Canvas.ts" />
-/// <reference path="PageData.ts" />
-/// <reference path="../Models/Models.d.ts" />
 
-const Globals: Globals = {
-    PageHeight: document.body.clientHeight,
-    PageWidth: document.body.clientWidth,
-    ParticleJS: null
-}
+Globals.PageHeight = document.body.clientHeight;
+Globals.PageWidth = document.body.clientWidth;
+Globals.ParticleJS = null;
 
 module Preload {
     

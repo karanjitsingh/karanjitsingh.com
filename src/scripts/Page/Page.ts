@@ -1,3 +1,5 @@
+/// <reference path="../Models/Models.d.ts" />
+
 module Page {
 	var currentPage = "";
 	let {PageHeight, PageWidth, ParticleJS} = Globals;
@@ -83,21 +85,20 @@ module Page {
 
 		Utils.Animate(function (t) {
 			codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
-			menu.style.opacity = banner.style.opacity = t;
+			menu.style.opacity = banner.style.opacity = t.toString();
 		}, Utils.EasingFunctions.easeOutCubic, 2000);
 
 		window.addEventListener("resize", function() {
 			PageWidth = Globals.PageWidth = document.body.clientWidth;
 			PageHeight = Globals.PageHeight = document.body.clientHeight;
 
-
-			canvas.width = W;
-			canvas.height = H;
+			canvasElement.width = PageWidth;
+			canvasElement.height = PageHeight;
 			svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253});
 			codeSVG.move({x: PageWidth/2 - 36 - 200, y: PageHeight/2+200});
 			userSVG.move({x: PageWidth/2 - 36, y: PageHeight/2+200});
 			emailSVG.move({x: PageWidth/2 - 36 + 200, y: PageHeight/2+200});
-			ParticleJS.didResize(canvas);
+			ParticleJS.didResize(canvasElement);
 		});
 
 		Components.GithubBanner.init();
@@ -127,7 +128,7 @@ module Page {
 			return;
 		}
 
-		blurGithubBanner();
+		Components.GithubBanner.blurGithubBanner();
 
 		timeout = setTimeout(ParticleJS.stop, 400);
 		
@@ -158,7 +159,7 @@ module Page {
 
 	var timeout;
 
-	function onPopState(e) {
+	function onPopState() {
 		var page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
 		clearTimeout(timeout);
 
@@ -166,7 +167,7 @@ module Page {
 			$id(currentPage + "-page").className = "";
 			$id("page-close").className = "";
 			currentPage = "";
-			setGithubLinkTimer();
+			Components.GithubBanner.setGithubLinkTimer();
 			ParticleJS.start();
 		}
 		else if(currentPage != page) {
@@ -183,10 +184,10 @@ module Page {
 			var codePage = $id("code-page");
 			var heading = codePage.querySelector(".heading");
 			var rightPane = codePage.querySelector(".right-pane");
-			var github = codePage.querySelector(".github");
+			var github = codePage.querySelector(".github") as HTMLAnchorElement;
 			var desc = codePage.querySelector(".desc");
-			var image = codePage.querySelector(".image img");
-			var imgContainer = codePage.querySelector(".image");
+			var image = codePage.querySelector(".image img") as HTMLImageElement;
+			var imgContainer = codePage.querySelector(".image") as HTMLImageElement;
 			
 			if(PageData.CodePageData[this.index].link != "") {
 				var win = window.open(PageData.CodePageData[this.index].link, '_blank');

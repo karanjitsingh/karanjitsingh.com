@@ -23,6 +23,5 @@ class PageData {
 
         xhttp.open("GET", "./data/projects.json", true);
         xhttp.send();
-
     }
 }

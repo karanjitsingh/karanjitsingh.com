@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "outFile": "../../../out/scripts/page.js",
+        "target": "es5"
+    }
+}

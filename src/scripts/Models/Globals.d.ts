@@ -1,7 +1,9 @@
 /// <reference path="Particle.d.ts" />
 
-interface Globals {
+interface IGlobals {
     PageHeight: number;
     PageWidth: number;
     ParticleJS: ParticleJS;
 }
+
+declare const Globals: IGlobals;
