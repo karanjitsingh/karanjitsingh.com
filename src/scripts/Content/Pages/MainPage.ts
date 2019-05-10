@@ -175,7 +175,9 @@ module Pages {
             else if (currentPage != page) {
                 MainPage.openPage(page);
             }
-        }
+        },
+
+        hidePage: () => {}
     }
     
 
