@@ -1,0 +1,26 @@
+{
+  "name": "karanjitsingh.com",
+  "version": "1.0.0",
+  "description": "[karanjitsingh.com](http://karanjitsingh.com)",
+  "main": "index.js",
+  "scripts": {
+    "build:copy_static": "node ./tasks/copy.js",
+    "build:page": "./node_modules/.bin/tsc -p ./src/scripts/Content/tsconfig.json",
+    "build:preload": "./node_modules/.bin/tsc -p ./src/scripts/Preload/tsconfig.json",
+    "build": "npm run build:preload && npm run build:page && npm run build:copy_static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karanjitsingh/karanjitsingh.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karanjitsingh/karanjitsingh.com/issues"
+  },
+  "homepage": "https://github.com/karanjitsingh/karanjitsingh.com#readme",
+  "dependencies": {
+    "@types/node": "^12.0.0",
+    "typescript": "^3.4.5"
+  }
+}

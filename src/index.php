@@ -3,24 +3,13 @@
 
     Hello there fellow coder!
 
-    It seems to me this particle animation thingy
-    has peaked your interest. Won't it be more fun
-    to read the uncompressed and uncompiled
-    TypeScript it was written in?
-    
-    Let me know if I've earned your star on GitHub.
+    It seems to me this particle animation thingy has peaked
+    your interest. Let me know if I've earned your star on GitHub.
     https://github.com/karanjitsingh.com/particle.js
 
 -->
 <html>
 <head>
-<!--
-
-    Ahh! I guess you still insist on doing it your
-    way ;)
-    I already like you.
-
--->
     <link rel="stylesheet" type="text/css" href="./style/page.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="./scripts/particle.js"></script>

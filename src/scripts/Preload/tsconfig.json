@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "outFile": "../../../out/scripts/preload.js",
+        "target": "es5",
+        "removeComments": true
+    }
+}
