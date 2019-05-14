@@ -16,7 +16,7 @@
     <title>karanjitsingh</title>
 </head>
 <body>
-    <?php include_once("./data/analyticstracking.php"); ?>
+    <?php include_once("./data/analytics.php"); ?>
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
     </div>
