@@ -1,5 +1,8 @@
-declare module MainPage {
-    export function openPage(pageMatch: RegExpMatchArray);
-    export function loadPages();
-    export function initPage();
+interface MainPage {
+    openPage: (page) => void
+    initPage: () => void;
+}
+
+declare module Pages {
+    export const MainPage: MainPage
 }

@@ -15,8 +15,8 @@ class PageData {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var json = JSON.parse(this.responseText);
-                this.CodePageData = json["code"];
-                this.AboutPageData = json["about"];
+                PageData.CodePageData = json["code"];
+                PageData.AboutPageData = json["about"];
                 callback();
         }
         };

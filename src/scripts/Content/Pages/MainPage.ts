@@ -130,7 +130,8 @@ module Pages {
 
         initPage: () => {
             Pages.CodePage.initPage(PageData.CodePageData);
-            Pages.CodePage.initPage(PageData.AboutPageData);
+            Pages.AboutPage.initPage(PageData.AboutPageData);
+            Pages.ContactPage.initPage();
 
             for (var i=0;i<PageLinks.length;i++) {
                 PageLinks[i].onclick = (e) => {

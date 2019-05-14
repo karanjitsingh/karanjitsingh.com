@@ -15,28 +15,26 @@ function $id (src) {
 }
 
 module Preload {
-    
+
     let {PageHeight, PageWidth} = Globals;
 
     function loadingComplete(callback) {
-        
+
         function hideWave() {
             Utils.Animate(function (t) {
                 LoadingWave.alpha = 1-t
             }, Utils.EasingFunctions.easeOutCubic, 300, callback);
         }
-        
+
         Utils.Animate(function (t) {
             LoadingWave.waves[1].amplitude = 40*(1-t);
             LoadingWave.options.top = 2*PageHeight/3 - t*(PageHeight/6);
-        }, Utils.EasingFunctions.easeOutCubic, 1000, function() {
-            MainPage.openPage(document.location.href.match(/http:\/\/.*\/([^/]+)\/?/));
-            callback()
-        });
+        }, Utils.EasingFunctions.easeOutCubic, 1000, callback);
     }
-    
+
     Components.Canvas.init();
-    
+
+    // tslint:disable-next-line: max-line-length
     const pjs = Globals.ParticleJS = new ParticleJS(Components.Canvas.Element as HTMLCanvasElement, null,{drawCanvasBackground: true, canvasBGColor: "#2F5168"});
 
     const particlesCount = (400 / 1400) * PageWidth;
@@ -77,16 +75,19 @@ module Preload {
             this.replyCount++;
         }
         if(this.replyCount >= 3) {
-            MainPage.loadPages();        
+            Pages.MainPage.initPage();        
             setTimeout(function() {
-                loadingComplete(MainPage.initPage);
+                loadingComplete(() => {
+                    const page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
+                    Pages.MainPage.openPage(page ? page[1] : null);
+                });
             }, 100);
         }
     }
 
-    var script = document.createElement("script");
-    script.onload = function() {
-        responseComplete();   
+    const script = document.createElement("script");
+    script.onload = () => {
+        responseComplete();
     };
     script.src = "./scripts/page.js";
     document.body.appendChild(script);

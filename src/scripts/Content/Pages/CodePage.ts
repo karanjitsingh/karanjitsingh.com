@@ -14,10 +14,6 @@ module Pages {
         initPage: () => {
             const codePage = CodePage.Container = $id("code-page");
 
-            for (let i = 0; i < PageData.CodePageData.length; i++) {
-                ProjectItem.add(i);
-            }
-
             HeadingElement = codePage.querySelector(".heading");
             RightPane = codePage.querySelector(".right-pane");
             GithubLink = codePage.querySelector(".github");
@@ -28,6 +24,10 @@ module Pages {
 
             ImageElement.onload = function () {
                 ImageContainer.className = "image";
+            }
+
+            for (let i = 0; i < PageData.CodePageData.length; i++) {
+                ProjectItem.add(i);
             }
         },
 
