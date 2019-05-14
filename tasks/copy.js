@@ -4,7 +4,7 @@ const projectDir = path.dirname(path.dirname(__filename))
 const sourceDir = path.join(projectDir, "src");
 const outDir = path.join(projectDir, "out");
 
-const ignorePattern = /.*\.ts$/
+const ignorePattern = /.*(\.ts|tsconfig\.json)$/
 
 function walkDir(dir, callback) {
     fs.readdirSync(dir).forEach(f => {
@@ -19,27 +19,30 @@ function walkDir(dir, callback) {
     });
 }
 
-function createDir(dir) {
-    console.log("Creating dir: " + dir);
-
+function createDirIfNotExists(dir) {
     try {
-        fs.mkdirSync(dir);
+        if(!fs.existsSync(dir)) {
+            createDirIfNotExists(path.dirname(dir));
+
+            console.log("Creating dir: " + dir);
+            fs.mkdirSync(dir);
+        }
     }
     catch(e) {
     }
 }
 
-createDir(outDir);
+createDirIfNotExists(outDir);
 
 walkDir(sourceDir, (filePath, isFile) => {
     const outPath = path.join(outDir, path.relative(sourceDir, filePath));
 
     if(isFile) {
         if(!filePath.match(ignorePattern)) {
+            createDirIfNotExists(path.dirname(outPath));
+            
             console.log("Copying file: " + outPath);
             fs.copyFileSync(filePath, outPath);
         }
-    } else {
-        createDir(outPath);
     }
 });

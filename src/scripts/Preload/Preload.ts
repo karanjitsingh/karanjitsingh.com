@@ -1,8 +1,18 @@
 /// <reference path="Components/Canvas.ts" />
 
+const Globals = {
+    PageHeight: document.body.clientHeight,
+    PageWidth: document.body.clientWidth,
+    ParticleJS: null
+}
+
 Globals.PageHeight = document.body.clientHeight;
 Globals.PageWidth = document.body.clientWidth;
 Globals.ParticleJS = null;
+
+function $id (src) {
+    return document.getElementById(src);
+}
 
 module Preload {
     
@@ -25,8 +35,9 @@ module Preload {
         });
     }
     
-    const pjs = Globals.ParticleJS = new ParticleJS(Components.Canvas.Element as HTMLCanvasElement, null,{drawCanvasBackground: true, canvasBGColor: "#2F5168"});
     Components.Canvas.init();
+    
+    const pjs = Globals.ParticleJS = new ParticleJS(Components.Canvas.Element as HTMLCanvasElement, null,{drawCanvasBackground: true, canvasBGColor: "#2F5168"});
 
     const particlesCount = (400 / 1400) * PageWidth;
     const totalParticales = particlesCount < 450 ? 450 : particlesCount;
