@@ -42,7 +42,7 @@ module Pages {
 
             ProjectItem.unSelectAny();
         },
-        
+
         hidePage: () => {
             CodePage.Container.className = "";
         }
@@ -52,13 +52,11 @@ module Pages {
         public static List: Array<ProjectItem> = [];
         public static SelectedIndex = -1;
 
-        public static UnSele
-
         private element: HTMLElement;
 
         private constructor(public dataIndex: number) {
             const projectData = PageData.CodePageData[dataIndex];
-            
+
             this.element = document.createElement("li");
             this.element.innerHTML = projectData.title;
 
@@ -66,11 +64,11 @@ module Pages {
 
             const label = document.createElement("label");
             label.innerHTML = projectData.year;
-            
+
             this.element.appendChild(label);
             this.element.onclick = this.Select.bind(this);
         }
-        
+
         public static add(dataIndex: number) {
             ProjectItem.List.push(new ProjectItem(dataIndex));
         }
@@ -94,6 +92,8 @@ module Pages {
             else {
 
                 ProjectItem.unSelectAny();
+
+                RightPane.className = "right-pane";
 
                 this.element.className = "selected";
                 ProjectItem.SelectedIndex = this.dataIndex;
@@ -120,7 +120,7 @@ module Pages {
                 }
             }
         }
-        
+
     }
 
 }

@@ -11,10 +11,9 @@ module Pages {
     const PageLinks = document.querySelectorAll(".menu a") as NodeListOf<HTMLAnchorElement>;
     const MenuContainer = $id("menu-container");
 
-
     interface IMainPage extends IContentPage {
-        openPage: (page) => void;
-        getPage: (page) => IContentPage;
+        openPage: (page: string) => void;
+        getPage: (page: string) => IContentPage;
         windowStateChange: () => void;
     }
 
@@ -48,13 +47,14 @@ module Pages {
     
             const total = ParticleJS.removeDrawObject(Preload.LoadingWave);
             
-            const random = new ParticleJSAnimations.FadeExplode(null, total);
-            ParticleJS.addDrawObject(random);
-            
             const svg = new ParticleJSAnimations.SVGAnimation(Resources.VectorPaths.NameText,svgOptions,total);
+            const random = new ParticleJSAnimations.FadeExplode(null, total);
+            
             svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253})
             svg.alpha = 1;
+            
             ParticleJS.addDrawObject(svg);
+            ParticleJS.addDrawObject(random);
 
             svgOptions.mouseRepel = true;
             svgOptions.scale = 3;
@@ -87,6 +87,8 @@ module Pages {
             ParticleJS.addDrawObject(emailSVG);
 
             Components.GithubBanner.init();
+
+            MenuContainer.style.display = "block";
    
             Utils.Animate((t) => {
                 codeSVG.alpha = emailSVG.alpha = userSVG.alpha = t * 0.5;
@@ -110,19 +112,13 @@ module Pages {
         },
 
         openPage: (page) => {
-            if(!page || currentPage.toLowerCase() === page[1].toLowerCase())
+            if(!page || (page &&currentPage.toLowerCase() === page.toLowerCase()))
                 return;
     
-            page = page[1];
-
             MainPage.getPage(page).showPage();
-    
             Components.GithubBanner.blurGithubBanner();
-    
             particleJSTimeout = setTimeout(ParticleJS.stop, 400);
-            
-            currentPage = page[1];
-            
+            currentPage = page;
             PageCloseButton.className = "visible";
             
             window.history.pushState(null, "", "/" + page + "/");
@@ -138,13 +134,13 @@ module Pages {
                     e.preventDefault();
                     var page = (e.target as HTMLAnchorElement).href.match(/.*\/(.*)\//);
                     
-                    MainPage.openPage(page);
+                    MainPage.openPage(page ? page[1] : null);
                 };
             }
 
             PageCloseButton.onclick = function() {
                 window.history.pushState(null, "", "/");
-                MainPage.windowStateChange;
+                MainPage.windowStateChange();
             }
             
             window.onpopstate = MainPage.windowStateChange;
@@ -162,11 +158,14 @@ module Pages {
         },
 
         windowStateChange: () =>{
-            var page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/)[1];
+            const match = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
+            const page = match ? match[1] : null;
+
             clearTimeout(particleJSTimeout);
     
+            MainPage.getPage(currentPage).hidePage();
+
             if (!page) {
-                MainPage.getPage(currentPage).hidePage();
                 PageCloseButton.className = "";
                 currentPage = "";
                 Components.GithubBanner.setGithubLinkTimer();

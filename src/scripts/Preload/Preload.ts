@@ -29,7 +29,11 @@ module Preload {
         Utils.Animate(function (t) {
             LoadingWave.waves[1].amplitude = 40*(1-t);
             LoadingWave.options.top = 2*PageHeight/3 - t*(PageHeight/6);
-        }, Utils.EasingFunctions.easeOutCubic, 1000, callback);
+        }, Utils.EasingFunctions.easeOutCubic, 1000, () => {
+            const page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
+            Pages.MainPage.openPage(page ? page[1] : null);
+            callback();
+        });
     }
 
     Components.Canvas.init();
@@ -78,8 +82,7 @@ module Preload {
             Pages.MainPage.initPage();        
             setTimeout(function() {
                 loadingComplete(() => {
-                    const page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
-                    Pages.MainPage.openPage(page ? page[1] : null);
+                    Pages.MainPage.showPage();
                 });
             }, 100);
         }
