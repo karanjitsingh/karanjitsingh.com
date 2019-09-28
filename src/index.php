@@ -77,19 +77,19 @@
                 <div>
                     <span>Leave a message.</span>
                     <div>
-                        <a href="mailto:karan1866@gmail.com" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
-                                <use xlink:href="./images/icons.svg#mail" />
-                            </svg>
-                        </a>
-                        <a href="https://facebook.com/karan1866/" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
-                                <use xlink:href="./images/icons.svg#facebook" />
-                            </svg>
-                        </a>
                         <a href="http://in.linkedin.com/in/kjitsingh/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
                                 <use xlink:href="./images/icons.svg#linkedin" />
+                            </svg>
+                        </a>
+                        <a href="https://github.com/karanjitsingh/" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
+                                <use xlink:href="./images/icons.svg#github" />
+                            </svg>
+                        </a>
+                        <a href="mailto:karan1866@gmail.com" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
+                                <use xlink:href="./images/icons.svg#mail" />
                             </svg>
                         </a>
                     </div>

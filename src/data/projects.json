@@ -1,6 +1,14 @@
 {
     "code": [
         {
+            "title": "jstestadapter",
+            "github": "https://github.com/karanjitsingh/jstestadapter",
+            "desc": "JSTestAdapter is an open source test adapter extension for VSTest for running, well you guessed it, any kind of JavaScript tests. The adapter has been built with extensibility in mind to allow plugging in a variety of JavaScript test frameworks and environments.<br /><br />The adapter currently supports nodejs as its runtime environment and three most popular test runners - mocha, jasmine and jest. The JSTestAdapter allows you to leverage the VSTest capabilities for a seamless test execution experience across the VS IDE, CLI and the VSTest task in Azure Pipelines.<br /><br />JSTest's deep integration with VSTest and Azure Pipelines enables us to leverage the distribution capability for all three of the runners. It also provides the MSTest style capability to upload attachments from tests with <a target=\"_blank\" href=\"https://github.com/karanjitsingh/jstestadapter\">jstestadapter</a> extension. This is especially helpful for UI test failures, by simply uploading the screenshot of the UI we can figure out what went wrong in the Pipelines itself.",
+            "img": "",
+            "link": "",
+            "year": "2018"
+        },
+        {
             "title": "Particle.js",
             "github": "https://github.com/karanjitsingh/particle.js",
             "desc": "Particle.js is a JavaScript canvas library for fancy particle animations. The fun animations you see on the main page of this website use Particle.js at its core. You can checkout another implementation of particle.js at <a target=\"_blank\" href=\"https://www.headout.com/careers\">Headout's careers page</a>.",
@@ -74,5 +82,5 @@
             "year": "2010"
         }
     ],
-    "about": "<span>Hi!</span>I am Karan Jit Singh. I live in <a class=\"location\" target=\"_blank\" href=\"https://www.google.co.in/search?q=Chandigarh+India\">Chandigarh, India<label>It's a beautiful city</label></a> and am currently pursuing my bachelor's degree in Computer Science and Engineering at Manipal Institute of Technology, Manipal.<br/><br/>My technical interests are artificial intelligence, machine learning (especially reinforcement leanirng), math, simulations and fun javascript canvas projects! Apart from enjoying technical stuff, I also enjoy watching Formula 1 &#127937;, playing the guitar and frustrating n00bs at counter-strike.<br/><br/><span>Experience</span>I spent my last summer interning at Microsoft, working on code coverage reporting and prototyping a hybrid code coverage reporting engine for Visual Studio Team Services. Prior to that, I had interned at Headout migrating their mobile website to ReactJS.<br/></br>Find my official resume <a class=\"resume\" href=\"https://drive.google.com/file/d/1netCNmj9YUCK6kW5QUwYbXQstSuKFYLk/view\" target=\"_blank\">here<label><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\"><use xlink:href=\"./images/icons.svg#resume\" /></svg></label></a>."
+    "about": "<span>Hi!</span>My name is Karan Jit Singh and I am a software engineer. I work in an engineering team at Microsoft that specializes in building high scale software products for software engineers.<br /><br />I've been a programmer since I was 9 years old and have been in love with computer science since the very day I starting learning to code. I occasionally dabble on the guitar, play chess and love watching Formula 1.<br /><br/>I went to college at Manipal Institute of Technology, Manipal where I completed my bachelor's degree in Computer Science and Engineering."
 }
