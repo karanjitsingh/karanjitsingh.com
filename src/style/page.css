@@ -362,7 +362,7 @@ body {
     height: 100%;
     flex-grow: 1;
     overflow-y: scroll;
-    background: white;
+    background: #fafafa;
     box-sizing: border-box;
     align-items: center;
     position: relative;
