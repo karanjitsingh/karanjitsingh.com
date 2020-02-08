@@ -17,6 +17,17 @@ module Pages {
         windowStateChange: () => void;
     }
 
+    function getCurrentPage() {
+        const match = document.location.pathname.split("/");
+        let page;
+
+        if ((match.length == 3 && !match[2]) || match.length == 2) {
+            page = match[1];
+        }
+
+        return page || null;
+    }
+
     export const MainPage: IMainPage = {
 
         Container: null,
@@ -119,8 +130,13 @@ module Pages {
             Components.GithubBanner.blurGithubBanner();
             particleJSTimeout = setTimeout(ParticleJS.stop, 400);
             currentPage = page;
+
             PageCloseButton.className = "visible";
             
+            if(currentPage == "code") {
+                PageCloseButton.className += " black"
+            }
+
             window.history.pushState(null, "", "/" + page + "/");
         },
 
@@ -133,9 +149,7 @@ module Pages {
                 PageLinks[i].onclick = (e) => {
                     e.preventDefault();
                     var page = (e.target as HTMLAnchorElement).href.match(/.*\/(.*)\//);
-                    
-                    MainPage.openPage(page ? page[1] : null);
-                };
+                    MainPage.openPage(page ? page[1] : null);                };
             }
 
             PageCloseButton.onclick = function() {
@@ -158,28 +172,26 @@ module Pages {
         },
 
         windowStateChange: () =>{
-            const match = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
-            const page = match ? match[1] : null;
+            let page = getCurrentPage();
 
             clearTimeout(particleJSTimeout);
     
-            MainPage.getPage(currentPage).hidePage();
+            if (currentPage && currentPage != page) {
+                MainPage.getPage(currentPage).hidePage();
+            }
 
             if (!page) {
                 PageCloseButton.className = "";
                 currentPage = "";
                 Components.GithubBanner.setGithubLinkTimer();
                 ParticleJS.start();
-            }
-            
-            else if (currentPage != page) {
+            } else if (currentPage != page) {
                 MainPage.openPage(page);
+            } else if(MainPage.getPage(currentPage).windowStateChange) {
+                MainPage.getPage(currentPage).windowStateChange();
             }
         },
 
         hidePage: () => {}
     }
-    
-
 }
-

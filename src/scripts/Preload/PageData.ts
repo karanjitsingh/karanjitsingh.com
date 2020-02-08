@@ -5,23 +5,11 @@ class PageData {
     public static loadPageData(callback) {
         this.AboutPageData = ""
 
-        var xhttp;
-        if ((window as any).XMLHttpRequest) {
-            xhttp = new XMLHttpRequest();
-        } else {
-            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var json = JSON.parse(this.responseText);
-                PageData.CodePageData = json["code"];
-                PageData.AboutPageData = json["about"];
-                callback();
-        }
-        };
-
-        xhttp.open("GET", "./data/projects.json", true);
-        xhttp.send();
+        Utils.HttpGet("./data/projects.json", (content: string) => {
+            var json = JSON.parse(content);
+            PageData.CodePageData = json["code"];
+            PageData.AboutPageData = json["about"];
+            callback();
+        })
     }
 }

@@ -33,4 +33,5 @@ interface EasingFunctions {
 declare module Utils {
     export function Animate(step: StepFunction, easing: EasingFunction, duration: number, callback?);
     export const EasingFunctions: EasingFunctions;
+    export function HttpGet(url: string, callback: (content:string) => void): void;
 }

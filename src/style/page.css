@@ -137,7 +137,6 @@ body {
 }
 
 #code-page {
-    /* background: #E04836; */
     background: #222;
 }
 
@@ -172,6 +171,10 @@ body {
 
 #page-close svg {
     fill:white;
+}
+
+#page-close.black svg {
+    fill:black;
 }
 
 #contact-page a {
@@ -215,12 +218,13 @@ body {
 }
 
 #about-page > div > div > div {
-    display:inline-block;
-    height:300px;
-    width:305px;
-    border-radius:1000px;
-    background:url('../images/me.jpg');
-    background-size:300px 300px;
+    display: inline-block;
+    height: 300px;
+    width: 305px;
+    border-radius: 1000px;
+    background: url(../images/me.jpg);
+    background-size: 338px;
+    background-position: -21px -21px;
     border: 3px solid white;
 }
 
@@ -307,24 +311,6 @@ body {
 
 }
 
-#code-page .image{
-    height: 382px;
-    width: 679px;
-    position: relative;
-}
-
-#code-page .image.loading svg {
-    animation: rotate 1s linear 0s infinite;    
-}
-
-#code-page .image.loading img {
-    display:none;
-}
-
-#code-page .image img {
-    height:100%;
-}
-
 @keyframes rotate {
     from {
         transform: rotate(0deg);
@@ -334,103 +320,133 @@ body {
     }
 }
 
-#code-page .image svg {
-    fill: rgba(255,255,255,0.2);
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    left: calc(50% - 15px);
-    top: calc(50% - 15px);
-}
-
-#code-page > div > div {
+#code-page .code-page-container {
+    height: 100%;
+    width: 100%;
     flex-direction: initial;
 }
 
-#code-page > div > div > div:nth-child(1) {
-    width: 250px;
+#code-page .left-pane {
+    width: 360px;
     color: white;
     font-weight: 300;
     display: flex;
     align-items: center;
 }
 
-#code-page > div > div > div:nth-child(2) {
-    border-left: 1px solid rgba(255,255,255,0.2);
-    height: 630px;
-    width: 740px;
-    color:white;
-    padding: 30px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
+#code-page .right-pane-container .github-link {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
-#code-page > div > div > div:nth-child(2) > div {
+#code-page .right-pane-container .loading-svg {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#code-page .right-pane-container .loading-svg svg{
+    fill: #222;
+    animation: rotate 1s linear 0s infinite;
+    height: 100%;
+    width: 100%;
+}
+
+#code-page .right-pane-container {
+    border-left: 1px solid #666;
+    height: 100%;
+    flex-grow: 1;
+    overflow-y: scroll;
+    background: white;
+    box-sizing: border-box;
+    align-items: center;
+    position: relative;
+}
+
+#code-page .right-pane.type-content, #code-page .right-pane.type-home {
+    width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px 80px 40px;
+}
+
+#code-page .right-pane.type-frame {
+    height: 100%;
+}
+
+#code-page .right-pane.type-frame iframe {
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
+/* #code-page > div > div > div:nth-child(2) > div {
     opacity: 1;
     transition: opacity 0.3s ease-out;
 }
 
 #code-page > div > div > div:nth-child(1):hover + div > div {
     opacity: 0.2;
-}
+} */
 
-#code-page > div > div > div:nth-child(2) > div {
-    position: relative;
-    width:100%;
-}
-
-#code-page ul {
+#code-page .left-pane ul {
     list-style: none;
     padding: 0px;
     width: 100%;
     display: block;
 }
 
-#code-page li {
-    padding: 12px;
-    color: rgba(255,255,255,0.8);
+#code-page .left-pane li {
     background: rgba(255,255,255,0);
     transition: background 0.2s ease-out;
-    cursor: pointer;
     text-align: right;
     position: relative;
 }
 
-#code-page li:hover {
+#code-page .left-pane li a {
+    padding: 12px 16px 12px 12px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+#code-page .left-pane li:hover {
     background: rgba(255,255,255,0.05);    
 }
 
-#code-page li.selected {
+#code-page .left-pane li.selected {
     font-weight: 400;
     color:white;
     background: rgba(255,255,255,0.05);
 }
 
-#code-page li > label::before {
-    display: block;
-    position: absolute;
-    height: 5px;
-    width: 5px;
-    background: white;
-    border-radius: 100px;
-    left: -9px;
-    top: 4px;
-    content: " ";
+#code-page .left-pane .project-link span {
+    position: relative;
 }
 
-#code-page li > label {
+#code-page .left-pane .project-link label {
     display: block;
     position: absolute;
-    right: -34px;
+    left: -59px;
     font-size: 12px;
     pointer-events: none;
-    top: 15px;
+    top: 1px;
     opacity: 0;
     transition: opacity 0.3s ease-out;
+    color: white;
+    font-weight: bold;
+    border-right: 1px solid #fff;
+    padding: 2px 10px;
 }
 
-#code-page li:hover label{
+#code-page .left-pane li:hover label{
     opacity: 1;
 }
 
@@ -438,15 +454,15 @@ body {
     font-size: 24px;
 }
 
-#code-page a {
+#code-page .left-pane a {
     color:white;
 }
 
-#code-page p {
+#code-page .left-pane p {
     font-weight: 300;
 }
 
-#code-page a.github {
+#code-page .left-pane a.github {
     text-decoration: none;
     position: absolute;
     top: -4px;
@@ -454,24 +470,8 @@ body {
     transition: right 0.3s ease-out, top 0.3s ease-out;
 }
 
-#code-page .right-pane.no-content .content {
-    display:none;
-}
 
-#code-page .right-pane.no-content a.github {
-    right: calc(50% - 17px);
-    top: calc(50% - 17px);
-}
-
-#code-page .right-pane.no-content a.github svg {
-    transform: scale(4);    
-}
-
-#code-page .right-pane.no-content a.github:hover svg {
-    transform: scale(4.5);    
-}
-
-#code-page a svg {
+#code-page .left-pane a svg {
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
     height:35px;
     width:35px;
@@ -482,11 +482,11 @@ body {
     opacity: 0.7;
 }
 
-#code-page a.github:hover svg {
+#code-page .left-pane a.github:hover svg {
     transform: scale(1);
     opacity: 1;
 }
 
-#code-page .hidden {
+#code-page .left-pane .hidden {
     display: none;
 }

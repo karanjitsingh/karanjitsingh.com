@@ -11,8 +11,10 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./style/page.css"/>
+    <link rel="stylesheet" type="text/css" href="./style/markdown.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="./scripts/particle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <title>karanjitsingh</title>
 </head>
 <body>
@@ -37,28 +39,24 @@
     <div id="pages-container">
         <div id="code-page">
             <div>
-                <div>
-                    <div id="left-pane">
+                <div class="code-page-container">
+                    <div class="left-pane">
                         <ul>
                         </ul>
                     </div>
-                    <div>
-                        <div class="right-pane no-content">
-                            <a class="github" href="https://github.com/karanjitsingh/" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg">
-                                    <use xlink:href="./images/icons.svg#github" />
-                                </svg>
-                            </a>
-                            <div class="content">
-                                <span class="heading"></span>
-                                <p class="desc"></p>
-                                <div class="image">
-                                    <svg xmlns="http://www.w3.org/2000/svg">
-                                        <use xlink:href="./images/icons.svg#loading" />
-                                    </svg>
-                                    <img class="image" />
-                                </div>
-                            </div>
+                    <div class="right-pane-container">
+                        <div class="right-pane type-content markdown-body"></div>
+                        <div class="right-pane type-home markdown-body"></div>
+                        <div class="right-pane type-frame">
+                            <iframe></iframe>
+                        </div>
+                        <a href="https://github.com/you" class="github-link" target="_blank">
+                            <img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1">
+                        </a>
+                        <div class="loading-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="./images/icons.svg#loading"></use>
+                            </svg>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 /// <reference path="Components/Canvas.ts" />
+/// <reference path="Utils/HttpGet.ts"/>
 
 const Globals = {
     PageHeight: document.body.clientHeight,
@@ -18,6 +19,17 @@ module Preload {
 
     let {PageHeight, PageWidth} = Globals;
 
+    function getCurrentPage() {
+        const match = document.location.pathname.split("/");
+        let page;
+
+        if ((match.length == 3 && !match[2]) || match.length == 2) {
+            page = match[1];
+        }
+
+        return page || null;
+    }
+
     function loadingComplete(callback) {
 
         function hideWave() {
@@ -30,8 +42,7 @@ module Preload {
             LoadingWave.waves[1].amplitude = 40*(1-t);
             LoadingWave.options.top = 2*PageHeight/3 - t*(PageHeight/6);
         }, Utils.EasingFunctions.easeOutCubic, 1000, () => {
-            const page = document.location.href.match(/http:\/\/.*\/([^/]+)\/?/);
-            Pages.MainPage.openPage(page ? page[1] : null);
+            Pages.MainPage.openPage(getCurrentPage());
             callback();
         });
     }
@@ -94,7 +105,7 @@ module Preload {
     };
     script.src = "./scripts/page.js";
     document.body.appendChild(script);
-
+    
     PageData.loadPageData(() => {
         responseComplete();
     });
