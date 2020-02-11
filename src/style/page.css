@@ -320,6 +320,27 @@ body {
     }
 }
 
+#code-page .contrib-stats {
+    transform: scale(0.75);
+    height: 106px;
+    transform-origin: top left;
+}
+
+#code-page .language-stats {
+    height: 250px;
+    transform: scale(0.85);
+    transform-origin: top left;
+}
+
+#code-page .language-stats rect, #code-page .language-stats text {
+    display: none;
+}
+
+
+#code-page .language-stats rect:nth-child(-n+10), #code-page .language-stats text:nth-child(-n+10) {
+    display: initial !important;
+}
+
 #code-page .code-page-container {
     height: 100%;
     width: 100%;

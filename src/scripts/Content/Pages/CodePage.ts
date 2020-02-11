@@ -1,5 +1,7 @@
 /// <reference types="marked" />
 
+declare function GithubStats(username: string): Promise<any>;
+
 module Pages {
 
     let RightPaneMarkdown: HTMLElement;
@@ -9,6 +11,54 @@ module Pages {
     let ProjectListElement: HTMLUListElement;
     let CodePageLoading: HTMLDivElement;
     let RightPaneHome: HTMLDivElement;
+
+    function getGithubStats(username: string, commitsContainer: string, languageContainer: string): void {
+        (async () => {
+            const githubStats = await GithubStats(username);
+        
+            let githubCommits = document.querySelector(commitsContainer);
+            /* Render SVG for commit contributions */
+            let commitsContribSVG = githubStats.commitsContribSVG({
+                rows: 7,
+                space: 4,
+                rectWidth: 16,
+                levelColors: [
+                    {
+                        minCommits: 0,
+                        color: '#ebedf0'
+                    },
+                    {
+                        minCommits: 1,
+                        color: '#c6e48b'
+                    },
+                    {
+                        minCommits: 9,
+                        color: '#7bc96f'
+                    },
+                    {
+                        minCommits: 17,
+                        color: '#239a3b'
+                    },
+                    {
+                        minCommits: 26,
+                        color: '#196127'
+                    }
+                ]
+            });
+            githubCommits.appendChild(commitsContribSVG);
+        
+            let githubLanguageDistribution = document.querySelector(languageContainer);
+            /* Render SVG for language contributions */
+            let languageContribSVG = githubStats.languagesContribSVG({
+                barHeight: 20,
+                barWidth: (githubLanguageDistribution as any).offsetWidth,
+                lineSpacing: 4,
+                languageNameWidth: 140,
+                fontSize: 14
+            });
+            githubLanguageDistribution.appendChild(languageContribSVG);
+        })();
+    }
 
     export const CodePage: IContentPage = {
         Container: null,
@@ -27,14 +77,16 @@ module Pages {
             RightPaneHome.innerHTML = marked(`
 # Karan Jit Singh
 
-This is a showcase for some of my projects, do check them out from the menu on the left.
+Checkout my github profile at [github.com/karanjitsingh/karanjitsingh.com](https://github.com/karanjitsingh/karanjitsingh.com). If you liked the fancy particle animations on this website, check it out at [github.com/karanjitsingh/particle.js](https://github.com/karanjitsingh/particle.js).<br />
 
-If you liked the fancy particle animations on this website, check it out at [github.com/karanjitsingh/particle.js](https://github.com/karanjitsingh/particle.js).<br />
-The code for this website is checked into [github.com/karanjitsingh/karanjitsingh.com](https://github.com/karanjitsingh/karanjitsingh.com).
+### Github Activity
+<div class=\"contrib-stats\"></div>
 
-All of my code is checked in at [github.com/karanjitsingh](https://github.com/karanjitsingh).<br />
-Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/kjitsingh/).
-`)
+### Language Stats
+<div class=\"language-stats\"></div>
+`);
+
+            getGithubStats("karanjitsingh", ".contrib-stats", ".language-stats");
 
             for (let i = 0; i < PageData.CodePageData.length; i++) {
                 ProjectItem.add(i);
