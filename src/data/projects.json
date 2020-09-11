@@ -31,7 +31,7 @@
             "title": "Neural Network to Play 2048",
             "github": "https://github.com/karanjitsingh/dqn-2048-python",
             "desc": "A reinforcement learning bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
-            "img": "./images/2048.png",
+            "img": "./images/2048.gif",
             "year": "2017"
         },
         {
