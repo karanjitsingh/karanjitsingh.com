@@ -12,7 +12,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="./style/page.css"/>
     <link rel="stylesheet" type="text/css" href="./style/markdown.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="./scripts/particle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byliuyang/github-stats@0.0.4/src/github-stats.js"></script>
@@ -76,7 +76,7 @@
                 <div>
                     <span>Leave a message.</span>
                     <div>
-                        <a href="http://in.linkedin.com/in/kjitsingh/" target="_blank">
+                        <a href="https://in.linkedin.com/in/kjitsingh/" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
                                 <use xlink:href="./images/icons.svg#linkedin" />
                             </svg>
