@@ -1,3 +1,21 @@
+<?php
+    $whitelist = array(
+        '127.0.0.1',
+        '::1'
+    );
+
+
+    # HTTPS redirect if not localhost
+    if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist))
+    {
+        if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
+            $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+            header('HTTP/1.1 301 Moved Permanently');
+            header('Location: ' . $location);
+            exit;
+        }
+    }
+?>
 <!doctype html>
 <!--
 
