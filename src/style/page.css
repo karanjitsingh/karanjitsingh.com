@@ -428,24 +428,43 @@ body {
     position: relative;
 }
 
-#code-page .left-pane li a {
+#code-page .left-pane .project-link {
     padding: 12px 16px 12px 12px;
-    color: rgba(255,255,255,0.8);
+    color: white;
     text-decoration: none;
     display: block;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
+    transition: opacity 0.3s ease-out;
+    opacity: 0.8;
 }
+
 
 #code-page .left-pane li:hover {
     background: rgba(255,255,255,0.05);    
 }
 
+#code-page .left-pane li:hover .project-link{
+    opacity: 1;
+}
+
+#code-page .left-pane li:hover .project-link label{
+    opacity: 0.8;
+}
+
 #code-page .left-pane li.selected {
     font-weight: 400;
-    color:white;
     background: rgba(255,255,255,0.05);
+}
+
+#code-page .left-pane li.selected .project-link {
+    opacity: 1;
+}
+
+
+#code-page .left-pane li.selected .project-link label {
+    opacity: 0.8;
 }
 
 #code-page .left-pane .project-link span {
@@ -459,16 +478,12 @@ body {
     font-size: 12px;
     pointer-events: none;
     top: 1px;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
     color: white;
+    opacity: 0.5;
     font-weight: bold;
     border-right: 1px solid #fff;
+    transition: opacity 0.3s ease-out;
     padding: 2px 10px;
-}
-
-#code-page .left-pane li:hover label{
-    opacity: 1;
 }
 
 #code-page .heading {

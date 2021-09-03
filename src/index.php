@@ -16,7 +16,42 @@
     <script type="text/javascript" src="./scripts/particle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byliuyang/github-stats@0.0.4/src/github-stats.js"></script>
-    <title>karanjitsingh</title>
+    
+    <!-- HTML Meta Tags -->
+    <title>Karan Jit Singh</title>
+    <meta name="description" content="Hunger for knowledge. Passion for computer science. Driven for efficiency.
+
+    Hi, I'm Karan. Welcome to my portfolio! This website showcases some of the projects I've done and a little bit about me. 
+    about me.">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Karan Jit Singh">
+    <meta itemprop="description" content="Hunger for knowledge. Passion for computer science. Driven for efficiency.
+
+    Hi, I'm Karan. Welcome to my portfolio! This website showcases some of the projects I've done and a little bit about me. 
+    about me.">
+    <meta itemprop="image" content="https://i.imgur.com/595JtUo.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://karanjitsingh.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Karan Jit Singh">
+    <meta property="og:description" content="Hunger for knowledge. Passion for computer science. Driven for efficiency.
+
+    Hi, I'm Karan. Welcome to my portfolio! This website showcases some of the projects I've done and a little bit about me. 
+    about me.">
+    <meta property="og:image" content="https://i.imgur.com/595JtUo.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Karan Jit Singh">
+    <meta name="twitter:description" content="Hunger for knowledge. Passion for computer science. Driven for efficiency.
+
+    Hi, I'm Karan. Welcome to my portfolio! This website showcases some of the projects I've done and a little bit about me. 
+    about me.">
+    <meta name="twitter:image" content="https://i.imgur.com/595JtUo.png">
+
+    <!-- Meta Tags Generated via http://heymeta.com -->
 </head>
 <body>
     <?php include_once("./data/analytics.php"); ?>

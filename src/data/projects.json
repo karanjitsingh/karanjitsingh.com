@@ -1,6 +1,24 @@
 {
     "code": [
         {
+            "title": "TrendML",
+            "github": "https://github.com/karanjitsingh/TrendML",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/TrendML/master/README.md",
+            "year": "2021"
+        },
+        {
+            "title": "RL Lunar Lander",
+            "github": "https://github.com/karanjitsingh/rl-lunar-lander",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/rl-lunar-lander/master/README.md",
+            "year": "2020"
+        },
+        {
+            "title": "pine.js",
+            "github": "https://github.com/karanjitsingh/pine.js",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/pine.js/master/README.md",
+            "year": "2020"
+        },
+        {
             "title": "jstestadapter",
             "github": "https://github.com/karanjitsingh/jstestadapter",
             "markdown": "https://raw.githubusercontent.com/karanjitsingh/jstestadapter/master/README.md",
@@ -11,6 +29,14 @@
             "github": "https://github.com/karanjitsingh/jstestcontext",
             "markdown": "https://raw.githubusercontent.com/karanjitsingh/jstestcontext/master/README.md",
             "year": "2018"
+        },
+
+        {
+            "title": "Neural Network to Play 2048",
+            "github": "https://github.com/karanjitsingh/dqn-2048-python",
+            "desc": "A reinforcement learning bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
+            "img": "./images/2048.gif",
+            "year": "2017"
         },
         {
             "title": "Particle.js",
@@ -25,13 +51,6 @@
             "desc": "SVG path parser is a custom path 2D parser written specifically for Particle.JS to support animation for any path. Particle.JS requires path length and nth point for each path element that is created in a path 2D, for this very reason I had to write a custom parser that converts those path elements into custom path functions which provide its length and a method to get the nth point on the path.",
             "markdown": "https://raw.githubusercontent.com/karanjitsingh/svg-path-parser/master/README.md",
             "img": "./images/svgpathparser.png",
-            "year": "2017"
-        },
-        {
-            "title": "Neural Network to Play 2048",
-            "github": "https://github.com/karanjitsingh/dqn-2048-python",
-            "desc": "A reinforcement learning bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
-            "img": "./images/2048.gif",
             "year": "2017"
         },
         {

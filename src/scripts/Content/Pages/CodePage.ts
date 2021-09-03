@@ -196,8 +196,11 @@ Checkout my github profile at [github.com/karanjitsingh/karanjitsingh.com](https
 
         private select(hash?: string) {
             const pageData = PageData.CodePageData[this.dataIndex];
-
+            
             ProjectItem.unSelectAny();
+
+            ProjectItem.SelectedIndex = this.dataIndex;
+            this.element.className = "selected";
 
             CodePageLoading.style.display = "block";
 
