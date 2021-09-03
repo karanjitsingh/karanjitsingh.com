@@ -1,0 +1,7 @@
+User-agent: *
+
+Allow: /solarsystem/
+Disallow: /solarsystem/images
+Allow: /snakes
+Disallow: /snakes/images
+Allow: /sudoku

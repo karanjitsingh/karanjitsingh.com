@@ -1,0 +1,80 @@
+{
+    "code": [
+        {
+            "title": "jstestadapter",
+            "github": "https://github.com/karanjitsingh/jstestadapter",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/jstestadapter/master/README.md",
+            "year": "2018"
+        },
+        {
+            "title": "jstestcontext",
+            "github": "https://github.com/karanjitsingh/jstestcontext",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/jstestcontext/master/README.md",
+            "year": "2018"
+        },
+        {
+            "title": "Particle.js",
+            "github": "https://github.com/karanjitsingh/particle.js",
+            "desc": "Particle.js is a JavaScript canvas library for fancy particle animations. The fun animations you see on the main page of this website use Particle.js at its core. You can checkout another implementation of particle.js at <a target=\"_blank\" href=\"https://www.headout.com/careers\">Headout's careers page</a>.",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/particle.js/master/README.md",
+            "year": "2017"
+        },
+        {
+            "title": "SVG Path Parser",
+            "github": "https://github.com/karanjitsingh/svg-path-parser",
+            "desc": "SVG path parser is a custom path 2D parser written specifically for Particle.JS to support animation for any path. Particle.JS requires path length and nth point for each path element that is created in a path 2D, for this very reason I had to write a custom parser that converts those path elements into custom path functions which provide its length and a method to get the nth point on the path.",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/svg-path-parser/master/README.md",
+            "img": "./images/svgpathparser.png",
+            "year": "2017"
+        },
+        {
+            "title": "Neural Network to Play 2048",
+            "github": "https://github.com/karanjitsingh/dqn-2048-python",
+            "desc": "A reinforcement learning bot written in python that learns to play 2048 from the experience gained from playing it again and again. This project was done for my 6th semester Machine Learning course at Manipal Institute of Technology. The neural network for this project was written from scratch including the TD backpropagation algorithm.",
+            "img": "./images/2048.gif",
+            "year": "2017"
+        },
+        {
+            "title": "TeeTime",
+            "github": "https://github.com/karanjitsingh/TeeTime",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/TeeTime/master/README.md",
+            "year": "2015"
+        },
+        {
+            "title": "IE CSE Website 2014-2015",
+            "github": "https://github.com/karanjitsingh/iecse",
+            "desc": "IE CSE is the official computer science club of manipal. Every year IE CSE hosts a website winter project for its new members to rebuild their website. This is the 2014-2015 version of the website. <br />Checkout the <a href=\"http://iecse.karanjitsingh.com\">live version</a>!",
+            "img": "./images/iecse.png",
+            "year": "2014"
+        },
+        {
+            "title": "Hospital Management System",
+            "github": "",
+            "desc": "A hospital management system for a charitable hospital based in Haridwar, India. Over the span of two years (2012-2013) I developed various modules including registration, inventory management, appointment scheduling, patient data maintenance etc, delivering a complete and integrated hospital management system written in .NET Framework and Microsoft SQL Server.",
+            "img": "./images/hms.png",
+            "year": "2013"
+        },
+        {
+            "title": "Snakes in Classic C",
+            "github": "https://github.com/karanjitsingh/buoyancy/tree/master/Snakes",
+            "link": "/web/snakes",
+            "year": "2013"
+        },
+        {
+            "title": "Solar System 2D Simulation",
+            "link": "/web/solarsystem",
+            "year": "2011"
+        },
+        {
+            "title": "Sudoku Solver",
+            "link": "/web/sudoku",
+            "year": "2010"
+        },
+        {
+            "title": "Experiments",
+            "link": "/web/experimental",
+            "year": "2010"
+        }
+    ],
+    "about": "<span>Hi!</span>My name is Karan Jit Singh and I am a software engineer.<br><br>I've been a programmer since I was 9 years old and have been in love with computer science since the very day I starting learning to code. I occasionally dabble on the guitar, play chess and love watching Formula 1.<br><br>I went to college at Manipal Institute of Technology, Manipal where I completed my bachelor's degree in Computer Science and Engineering.<br><br>Connect with me on <a href='https://www.linkedin.com/in/kjitsingh/' target='_blank'>LinkedIn</a>."
+}

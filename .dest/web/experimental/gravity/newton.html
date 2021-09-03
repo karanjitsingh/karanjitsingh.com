@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var ctx;
+        var t;
+        var planet = new Array();
+
+        var time = 0.1;
+        var fps;
+        var canvas;
+        var tweak = new Array();
+        //window.onload = initWindow;
+        function vector(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        var gconst; //GMM
+
+        var bigBodies = new Array();
+
+        function update() {
+            for (i = 0; i < planet.length; i++)
+                planet[i].update();
+        }
+
+        function Body(position,velocity) {
+
+            // Add object properties like this
+            this.position = position;
+            this.velocity = velocity;
+
+            this.update = function () {
+                this.draw();
+
+                $("debug").innerHTML = this.velocity.x + "," + this.velocity.y + "<br>" + this.position.x + "," + this.position.y;
+
+                this.move();
+                this.accelerate();
+
+            }
+
+            this.move = function () {
+                var h2 = Math.pow(this.position.x, 2) + Math.pow(this.position.y, 2);
+                var h = Math.sqrt(h2);
+
+                var cos = this.position.x / h;
+                var sin = this.position.y / h;
+                var a = 0 - gconst / h2;
+
+                this.position.x += this.velocity.x * time + (a * cos * Math.pow(time, 2)) / 2;
+                this.position.y += this.velocity.y * time + (a * sin * Math.pow(time, 2)) / 2;
+            }
+
+            this.accelerate = function () {
+                var h2 = Math.pow(this.position.x, 2) + Math.pow(this.position.y, 2);
+                var h = Math.sqrt(h2);
+
+                var cos = this.position.x / h;
+                var sin = this.position.y / h;
+                var a = 0 - gconst / h2;
+
+                this.velocity.x += a * cos * time;
+                this.velocity.y += a * sin * time;
+            }
+
+            this.draw = function () {
+                ctx.fillStyle = "#000";
+                ctx.scale(1,1);
+                ctx.fillRect(this.position.x + canvas.width/2, (0 - this.position.y) + canvas.height/2 , 1, 1);
+            }
+
+
+        }
+
+        function start() {
+
+            $("values").style.display="none";
+            $("controls").style.display = "block";
+
+            var sx = parseFloat($("sx").value);
+            var sy = parseFloat($("sy").value);
+            var vx = parseFloat($("vx").value);
+            var vy = parseFloat($("vy").value);
+
+            //for (i = 0-(5)*(20); i <= (5)*(20); i += 5)
+                planet.push(new Body(new vector(sx, sy), new vector(vx, vy)));
+
+
+            gconst = parseFloat($("gconst").value);
+
+            canvas = $('myCanvas');
+
+            if (canvas && canvas.getContext) {
+                ctx = canvas.getContext('2d');
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#ff0000";
+            ctx.fillRect((canvas.width / 2) - 1, (canvas.height / 2) - 1, 2, 2);
+
+            time = parseFloat($("time").value);
+
+
+            fps = parseFloat($("fps").value);
+
+           canvas.style.display = 'block';
+            t = setInterval(update, 1000/fps);
+        }
+
+        function reset() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            clearInterval(t);
+            $('controls').style.display = 'none';
+            $('values').style.display = 'block';
+            $('myCanvas').style.display = 'none';
+            
+            while (tweak.length > 0) {
+                clearInterval(tweak[tweak.length - 1]);
+                tweak.pop();
+            }
+            while (planet.length > 0) {
+                planet.pop();
+            }
+        }
+
+        function $(obj) {
+            return document.getElementById(obj);
+        }
+    </script>
+    <script type="text/javascript" src="/resources/script/kjsanalytics.js"></script>
+</head>
+<body>
+    <div id="controls" style="display:none;">
+        <div id="debug"></div>
+        <input type="button" value="pause" onclick="clearInterval(t)" /> <input type="button" value="continue" onclick="clearInterval(t);t = setInterval(update, 1000 / fps);"/> <input type="button" value="reset" onclick="reset()"/>
+        <br /> <input type="button" value="tweak" onclick="tweak.push(setInterval(update, 1000 / fps));"/>
+    </div>
+    <div id="values">
+        <table>
+            <tr>
+                <td>velocity vector</td><td><input id="vx" type="text" style="width:30px;" value="100"/> <input id="vy" type="text" style="width:30px;" value="0" /></td>
+            </tr>
+            <tr>
+                <td>position vector</td><td><input id="sx" type="text" style="width:30px;" value="-200"/> <input id="sy" type="text" style="width:30px;"  value="200"/></td>
+            </tr>
+            <tr>
+                <td>G * M</td><td><input id="gconst" type="text" style="width:68px;" value="3000000"/></td>
+            </tr>
+            <tr>
+                <td>FPS</td><td><input id="fps" type="text" style="width:30px;" value="1000"/></td>
+            </tr>
+            <tr>
+                <td>time unit</td><td><input id="time" type="text" style="width:30px;" value="0.01"/></td>
+            </tr>
+        </table>
+        <input type="button" onclick="start()" value="start" />
+    </div>
+
+    <center>
+        <canvas id="myCanvas" width="1000" height="500" style="margin-top:20px; box-shadow:0px 0px 5px; display:none;">
+            Fallback content, in case the browser does not support Canvas.
+        </canvas>
+    </center>
+</body>
+</html>

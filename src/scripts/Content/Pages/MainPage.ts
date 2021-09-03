@@ -62,6 +62,12 @@ module Pages {
             const random = new ParticleJSAnimations.FadeExplode(null, total);
             
             svg.move({x: PageWidth/2 - 175, y: PageHeight/2-253})
+            window['pw'] = PageWidth;
+            window['ph'] = PageHeight;
+            window['svgx'] = PageWidth/2 - 175;
+            window['svgy'] = PageHeight/2-253;
+            window['svg'] = svg;
+            
             svg.alpha = 1;
             
             ParticleJS.addDrawObject(svg);

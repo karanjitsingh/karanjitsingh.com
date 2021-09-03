@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Open Hand Combat</title>
+	
+	<script>
+	
+		progress=0;
+		var t;
+
+		var imgs= new Array("./images/backgrounds/dojo.jpg","./images/backgrounds/home.jpg","./images/backgrounds/logo.png","./images/noise.jpg","./images/team/asif.jpg","./images/team/raja.jpg","./images/team/shrushti.jpg","./images/team/nopic.png");
+
+		var i;
+		for(i=0;i<imgs.length;i++)
+		{
+			var img=new Image();
+			img.src=imgs[i];
+		}
+	</script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400|Roboto:100,300' rel='stylesheet' type='text/css'/>
+	<link href='./scripts/loading.css' rel='stylesheet' type='text/css'/>
+
+	<script src="./lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="./lib/jquery.easing.1.3.js" type="text/javascript"></script>
+	<script type="text/javascript" src="./scripts/page.js"></script>
+	<script type="text/javascript" src="./scripts/form.js"></script>
+	
+	
+	<link href='./scripts/page.css' rel='stylesheet' type='text/css'/>
+</head>
+
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div id="content" class="page" style="position:fixed;">
+		<div id="container" class="page" style="position:fixed;">
+			<div id="v1" class="page" data-offset="0" data-speed="0.1"></div>
+			
+			<div id="v2" class="js-background-1 bg-parallax page" data-offset="100" data-speed="0.1">
+				<span data-offset="250" data-speed="0.2" class="text-parallax heading">Be Armed Without<br/>Weapons.</span>
+			</div>
+			
+			<div id="v3" class="js-background-1 bg-parallax page" data-offset="100" data-speed="0.1">
+				<div>
+					<span class="heading">Our Vision</span>
+					<span class="para" >To mold individuals into people who understand and respect humans. We will develop people who become fighters when the need arises and who, at the end of the day, do not go home quietly after witnessing a crime.</span>
+					<span class="para" >We will train one's soul to be pure, to defend oneself when needed, to be able to differentiate between good and bad which the body automatically follows. We will not only build fighters but brave souls; we will not only build martial artists but martial characters.</span>
+				</div>
+			</div>
+			
+			<div id="v4" class="js-background-2 bg-parallax page" data-offset="100" data-speed="0.1">
+				<div id="workshopContent" >
+					<table style="width:100%; table-layout:fixed;">
+						<tr>
+							<td style="width:600px">
+								<span style="float:right; text-align:left; width:400px; margin-right:100px; margin-top:150px;" class="heading">Workshop</span>
+								<span class="para">It is a times need. Present situation of Safety and Security of women are a concern for all. Being into Martial Art for the last 27 Years, it is time when I listen to the call of my soul and organize workshops after workshops across Asia for Women’s Open Hand Combat. So far more than 10,000 Girls have been trained through different classes and workshops.</span>
+								<a class="expand programs" href="javascript:void(0)" onclick="toggleElement('v4')">Our Programs</a>
+							</td>
+							<td></td>
+							
+						</tr>
+					</table>
+				</div>
+
+			</div>
+			
+			<div id="v5" class="bg-parallax child-bg-parallax open page" data-offset="100" data-speed="0.1">
+				<table class="team">
+					<tr>
+						<td class="bg-parallax" style="background:url(./images/team/shrushti.jpg) no-repeat;" data-offset="100" data-speed="0.1">
+							<div>
+								<p>Ms. Shrushti Wankhade</p>
+								<p>Expert in women self defence.</p>
+								<p>Practicing kick boxing for the past 1 year.</p>
+							</div>
+						</td>
+						<td class="bg-parallax" style="background:url(./images/team/nopic.png) center 0 no-repeat;" data-offset="100" data-speed="0.1">
+							<div>
+								<p>Mr. Sanjevan</p>
+								<p>MMA champion (Mixed Martial Arts).</p>
+								<p>Practitioner of Gojuriu, Kyoku Shin, Wrestling, Grappling, Muay Thai.<br />MMA amateur record 1 win 1 loss.<br />MMA professional record 2 win at Malaysia at Ultimate Beatdown.</p>
+							</div>
+						</td>
+						<td class="bg-parallax" style="background:url(./images/team/raja.jpg) center 0 no-repeat;" data-offset="100" data-speed="0.1">
+							<div>
+								<p>Mr. Raja Mookherjee</p>
+								<p>Master in full contact form fights.<br /> Black belt in Karate.</p>
+							</div>
+						</td>
+						<td class="bg-parallax" style="background:url(./images/team/asif.jpg) center 0 no-repeat;" data-offset="100" data-speed="0.1">
+							<div>
+								<p>Mr. Asif Rahaman</p>
+								<p>Master in Win Chew.<br />Black belt in Karate<br />Trained in Krav Maga.<br />Completed Uchi-Dashi training.</p>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="v6" class="page" style="background:url(./images/noise.jpg);">
+				<table style="height:100%;width:100%;table-layout:fixed;">
+					<tr><td>	
+						<div style="padding:100px; padding-bottom:0px; margin:0 auto; width:450px;">
+							<span class="heading" style="display:block; text-align:center; width:100%; color:#777;">Contact Us</span>
+					
+							<div style="margin-top:50px; width:100%;" id="form">
+								<div contentEditable="true" class="textbox name"></div>
+								<div contentEditable="true" class="textbox email"></div>
+								<div contentEditable="true" class="message"></div>
+								<div class="fb-like-button"><div class="fb-like" data-href="https://www.facebook.com/OpenHandCombatGurgaon" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></div>
+								<a class="expand submit" href="javascript:void(0)" onclick="submitForm()">Submit</a>
+							</div>
+						</div>
+					</td></tr>
+					
+					<tr><td style="background:rgba(255,255,255,0.4);height:40px;">
+						<div style="padding:0px; width:100%; vertical-align:top; padding-top:20px; border-top: 1px solid #ccc; text-align:center;">
+							<span style="display:block; padding:10px; margin:0 auto; color:#777; box-sizing:border-box;text-align:middle; width:400px;"><a class="expand submit" style="margin:0px 2px;float:none;display:inline-block" href="javascript:void(0)" onclick="submitForm()">Querries</a> <a class="expand submit" style="margin:0px 2px;float:none;display:inline-block;" href="javascript:void(0)" onclick="submitForm()">Gallery</a></span>
+					
+							
+						</div>
+					</td></tr>
+					
+					
+					<tr>
+						<td style="vertical-align:bottom;text-align:center;background:rgba(255,255,255,0.4);height:36px;">
+							<p style="font-size:14px;line-height:18px; color:#999; font-weight:100; margin:30px;">Copyright &copy; OpenHandCombatGurgaon<br />Web Designer and Programmer - <a href="http://karanjitsingh.com" class="karan">Karan Jit Singh</a></p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+	<div id="scrollButton" onclick="nextPage()">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+			<path d="M100,49.999C100,22.43,77.566,0,50,0C22.428,0,0,22.43,0,49.999C0,77.568,22.428,100,50,100     C77.566,100,100,77.568,100,49.999z M5.769,49.999C5.769,25.61,25.611,5.77,50,5.77S94.231,25.61,94.231,49.999     c0,24.39-19.843,44.231-44.231,44.231S5.769,74.389,5.769,49.999z"/>
+			<path d="M75.493,44.782c1.127-1.127,1.127-2.952,0-4.079c-1.127-1.126-2.952-1.126-4.079,0L50,62.121     L28.58,40.703c-1.126-1.126-2.952-1.126-4.079,0c-0.563,0.563-0.845,1.302-0.845,2.04c0,0.738,0.282,1.476,0.845,2.04     L47.96,68.238c1.127,1.127,2.953,1.127,4.079,0L75.493,44.782z"/>
+		</svg>
+	</div>
+	
+	<div id="menu">
+		<ul>
+			<li><a href="javascript:void(0)" onclick="goToPage(0)">HOME</a></li>
+			<li><a href="javascript:void(0)" onclick="goToPage(1)">MOTTO</a></li>
+			<li><a href="javascript:void(0)" onclick="goToPage(2)">VISION</a></li>
+			<li><a href="javascript:void(0)" onclick="goToPage(3)">WORKSHOP</a></li>
+			<li><a href="javascript:void(0)" onclick="goToPage(4)">TEAM</a></li>
+			<li><a href="javascript:void(0)" onclick="goToPage(5)">CONTACT</a></li>
+		</ul>
+	</div>
+	
+	<div id="menuButton" onclick="toggleElement('menu')">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+			<path d="M82.22,36.832H21.205c-6.968,0-12.634,5.761-12.634,12.831c0,7.073,5.666,12.824,12.634,12.824H82.22     c6.968,0,12.634-5.751,12.634-12.824C94.854,42.593,89.188,36.832,82.22,36.832z"/>
+			<path d="M53.682,70.511c0-0.055-0.003-0.11-0.003-0.162h-1.901H23.236h-2.031     c-6.968,0-12.634,5.754-12.634,12.823C8.571,90.246,14.237,96,21.205,96h2.303h28.27h2.176c0-0.069,0-0.137,0-0.203     c5.931-1.049,10.458-6.307,10.458-12.625C64.411,76.76,59.746,71.448,53.682,70.511z"/>
+			<path d="M21.205,29.001h16.003h16.745h11.526c6.966,0,12.629-5.754,12.629-12.824     c0-7.072-5.663-12.826-12.629-12.826H53.679H36.936h-15.73c-6.968,0-12.634,5.754-12.634,12.826     C8.571,23.247,14.237,29.001,21.205,29.001z"/>
+		</svg>
+	</div>
+	
+	<div id="workshopPrograms">
+		<div style="padding:100px;">
+		<span style="text-align:left; width:800px; display:block;"><span class="heading">Programs</span>
+			<a class="close" href="javascript:void(0)" onclick="toggleElement('v4')">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+					<path d="M50.433,0.892c-27.119,0-49.102,21.983-49.102,49.102s21.983,49.103,49.102,49.103s49.101-21.984,49.101-49.103  S77.552,0.892,50.433,0.892z M50.433,93.258c-23.895,0-43.264-19.371-43.264-43.265c0-23.894,19.37-43.264,43.264-43.264  c23.894,0,43.263,19.37,43.263,43.264C93.696,73.887,74.327,93.258,50.433,93.258z"/>
+					<path d="M69.879,70.439c2.645-2.792,2.523-7.2-0.269-9.845L38.332,30.982c-2.793-2.644-7.2-2.523-9.845,0.27l-0.05,0.053  c-2.644,2.792-2.524,7.2,0.269,9.845l31.278,29.612c2.793,2.645,7.201,2.523,9.845-0.269L69.879,70.439z"/>
+					<path d="M69.755,40.026c2.644-2.792,2.523-7.201-0.27-9.845l-0.052-0.049c-2.793-2.644-7.201-2.523-9.846,0.27l-29.61,31.275  c-2.645,2.793-2.577,7.259,0.27,9.845l0.053,0.048c2.847,2.585,7.2,2.525,9.845-0.268L69.755,40.026z"/>
+				</svg>
+			</a>
+		</span>
+		<table class="programsTable">
+			<tr>
+				<td>1 Month</td>
+				<td>
+					
+					<p>Basic Self defense and a knowhow of martial life good for rescue operation.</p>
+					<ul>
+						<li>Body, Mind and Soul Control.</li>
+						<li>Basic Moves, Punch and Kicks.</li>
+						<li>Self Rescue Operation.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>3 Month</td>
+				<td>
+					
+					<p>Advance self defense and a introduction in MMA.</p>
+					<ul>
+						<li>Body, Mind and Soul Control.</li>
+						<li>Advanced Moves, Punch and Kicks.</li>
+						<li>Self Rescue Operation.</li>
+						<li>Shadow Practice of all Above.</li>
+						<li>One Exam</li>
+						<li>One Inter School Tournament.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>6 Month</td>
+				<td>
+					
+					<p>Basic and be an expert in self-defense all rounder.</p>
+					<ul>
+						<li>Body, Mind and Soul Control.</li>
+						<li>Advanced Moves, Punch and Kicks, Blocks.</li>
+						<li>Theory Class on Human Anatomy.</li>
+						<li>Counseling through psychiatrist.</li>
+						<li>Demonstration Skill.</li>
+						<li>Self Rescue Operation.</li>
+						<li>Shadow Practice of all Above.</li>
+						<li>Two Exam</li>
+						<li>One Outdoor Martial Art Camp.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>1 Year</td>
+				<td>
+					
+					<p>Diploma in Martial Art with MMA training and self-defence</p>
+					<ul>
+						<li>Body, Mind and Soul Control.</li>
+						<li>3 Levels of Advanced Moves.</li>
+						<li>Punch and Kicks, Blocks.</li>
+						<li>Theory Class on Human Anatomy.</li>
+						<li>Counseling through psychiatrist & Gynecologist .</li>
+						<li>Demonstration Skill.</li>
+						<li>Self Rescue Operation.</li>
+						<li>Shadow Practice of all above.</li>
+						<li>Two Exams.</li>
+						<li>One Outdoor Martial Art Camp.</li>
+						<li>Tournament.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		</div>
+	</div>
+	<div id="scrollOffset" style="height:3600px;"></div>
+	<div id="loading">
+		<table style="height:100%; width:100%;vertical-align: middle;"><tr><td style="vertical-align: middle;text-align: center;">
+			<div style="margin:0 auto;width: 450px;">
+				<div style="height: 12px; width: 100%; box-sizing:border-box; background: #333; border-radius: 100px; box-shadow: 0px 1px 1px #FFF, 0px 1px 1px #000 inset; padding: 2px;">
+					<div id="progress_bar" style="height: 100%; width: 100%; border-radius: 100px; background: url(./images/progress.gif) repeat; box-shadow: 0px -1px 1px rgba(255, 255, 255, 0.2);"></div>
+				</div>
+				<span id="progress_text" style="margin-top: 5px; display: block; text-shadow: 1px 1px 1px #fff; font-size: 16px;">Beating up bad guys...</span>
+			</div>
+		</td></tr></table>
+	</div>
+<script>
+var loadingPos = 0;
+
+var t = setInterval(loadingAnimation, 10);
+
+function loadingAnimation() {
+
+    loadingPos=(loadingPos+1)%25;
+
+    document.getElementById('progress_bar').style.backgroundPositionX = loadingPos + 'px';
+
+}
+
+
+
+window.onload=function() {
+	clearInterval(t);
+	$('#loading').delay(500).animate( { opacity:0 }, 1000, function(){ document.body.removeChild($id('loading')); update();} );
+	var i;
+	var divs=$id('form').getElementsByTagName('div');;
+	for(i=0;i<3;i++)
+	{
+		divs[i].onblur=inputBlur;
+	}
+};
+</script>
+</body>
+</html>

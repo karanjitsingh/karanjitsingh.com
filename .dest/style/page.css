@@ -7,6 +7,7 @@ body, html {
 
 body {
     background: #2F5168;
+    overflow: hidden;
 }
 
 #canvas-container {
@@ -121,6 +122,8 @@ body {
 }
 
 #pages-container > div {
+    position: absolute;
+    height: 100%;
     width: 100%;
     top: 0px;
     transform: translateY(0);

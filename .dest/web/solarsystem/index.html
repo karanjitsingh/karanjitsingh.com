@@ -1,0 +1,285 @@
+<html>
+<head>
+<link rel="image_src" href="../thumbnails/solarsystem.png" />
+<meta name="description" content="2D Simulation of the solar system.">
+<meta name="keywords" content="simulation, solarsystem, solar, system, solar system, 2d, 2d simulation, k13, karanjit, karan, jit, singh, karan jit, karan jit singh, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto, orbit, orbit simulation, orbit simulator, simulator, model, kepler's laws of planetary motion, laws of planetary motion, planets, law of planetary motion, kepler, keplers laws of planetary motion, keplers law of planetary motion">
+<title>Solar System : A Javascript Approach</title>
+<link rel="SHORTCUT ICON" href="planet.ico"/>
+<link href="SCRIPTS/stylesheet.css" rel="stylesheet"/>
+<script type="text/javascript" src="SCRIPTS/jquery.js"></script>
+<script type="text/javascript">
+
+var MAX=6
+var FPS=18;
+var speed=MAX-3;
+var l;
+
+var a = new Array(42, 58.2, 80, 122, 190, 230, 290, 320, 370); //semi major axisNOT TO SCALE
+var e = new Array(0.206, 0.007, 0.017, 0.093, 0.048, 0.056, 0.047, 0.009, 0.209); //EccentricityNOT TO SCALE
+var b = new Array();
+var p = new Array((87.969),( 224.7), (365.25), (686.971), (4332.59), (10759.22), (30799.095), (60190.03), (90613));// Time Period in Days
+
+var i;
+for (i = 0;i<=8;i++)
+{
+b[i] = a[i] * (Math.sqrt(1 - (Math.pow(e[i], 2))));
+}
+
+var eq;
+var t = 0;
+
+
+function closePopup() {
+var timer;
+for(i=0;i<=75;i++)
+{
+timer = setTimeout("document.getElementById(\"tblData\").style.opacity=" + (75 - i) / 100, i * 2);
+timer = setTimeout("document.getElementById(\"tblData\").style.filter=\"progid:DXImageTransform.Microsoft.Alpha(Opacity=" + (75 - i) + ")\"", i * 2);
+}
+}
+
+function motion() {
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[0]) / Math.sqrt((1 + e[0]) / (1 - e[0])));
+
+//{ rotation-sense x coordinate + ( positioning w.r.t center of page ) }
+
+document.getElementById("Mercury").style.left = (-1 * (a[0] * Math.cos(eq))) + (document.body.clientWidth / 2) - 2;
+document.getElementById("Mercury").style.top = (b[0] * Math.sin(eq)) + (document.body.clientHeight / 2) - 2;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[1]) / Math.sqrt((1 + e[1]) / (1 - e[1])));
+
+document.getElementById("Venus").style.left = (-1 * (a[1] * Math.cos(eq))) + (document.body.clientWidth / 2) - 4 - (e[1] * a[1]);
+document.getElementById("Venus").style.top = (b[1] * Math.sin(eq)) + (document.body.clientHeight / 2) - 2;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[2]) / Math.sqrt((1 + e[2]) / (1 - e[2])));
+
+document.getElementById("Earth").style.left = (-1 * (a[2] * Math.cos(eq))) + (document.body.clientWidth / 2) - 4 - (e[2] * a[2]);
+document.getElementById("Earth").style.top = (b[2] * Math.sin(eq)) + (document.body.clientHeight / 2) - 2;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[3]) / Math.sqrt((1 + e[3]) / (1 - e[3])));
+
+document.getElementById("Mars").style.left = (-1 * (a[3] * Math.cos(eq))) + (document.body.clientWidth / 2) - 3 - (e[3] * a[3]);
+document.getElementById("Mars").style.top = (b[3] * Math.sin(eq)) + (document.body.clientHeight / 2) - 2;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[4]) / Math.sqrt((1 + e[4]) / (1 - e[4])));
+
+document.getElementById("Jupiter").style.left = (-1 * (a[4] * Math.cos(eq))) + (document.body.clientWidth / 2) - 14 - (e[4] * a[4]);
+document.getElementById("Jupiter").style.top = (b[4] * Math.sin(eq)) + (document.body.clientHeight / 2) - 12;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[5]) / Math.sqrt((1 + e[5]) / (1 - e[5])));
+
+document.getElementById("Saturn").style.left = (-1 * (a[5] * Math.cos(eq))) + (document.body.clientWidth / 2) - 23 - (e[5] * a[5]);
+document.getElementById("Saturn").style.top = (b[5] * Math.sin(eq)) + (document.body.clientHeight / 2) - 23;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[6]) / Math.sqrt((1 + e[6]) / (1 - e[6])));
+
+document.getElementById("Uranus").style.left = (-1 * (a[6] * Math.cos(eq))) + (document.body.clientWidth / 2) - 8 - (e[6] * a[6]);
+document.getElementById("Uranus").style.top = (b[6] * Math.sin(eq)) + (document.body.clientHeight / 2) - 5;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[7]) / Math.sqrt((1 + e[7]) / (1 - e[7])));
+
+document.getElementById("Neptune").style.left = (-1 * (a[7] * Math.cos(eq))) + (document.body.clientWidth / 2) - 7 - (e[7] * a[7]);
+document.getElementById("Neptune").style.top = (b[7] * Math.sin(eq)) + (document.body.clientHeight / 2) - 5;
+
+eq = 2 * Math.atan(Math.tan(Math.PI * t / p[8]) / Math.sqrt((1 + e[8]) / (1 - e[8])));
+
+document.getElementById("Pluto").style.left = (-1 * (a[8] * Math.cos(eq))) + (document.body.clientWidth / 2) - 5 - (e[8]*a[8]);
+document.getElementById("Pluto").style.top = (b[8] * Math.sin(eq)) + (document.body.clientHeight / 2) - 5;
+
+t += speed;
+
+
+}
+
+function select(planet) {
+var el = document.getElementById(planet).getElementsByTagName("div")[0];
+
+if(el.style.visibility=="visible")
+{
+el.style.visibility="hidden";
+}
+else
+{
+el.style.visibility="visible";
+}
+}
+
+function opacity(obj,value) {
+obj.style.opacity = value;
+obj.style.filter = "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + (value*100) + ")";
+}
+
+function loaded()
+{
+meter(6-(speed-1));
+document.getElementById("loading").style.visibility="hidden";
+l = setInterval("motion()", FPS);
+opacity(document.getElementById("speedcontainer"),0.3);
+opacity(document.getElementById("menubar"),0.3);
+}
+
+function meter(value)
+{
+
+
+var i =0;
+for(i=0;i<=5;i++)
+{
+if(i>=value)
+opacity(document.getElementById("sp" + i),0);
+else
+opacity(document.getElementById("sp" + i),1);
+}
+var shadow= document.getElementById("shadow");
+if(value!=0)
+shadow.style.visibility="visible";
+else
+shadow.style.visibility="hidden";
+
+shadow.style.top = value* 30 - 4;
+
+speed=MAX-value;
+
+menu_mouseover(event,'speedcontainer',false)
+}
+
+function resetLoop()
+{
+clearInterval(l);
+l = setInterval("motion()", FPS);
+}
+
+function menu_mouseover(e,id,limit) {
+
+if (limit==false)
+{
+if (e.clientY < document.body.clientHeight-10 && e.clientY > document.body.clientHeight-208 && e.clientX < document.body.clientWidth-10 && e.clientX > document.body.clientWidth-58) {
+x = (0.8 - $('#' + id).css('opacity')) * 400;
+$('#' +id).animate({opacity: 0.8}, x,resetLoop);
+}
+}
+else
+{
+if (e.clientY <= 48) {
+x = (0.8 - $('#' + id).css('opacity')) * 400;
+$('#' + id).animate({opacity: 0.8}, x,resetLoop);
+}
+}
+
+
+}
+
+function menu_mouseout(e,id,limit) {
+
+if(limit==true)
+{
+if (e.clientY > 48) {
+x = ($('#' + id).css('opacity') - 0.3) * 400;
+$('#' + id).animate({opacity: 0.3}, x,resetLoop);
+
+}
+}
+else
+{
+if ((e.clientY < document.body.clientHeight-10 && e.clientY > document.body.clientHeight-208 && e.clientX < document.body.clientWidth-10 && e.clientX > document.body.clientWidth-58)==false) {
+x = ($('#' + id).css('opacity') - 0.3) * 400;
+$('#' + id).animate({opacity: 0.3}, x,resetLoop);
+}
+}
+
+}</script>
+<script type="text/javascript" src="/resources/script/kjsanalytics.js"></script>
+</head>
+<body onLoad="loaded()">
+
+<div class="sun" id="Sun">
+<img src="images/QsSun.png" />
+<div class="label">Sun</div>
+</div>
+<div class="planet" id="Mercury">
+<img width="4" height="4" src="images/QsMercury.png" />
+<div class="label">Mercury</div>
+</div>
+<div class="planet" id="Venus">
+<img width="8" height="8" src="images/QsVenus.png" />
+<div class="label">Venus</div>
+</div>
+<div class="planet" id="Earth">
+<img width="8" height="8" src="images/QsEarth.png" />
+<div class="label">Earth</div>
+</div>
+<div class="planet" id="Mars">
+<img width="6" height="6" src="images/QsMars.png" />
+<div class="label">Mars</div>
+</div>
+<div class="planet" id="Jupiter">
+<img width="28" height="28" src="images/QsJupiter.png" />
+<div class="label">Jupiter</div>
+</div>
+<div class="planet" id="Saturn">
+<img width="46" height="46" src="images/QsSaturn.png" />
+<div class="label">Saturn</div>
+</div>
+<div class="planet" id="Uranus">
+<img width="16" height="16" src="images/QsUranus.png" />
+<div class="label">Uranus</div>
+</div>
+<div class="planet" id="Neptune">
+<img width="14" height="14" src="images/QsNeptune.png" />
+<div class="label">Neptune</div>
+</div>
+<div class="planet" id="Pluto">
+<img width="10" height="10" src="images/QsPluto.png" />
+<div class="label">Pluto</div>
+</div>
+
+
+<div id="menubar" onMouseOver="menu_mouseover(event,'menubar',true)" onMouseOut="menu_mouseout(event,'menubar',true)">
+   
+<table id="menu" >
+<tr onMouseOut="menu_mouseout(event,'menubar',true)">
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Sun</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Mercury</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Venus</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Earth</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Mars</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Jupiter</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Saturn</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Uranus</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Neptune</a></td>
+<td class="link"><a href="javascript:void(0);" onClick="select(this.innerHTML)">Pluto</a></td>
+<td>-</td>
+<td class="link">by <a href="https://facebook.com/karan1866" target="_blank">Karan Jit Singh</a></td>
+</tr>
+</table>
+</div>
+<div id="speedcontainer" onMouseOver="menu_mouseover(event,'speedcontainer',false)" onMouseOut="menu_mouseout(event,'speedcontainer',false)">
+<div id="speedometer" onMouseOut="menu_mouseout(event,'speedcontainer',false)" onMouseOver="menu_mouseover(event,'speedcontainer',false)">
+<div id="sp0" class="meter-end top" style="top:0px" onMouseOver="meter(0);speed=6;"><!--<div id="border-radius-patch" style="bottom:0px;" onMouseOver="menu_mouseover(event,'speedcontainer',false)"></div>--></div>
+<div id="sp1" style="top:30px" onMouseOver="meter(1);"></div>
+<div id="sp2" style="top:60px" onMouseOver="meter(2);"></div>
+<div id="sp3" style="top:90px" onMouseOver="meter(3);"></div>
+<div id="sp4" style="top:120px" onMouseOver="meter(4);"></div>
+<div id="sp5" class="meter-end bottom" style="top:150px" onMouseOver="meter(5);"><!--<div id="border-radius-patch" style="top:0px;" onMouseOver="menu_mouseover(event,'speedcontainer',false)"></div>--></div>
+<div class="shadow" id="shadow"></div>
+</div>
+</div>
+<table id="loading" bgcolor="#fdfdfd" height="100%" width="100%" style="position:absolute; top:0; left:0;">
+<tr valign="middle">
+<td width="100%"><center><img align="middle" src="loading.gif"/></center></td>
+</tr>
+</table>
+</table>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41972386-1', 'karanjitsingh.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
