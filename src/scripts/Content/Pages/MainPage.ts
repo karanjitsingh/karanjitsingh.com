@@ -33,7 +33,7 @@ module Pages {
         Container: null,
 
         showPage: () => {
-            var svgOptions: ParticleJSAnimations.SVGAnimationOptions = {
+            var svgOptions: Partial<ParticleJSAnimations.SVGAnimationOptions> = {
                 atomOptions: {
                     pop: true,
                     popRadius: 4,
@@ -45,13 +45,14 @@ module Pages {
                 pathVariation: 2,
                 lineDensity: 0.25,
                 scale: 1,
-                blur: true,
+                blur: false,
+                enlargeFactor: 2,
+                minEnlargeDistance: 0,
+                maxEnlargeDistance: 200,
+                marginEnlargeDistance: 75,
                 mouseRepel: true,
                 forceFactor: 1,
                 maxRepelDistance: 100,
-                minBlurDistance: 50,
-                maxBlurDistance: 200,
-                marginBlurDistance: 75,
                 gravity: 1000,
                 frictionFactor: 0.9
             };

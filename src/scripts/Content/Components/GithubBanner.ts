@@ -26,7 +26,7 @@ module Components {
         setGithubLinkTimer: () => {
             linkTimer = setTimeout(function() {
                 $id("github-banner").className = "visible";
-            }, 3000);
+            }, 1000);
         }
     }
 }

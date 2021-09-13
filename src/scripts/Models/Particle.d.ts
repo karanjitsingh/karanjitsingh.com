@@ -10,19 +10,21 @@ declare class Atom implements DrawObject {
     animationDone: boolean;
     blurRadius: number;
     opacity: any;
+    scale: number;
     private radiusLag;
     private animateOpacity;
     dispose(): Array<Atom>;
-    constructor(id: number, speed?: Point, position?: Point, opacity?: number, options?: AtomDrawOptions);
+    constructor(id: number, speed?: Point, position?: Point, opacity?: number, options?: Partial<AtomDrawOptions>);
     draw(context: ParticleJSContext): void;
 }
 interface AtomDrawOptions {
-    pop?: boolean;
-    blur?: boolean;
-    popRadius?: number;
-    popProbability?: number;
-    radius?: number;
+    pop: boolean;
+    blur: boolean;
+    popRadius: number;
+    popProbability: number;
+    radius: number;
     colorSet: Array<string>;
+    defaultScale: number;
 }
 interface ParticleJSOptions {
     drawCanvasBackground: boolean;
@@ -76,14 +78,14 @@ declare module ParticleJSAnimations {
         options: FadeExplodeOptions;
         private atomSet;
         dispose(): Array<Atom>;
-        constructor(options?: WaveDrawOptions, atomSet?: Array<Atom>);
+        constructor(options?: Partial<WaveDrawOptions>, atomSet?: Array<Atom>);
         private randomizeAtoms;
         draw(context: ParticleJSContext): void;
     }
 }
 declare module ParticleJSAnimations {
     interface SVGAnimationOptions {
-        atomOptions: AtomDrawOptions;
+        atomOptions: Partial<AtomDrawOptions>;
         pathVariation: number;
         lineDensity: number;
         scale: number;
@@ -94,15 +96,20 @@ declare module ParticleJSAnimations {
         minBlurDistance: number;
         maxBlurDistance: number;
         marginBlurDistance: number;
+        blurFactor: number;
+        enlargeFactor: number;
+        minEnlargeDistance: number;
+        maxEnlargeDistance: number;
+        marginEnlargeDistance: number;
         gravity: number;
         frictionFactor: number;
-        connectingLines?: boolean;
-        connectingLineWidth?: number;
-        connectingLineOpacity?: number;
-        connectingLineColor?: string;
-        connectingLineRelaxLength?: number;
-        connectingLineMaxLength?: number;
-        animationFactor?: number;
+        connectingLines: boolean;
+        connectingLineWidth: number;
+        connectingLineOpacity: number;
+        connectingLineColor: string;
+        connectingLineRelaxLength: number;
+        connectingLineMaxLength: number;
+        animationFactor: number;
     }
     class SVGAnimation implements DrawObject {
         static default: ParticleJSAnimations.SVGAnimationOptions;
@@ -112,7 +119,7 @@ declare module ParticleJSAnimations {
         private atomSet;
         private pathObjects;
         private firstDraw;
-        constructor(path2d: string, options?: SVGAnimationOptions, atomSet?: Array<Atom>);
+        constructor(path2d: string, options?: Partial<SVGAnimationOptions>, atomSet?: Array<Atom>);
         dispose(): Array<Atom>;
         private GeneratePathObjects;
         private GenerateAtomSet;
@@ -131,9 +138,9 @@ declare module ParticleJSAnimations {
         increment: number;
     }
     interface WaveDrawOptions {
-        readonly atomOptions: AtomDrawOptions;
-        scale?: number;
-        waveCollection?: Array<Wave>;
+        readonly atomOptions: Partial<AtomDrawOptions>;
+        scale: number;
+        waveCollection: Array<Wave>;
         top: number;
         width: number;
     }
@@ -146,7 +153,7 @@ declare module ParticleJSAnimations {
         private totalAtoms;
         private callback;
         dispose(): Array<Atom>;
-        constructor(totalAtoms: number, waves: Array<Wave>, options?: WaveDrawOptions);
+        constructor(totalAtoms: number, waves: Array<Wave>, options?: Partial<WaveDrawOptions>);
         addWave(wave: Wave): void;
         removeWave(wave: Wave): Wave;
         draw(context: ParticleJSContext): void;

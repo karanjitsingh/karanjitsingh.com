@@ -7,6 +7,12 @@
             "year": "2021"
         },
         {
+            "title": "SimpleBCTT",
+            "github": "https://github.com/karanjitsingh/SimpleBCTT",
+            "markdown": "https://raw.githubusercontent.com/karanjitsingh/SimpleBCTT/master/README.md",
+            "year": "2021"
+        },
+        {
             "title": "RL Lunar Lander",
             "github": "https://github.com/karanjitsingh/rl-lunar-lander",
             "markdown": "https://raw.githubusercontent.com/karanjitsingh/rl-lunar-lander/master/README.md",
@@ -95,5 +101,5 @@
             "year": "2010"
         }
     ],
-    "about": "<span>Hi!</span>My name is Karan Jit Singh and I am a software engineer.<br><br>I've been a programmer since I was 9 years old and have been in love with computer science since the very day I starting learning to code. I occasionally dabble on the guitar, play chess and love watching Formula 1.<br><br>I went to college at Manipal Institute of Technology, Manipal where I completed my bachelor's degree in Computer Science and Engineering.<br><br>Connect with me on <a href='https://www.linkedin.com/in/kjitsingh/' target='_blank'>LinkedIn</a>."
+    "about": "<span>Hi!</span>I'm Karan.<br><br>At the age of 9, I saw my father engrossed in a bright white screen with incomprehensible letters scattered all over. Curiously, I went to him and asked what he was doing. His answer proved to be one of the most profound and enlightening moments of my life, the day I was introduced to programming languages and computer science. From the years that followed, nights spent writing code instead of completing homework, it was pretty much set in stone that I would do nothing but this for the rest of my life. By the time I became an adolescent, I cultivated a sense of direction and autodidactism. Whether it was teaching myself to play the guitar, coming up with my own chess openings to beat my grandfather or understanding the perplexing piece of our biological machine that is the human brain through psychology.<br><br>India produces more than 160,000 engineers specializing in Information Technology and Computer science every year. Each one of us has the desire to be unique. There’s an anxiety in all of us, of being hailed as just another sheep in the flock. I’m no greater than what evolution has made me. In the pursuit of greatness and success, I believe it is my passion and the eternal hunger for knowledge that will set me apart.<br><br>Connect with me on <a href='https://www.linkedin.com/in/kjitsingh/' target='_blank'>LinkedIn</a>."
 }

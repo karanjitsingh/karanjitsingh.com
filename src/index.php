@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="./style/page.css"/>
     <link rel="stylesheet" type="text/css" href="./style/markdown.css"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="./scripts/github-stats.js"></script>
     <script type="text/javascript" src="./scripts/particle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/byliuyang/github-stats@0.0.4/src/github-stats.js"></script>
     
     <!-- HTML Meta Tags -->
     <title>Karan Jit Singh</title>
@@ -85,7 +85,7 @@
     </div>
     <div id="github-banner">
         <a class="github-banner-link" href="https://github.com/karanjitsingh/particle.js" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
                 <use xlink:href="./images/icons.svg#fork" />
             </svg>
         </a>

@@ -1,4 +1,4 @@
-var Atom = (function () {
+var Atom = /** @class */ (function () {
     function Atom(id, speed, position, opacity, options) {
         this.animationDone = true;
         this.blurRadius = 0;
@@ -12,6 +12,7 @@ var Atom = (function () {
         this.speed = speed || { x: 0, y: 0 };
         this.pos = position ? { x: position.x, y: position.y } : { x: 0, y: 0 };
         this.origin = position ? { x: position.x, y: position.y } : { x: 0, y: 0 };
+        this.scale = this.options.defaultScale;
     }
     Atom.prototype.dispose = function () {
         return [];
@@ -32,7 +33,7 @@ var Atom = (function () {
         var colorSet = this.options.colorSet;
         if (this.blurRadius == 0 || !this.options.blur) {
             ctx.fillStyle = HEXAtoRGBA(colorSet[this.index % colorSet.length], this.opacity);
-            ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+            ctx.arc(this.pos.x, this.pos.y, this.radius * this.scale, 0, Math.PI * 2);
         }
         else {
             var radgrad = ctx.createRadialGradient(this.pos.x, this.pos.y, this.radius, this.pos.x, this.pos.y, this.radius + this.blurRadius * 30);
@@ -50,11 +51,12 @@ var Atom = (function () {
         popProbability: 0.001,
         radius: 2,
         colorSet: ["#E04836", "#F39D41", "#DDDDDD"],
-        blur: true
+        blur: true,
+        defaultScale: 1,
     };
     return Atom;
 }());
-var ParticleJS = (function () {
+var ParticleJS = /** @class */ (function () {
     function ParticleJS(canvas, drawObjectCollection, options) {
         var _this = this;
         this.running = false;
@@ -152,7 +154,7 @@ function generateOptions(options, defaultOptions) {
 }
 var ParticleJSAnimations;
 (function (ParticleJSAnimations) {
-    var FadeExplode = (function () {
+    var FadeExplode = /** @class */ (function () {
         function FadeExplode(options, atomSet) {
             this.options = generateOptions(options, FadeExplode.default);
             this.randomizeAtoms(atomSet);
@@ -201,7 +203,7 @@ var ParticleJSAnimations;
 })(ParticleJSAnimations || (ParticleJSAnimations = {}));
 var ParticleJSAnimations;
 (function (ParticleJSAnimations) {
-    var SVGAnimation = (function () {
+    var SVGAnimation = /** @class */ (function () {
         function SVGAnimation(path2d, options, atomSet) {
             this.alpha = 1;
             this.offset = { x: 0, y: 0 };
@@ -362,9 +364,17 @@ var ParticleJSAnimations;
                     if (distance2 <= this.options.minBlurDistance)
                         atom.blurRadius = 0;
                     else if (distance2 <= this.options.maxRepelDistance)
-                        atom.blurRadius = (distance2 - this.options.minBlurDistance) / this.options.marginBlurDistance * 0.4;
+                        atom.blurRadius = (distance2 - this.options.minBlurDistance) / this.options.marginBlurDistance * this.options.blurFactor;
                     else
-                        atom.blurRadius = 0.4;
+                        atom.blurRadius = this.options.blurFactor;
+                }
+                if (this.options.enlargeFactor > 0 && this.options.enlargeFactor != 1) {
+                    if (distance2 <= this.options.minEnlargeDistance)
+                        atom.scale = 1;
+                    else if (distance2 <= this.options.maxRepelDistance)
+                        atom.scale = atom.options.defaultScale + (distance2 - this.options.minEnlargeDistance) / this.options.marginEnlargeDistance * (this.options.enlargeFactor - atom.options.defaultScale);
+                    else
+                        atom.scale = this.options.enlargeFactor;
                 }
                 atom.draw(context);
                 if (this.options.connectingLines) {
@@ -391,6 +401,7 @@ var ParticleJSAnimations;
                 }
             }
         };
+        var _a;
         SVGAnimation.default = {
             atomOptions: Atom.default,
             pathVariation: 0,
@@ -402,7 +413,12 @@ var ParticleJSAnimations;
             maxRepelDistance: 100,
             minBlurDistance: 50,
             maxBlurDistance: 200,
+            blurFactor: 0.4,
             marginBlurDistance: 75,
+            enlargeFactor: 1,
+            minEnlargeDistance: 50,
+            maxEnlargeDistance: 200,
+            marginEnlargeDistance: 75,
             gravity: 1000,
             frictionFactor: 0.9,
             connectingLines: false,
@@ -413,12 +429,12 @@ var ParticleJSAnimations;
             connectingLineRelaxLength: 20,
             animationFactor: 3,
         };
-        SVGAnimation.Shapes = (_a = (function () {
+        SVGAnimation.Shapes = (_a = /** @class */ (function () {
                 function class_1() {
                 }
                 return class_1;
             }()),
-            _a.Line = (function () {
+            _a.Line = /** @class */ (function () {
                 function class_2(x1, y1, x2, y2, scale) {
                     var theta;
                     var xdiff = Math.abs(x1 - x2) * scale;
@@ -444,7 +460,7 @@ var ParticleJSAnimations;
                 };
                 return class_2;
             }()),
-            _a.Arc = (function () {
+            _a.Arc = /** @class */ (function () {
                 function class_3(x, y, w, h, sa, ea, phi, scale) {
                     this.x = x * scale,
                         this.y = y * scale,
@@ -477,7 +493,7 @@ var ParticleJSAnimations;
                 };
                 return class_3;
             }()),
-            _a.BezierCurve = (function () {
+            _a.BezierCurve = /** @class */ (function () {
                 function class_4(p1, p2, p3, p4, scale) {
                     this.p1 = { x: p1.x * scale, y: p1.y * scale };
                     this.p2 = { x: p2.x * scale, y: p2.y * scale };
@@ -505,7 +521,7 @@ var ParticleJSAnimations;
                 };
                 return class_4;
             }()),
-            _a.QuadraticCurve = (function () {
+            _a.QuadraticCurve = /** @class */ (function () {
                 function class_5(p1, p2, p3, scale) {
                     this.p1 = { x: p1.x * scale, y: p1.y * scale };
                     this.p2 = { x: p2.x * scale, y: p2.y * scale };
@@ -534,13 +550,12 @@ var ParticleJSAnimations;
             }()),
             _a);
         return SVGAnimation;
-        var _a;
     }());
     ParticleJSAnimations.SVGAnimation = SVGAnimation;
 })(ParticleJSAnimations || (ParticleJSAnimations = {}));
 var ParticleJSAnimations;
 (function (ParticleJSAnimations) {
-    var WaveAnimation = (function () {
+    var WaveAnimation = /** @class */ (function () {
         function WaveAnimation(totalAtoms, waves, options) {
             this.alpha = 1;
             this.options = generateOptions(options, WaveAnimation.default);
@@ -622,7 +637,7 @@ var RegexPatterns;
     RegexPatterns[RegexPatterns["WS"] = 2] = "WS";
     RegexPatterns[RegexPatterns["Commands"] = 3] = "Commands";
 })(RegexPatterns || (RegexPatterns = {}));
-var SVGPath = (function () {
+var SVGPath = /** @class */ (function () {
     function SVGPath(d) {
         this.paths = [];
         this.parseError = false;

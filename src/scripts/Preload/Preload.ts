@@ -1,5 +1,6 @@
 /// <reference path="Components/Canvas.ts" />
 /// <reference path="Utils/HttpGet.ts"/>
+/// <reference path="../Models/Particle.d.ts"/>
 
 const Globals = {
     PageHeight: document.body.clientHeight,
