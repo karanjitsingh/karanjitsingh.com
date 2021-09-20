@@ -260,7 +260,7 @@ async function GithubStats(username) {
     }
 
     function getText(url) {
-        return fetch(url)
+        return fetch(url, {mode: 'no-cors'})
             .then(response => {
                 if (response.status !== 200) {
                     return;
@@ -285,7 +285,7 @@ async function GithubStats(username) {
     let cachedHomepageHTML = getCache('homepageHTML');
     let homepageHTML = !isUsernameChanged(username) && cachedHomepageHTML ?
         cachedHomepageHTML :
-        await getText(`https://urlreq.appspot.com/req?method=GET&url=https://github.com/${username}`);
+        await getText(`./scripts/g.php`);
     saveCache('homepageHTML', homepageHTML);
 
     let parser = new DOMParser();

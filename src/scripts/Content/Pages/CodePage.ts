@@ -25,7 +25,7 @@ module Pages {
                 levelColors: [
                     {
                         minCommits: 0,
-                        color: '#ebedf0'
+                        color: '#DCDFE5'
                     },
                     {
                         minCommits: 1,
@@ -77,7 +77,8 @@ module Pages {
             RightPaneHome.innerHTML = marked(`
 # Karan Jit Singh
 
-Checkout my github profile at [github.com/karanjitsingh/karanjitsingh.com](https://github.com/karanjitsingh/karanjitsingh.com). If you liked the fancy particle animations on this website, check it out at [github.com/karanjitsingh/particle.js](https://github.com/karanjitsingh/particle.js).<br />
+Checkout my github profile at [github.com/karanjitsingh/](https://github.com/karanjitsingh/).<br />
+You can find the fancy particle animation at [github.com/karanjitsingh/particle.js](https://github.com/karanjitsingh/particle.js).<br />
 
 ### Github Activity
 <div class=\"contrib-stats\"></div>
