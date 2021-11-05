@@ -74,7 +74,7 @@ module Pages {
             CodePageLoading = codePage.querySelector(".loading-svg");
             RightPaneHome = codePage.querySelector(".right-pane.type-home");
 
-            RightPaneHome.innerHTML = marked(`
+            RightPaneHome.innerHTML = marked.parse(`
 # Karan Jit Singh
 
 Checkout my github profile at [github.com/karanjitsingh/](https://github.com/karanjitsingh/).<br />
@@ -182,7 +182,7 @@ You can find the fancy particle animation at [github.com/karanjitsingh/particle.
         private setMarkdownContent(content: string) {
             RightPaneMarkdown.style.display = "block";
                     
-            const html = marked(content);
+            const html = marked.parse(content);
             CodePageLoading.style.display = "none";
 
             RightPaneMarkdown.innerHTML = html;
