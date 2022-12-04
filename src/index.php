@@ -139,7 +139,7 @@
                                 <use xlink:href="./images/icons.svg#github" />
                             </svg>
                         </a>
-                        <a href="mailto:karan1866@gmail.com" target="_blank">
+                        <a href="mailto:contact@karanjitsingh.com" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#fff">
                                 <use xlink:href="./images/icons.svg#mail" />
                             </svg>
